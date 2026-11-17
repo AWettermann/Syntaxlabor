@@ -1,5 +1,7 @@
 # Syntaxlabor V4.1 · Abiturtraining Q3
 
+**Live verwenden:** [Syntaxlabor V4.1 öffnen](https://awettermann.github.io/Syntaxlabor/)
+
 Syntaxdiagramme zeichnen, EBNF formulieren, Sprachen untersuchen und in 50 Aufgaben mit 166 Teilaufgaben sowie zwei eigenen Q3-Klausuren üben. Ohne Backend, Anmeldung oder externe Laufzeitabhängigkeiten. Die sechs bisherigen Kurzübungen bleiben erhalten.
 
 Prüfungsbezug und Abgrenzung: [QUELLEN.md](QUELLEN.md). Vollständiges Aufgaben-/Kompetenzraster: [AUFGABENRASTER.md](AUFGABENRASTER.md). Druckbare Klausuren mit getrennten Erwartungshorizonten: [KLAUSUREN.md](KLAUSUREN.md). Dies ist keine vollständige Abdeckung des gesamten Informatikabiturs.
