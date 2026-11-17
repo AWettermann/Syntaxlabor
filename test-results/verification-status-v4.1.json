@@ -1,0 +1,30 @@
+{
+  "version": "4.1.0",
+  "unit": {
+    "passed": 61,
+    "failed": 0,
+    "log": "core-results-v4.1.txt"
+  },
+  "laboratory_browser": {
+    "passed": 21,
+    "failed": 0,
+    "log": "browser-results.json"
+  },
+  "academy_browser": {
+    "passed": 22,
+    "failed": 0,
+    "complete": true,
+    "log": "academy-browser-results.json"
+  },
+  "full_browser_acceptance": true,
+  "hierarchy": {
+    "types": [
+      3,
+      2,
+      1,
+      0
+    ],
+    "example_classification_tests": "passed",
+    "browser_overview": "passed"
+  }
+}

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3c99d">
+  <meta name="description" content="Syntaxdiagramme zeichnen, EBNF schreiben und formale Sprachen untersuchen. Ohne Anmeldung und ohne Backend.">
+  <title>Syntaxlabor V4.0 · EBNF & formale Sprachen</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="core.js"></script>
+  <script defer src="renderer.js"></script>
+  <script defer src="exercises.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header>
+    <div class="header-inner"><div><div class="eyebrow">INFORMATIK · GRUNDKURS Q3</div><h1>Syntaxlabor <span>V4.0</span></h1><p>Zeichnen. Formulieren. Sprache entdecken.</p></div><div class="header-note">Diagramm ⇄ EBNF<br><span>automatisch verbunden</span></div></div>
+  </header>
+  <main>
+    <div class="workspace-bar"><p>Deine Grammatik, zwei Perspektiven.</p><div class="toolbar"><button id="undo" disabled>↶ Rückgängig</button><button id="redo" disabled>↷ Wiederherstellen</button><button id="example">Beispiel laden</button></div></div>
+    <div id="status" class="status" role="status" aria-live="polite">Bereit. Diagramme und EBNF werden automatisch synchronisiert.</div>
+    <div class="layout">
+      <section class="panel diagram-panel" aria-labelledby="diagram-title">
+        <div class="section-heading"><div><div class="eyebrow">01 / ZEICHNEN</div><h2 id="diagram-title">Syntaxdiagramme</h2></div><span id="rulecount" class="badge"></span></div>
+        <p class="hint">Baustein anklicken · Text per Doppelklick bearbeiten · Pfeile zeigen die Leserichtung.</p>
+        <div class="toolbar"><button id="new" class="primary">+ Neues Diagramm</button><button id="deleteall" class="quiet danger">Grammatik löschen</button></div>
+        <div id="diagram-list" aria-label="Alle Syntaxdiagramme"></div>
+        <div id="visualtools" class="visual-tools" hidden>
+          <div class="editor-caption"><strong>Grafischer Editor</strong><span id="selectioninfo" class="small"></span></div>
+          <div class="editrow"><label for="rulename">Regelname</label><input id="rulename" autocomplete="off" spellcheck="false"></div>
+          <div class="editrow"><label for="nodetype">Baustein</label><select id="nodetype"><option value="eps">Leeres Wort ε</option><option value="lit">Terminal</option><option value="ref">Nichtterminal</option><option value="seq">Folge</option><option value="alt">Alternative</option><option value="opt">Optional</option><option value="rep">Wiederholung</option></select><label for="nodevalue" id="value-label">Text</label><input id="nodevalue" autocomplete="off" spellcheck="false" placeholder="Text oder Regelname"></div>
+          <p class="hint" id="valuehint">Terminale sind feste Zeichenfolgen. Nichtterminale verweisen auf Regeln.</p>
+          <div class="toolbar"><button id="addafter">+ Dahinter</button><button id="addbranch">+ Alternative</button><button id="wrapopt">[ ] Optional</button><button id="wraprep">{ } Wiederholung</button></div>
+          <div class="toolbar"><button id="moveleft">← Verschieben</button><button id="moveright">Verschieben →</button><button id="deletevisual" class="danger">Baustein entfernen</button></div>
+          <details><summary>Strukturübersicht</summary><div id="tree" class="tree"></div></details>
+        </div>
+        <div class="toolbar exports"><button id="svgexport">SVG exportieren</button><button id="pngexport">PNG exportieren</button><span class="small">Ausgewählte Regel · ohne Auswahlmarkierung</span></div>
+      </section>
+      <section class="panel" aria-labelledby="ebnf-title">
+        <div class="section-heading"><div><div class="eyebrow">02 / FORMULIEREN</div><h2 id="ebnf-title">EBNF-Editor</h2></div><span id="syncstate" class="badge">Synchron</span></div>
+        <label class="sr-only" for="ebnf">Produktionen der Grammatik</label>
+        <textarea id="ebnf" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="notation editorfeedback"></textarea>
+        <p id="editorfeedback" class="hint" aria-live="polite"></p>
+        <button id="revert" hidden>Letzte gültige Grammatik einsetzen</button>
+        <div class="toolbar"><button id="toebnf">EBNF formatieren</button><button id="todiagram">Jetzt übernehmen</button><button id="saveebnf">Als Text speichern</button><label class="file-button" for="openfile">Datei öffnen<input type="file" id="openfile" accept=".ebnf,.txt,text/plain"></label></div>
+        <div id="notation" class="notation"><strong>Die Bausteine der EBNF</strong><dl><div><dt><code>"a" "b"</code></dt><dd>Folge, mit Leerzeichen</dd></div><div><dt><code>"a" | "b"</code></dt><dd>Alternative</dd></div><div><dt><code>["a"]</code></dt><dd>Null oder einmal</dd></div><div><dt><code>{"a"}</code></dt><dd>Null oder beliebig oft</dd></div><div><dt><code>("a" | "b") "c"</code></dt><dd>Gruppierung</dd></div><div><dt><code>ε</code></dt><dd>Leeres Wort, auch <code>""</code></dd></div></dl><p class="small">Jede Regel endet mit <code>;</code>. Ein Regelname verweist auf ein anderes Diagramm.</p></div>
+        <div id="diagnostics" class="diagnostics" aria-live="polite"></div>
+      </section>
+    </div>
+    <section class="panel language-panel" aria-labelledby="language-title">
+      <div class="section-heading"><div><div class="eyebrow">03 / UNTERSUCHEN</div><h2 id="language-title">Welche Sprache beschreibt meine Grammatik?</h2></div><div class="start-control"><label for="startsymbol">Startsymbol</label><select id="startsymbol"></select></div></div>
+      <div class="language-grid"><div><h3>Sprache in Worten</h3><p id="description"></p><p id="math" class="math" hidden></p><p id="analysisnote" class="hint"></p><h3>Wortprüfung</h3><form id="wordform" class="test"><label class="sr-only" for="word">Wort prüfen (leer lassen für ε)</label><input id="word" placeholder="Wort eingeben · leer = ε" autocomplete="off" spellcheck="false"><button id="check" class="primary" type="submit">Wort prüfen</button></form><p id="testresult" class="result" aria-live="polite"></p></div><div><div class="examples-heading"><h3>Beispielwörter</h3><label for="maxlen">Bis Länge <select id="maxlen"><option>4</option><option selected>8</option><option>12</option></select></label></div><div id="words" class="word-list"></div><p id="generationnote" class="hint"></p><h3>Nicht enthalten</h3><div id="nonwords" class="word-list negative"></div><p class="hint">Beispiele anklicken, um sie zu prüfen. ε steht für das leere Wort.</p></div></div>
+    </section>
+    <section class="panel training-panel" aria-labelledby="training-title">
+      <div class="section-heading"><div><div class="eyebrow">04 / ÜBEN</div><h2 id="training-title">EBNF-Training</h2></div><span id="training-count" class="badge"></span></div>
+      <div class="training-grid"><div><label for="exercise-select">Aufgabe</label><select id="exercise-select"></select><h3 id="exercise-title"></h3><p id="exercise-task"></p><div class="mode-select" role="group" aria-label="Lösungsweg"><button id="mode-write" aria-pressed="true">A · EBNF schreiben</button><button id="mode-draw" aria-pressed="false">B · Diagramm zeichnen</button></div><p id="mode-info" class="hint"></p><div class="toolbar"><button id="exercise" class="primary">Aufgabe starten</button><button id="exercise-hint">Hinweis</button><button id="showanswer">Musterlösung anzeigen</button></div><p id="exercise-hint-text" class="hint" hidden></p><pre id="answer" hidden></pre></div><div class="training-check"><h3>Deine Lösung prüfen</h3><p class="hint">Bearbeite die Grammatik oben. Verglichen wird die Sprache des gewählten Startsymbols mit der Aufgabe.</p><button id="checkanswer" class="primary">Lösung kontrollieren</button><p id="training-result" class="result" aria-live="polite">Starte eine Aufgabe, um deine Lösung zu überprüfen.</p><p class="small">Für EBNF mit azyklischen oder rechtslinearen Regelverweisen: exakter Automatenvergleich. Bei anderen Rekursionen oder erreichten Prüfgrenzen: begrenzte Tests mit ausdrücklich offenem Ergebnis.</p></div></div>
+    </section>
+    <footer><span>Syntaxlabor V4.0 · Lokal im Browser · Keine Anmeldung · Keine Datenübertragung</span><span id="savestate">Entwurf wird auf diesem Gerät gespeichert.</span><a href="README.md">Dokumentation & Prüfgrenzen</a></footer>
+  </main>
+  <noscript>Bitte JavaScript aktivieren, um Syntaxdiagramme und EBNF zu bearbeiten.</noscript>
+</body>
+</html>

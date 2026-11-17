@@ -1,0 +1,115 @@
+{
+  "environment": {
+    "node": "v24.21.0",
+    "platform": "darwin",
+    "browser": "157.0.8103.40"
+  },
+  "records": [
+    {
+      "name": "Start und lokale HTTP-Auslieferung",
+      "passed": true,
+      "ms": 315
+    },
+    {
+      "name": "14 — automatische EBNF-Synchronisierung und vier Diagramme",
+      "passed": true,
+      "ms": 482
+    },
+    {
+      "name": "Ungültige Zwischenstände erhalten die letzten gültigen Diagramme",
+      "passed": true,
+      "ms": 413
+    },
+    {
+      "name": "11/12 — vollständig löschen und leeres Diagramm neu anlegen",
+      "passed": true,
+      "ms": 155
+    },
+    {
+      "name": "13 — grafisches Einfügen und direkte Textbearbeitung",
+      "passed": true,
+      "ms": 131
+    },
+    {
+      "name": "Verschieben, Rückgängig und Wiederherstellen",
+      "passed": true,
+      "ms": 186
+    },
+    {
+      "name": "Option, Alternative, Wiederholung und Auswahl von Containern",
+      "passed": true,
+      "ms": 433
+    },
+    {
+      "name": "Baumeditor auswählen und Elemente vollständig entfernen",
+      "passed": true,
+      "ms": 401
+    },
+    {
+      "name": "Nichtterminale, Umbenennen und konsistente Referenzen",
+      "passed": true,
+      "ms": 550
+    },
+    {
+      "name": "Sprachbeschreibung, ε und sortierte Beispielwörter",
+      "passed": true,
+      "ms": 1315
+    },
+    {
+      "name": "Beide Roundtrips bewahren die Bedeutung",
+      "passed": true,
+      "ms": 659
+    },
+    {
+      "name": "19 — SVG- und PNG-Export als echte Dateien",
+      "passed": true,
+      "ms": 566
+    },
+    {
+      "name": "EBNF-Datei importieren und speichern",
+      "passed": true,
+      "ms": 73
+    },
+    {
+      "name": "20 — alle sechs Aufgaben in beiden Modi laden und bearbeiten",
+      "passed": true,
+      "ms": 6136
+    },
+    {
+      "name": "Training akzeptiert äquivalente Lösungen und erklärt Gegenbeispiele",
+      "passed": true,
+      "ms": 766
+    },
+    {
+      "name": "Entwurf bleibt nach Neuladen erhalten",
+      "passed": true,
+      "ms": 817
+    },
+    {
+      "name": "Tastaturbedienung im Diagramm",
+      "passed": true,
+      "ms": 333
+    },
+    {
+      "name": "iPad-Touchbedienung des grafischen Editors",
+      "passed": true,
+      "ms": 671
+    },
+    {
+      "name": "Desktop, iPad und Smartphone ohne Seitenüberlauf",
+      "passed": true,
+      "ms": 1750
+    },
+    {
+      "name": "Direkt per file:// und ohne Netzwerk nutzbar",
+      "passed": true,
+      "ms": 705
+    },
+    {
+      "name": "Keine JavaScript- oder Konsolenfehler",
+      "passed": true,
+      "ms": 0
+    }
+  ],
+  "errors": []
+}
