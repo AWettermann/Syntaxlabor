@@ -31,9 +31,32 @@ test('Sämtliche EBNF-Musterlösungen sind gültig, definiert und ohne Folgetren
 test('Alle Musterableitungen erreichen ihr Ziel in zulässigen Schritten', () => {
   for (const t of A.tasks) for (const p of t.parts) if (['derive', 'tree'].includes(p.kind)) {
     const g = F.parse(t.formal, t.start || 'S'), d = F.derivation(g, p.solution, p.target, p.order || 'any'); assert.ok(d.complete, t.id + p.id);
-    const answer = p.kind === 'tree' ? {forms: p.solution.split('⇒').map(s => s.trim())} : {text: p.solution};
+    const answer = p.kind === 'tree' ? {forms: F.splitDerivation(p.solution)} : {text: p.solution};
     assert.equal(Q.check(p, answer, t).autoEarned, p.be);
   }
+});
+test('Alle aktuellen Aufgaben und Unterrichtsdokumente verwenden einheitliche Ableitungspfeile', () => {
+  const fs = require('node:fs'), path = require('node:path');
+  assert.equal(JSON.stringify(A).includes('\u21d2'), false);
+  for (const file of ['README.md', 'KLAUSUREN.md', 'AUFGABENRASTER.md']) assert.equal(fs.readFileSync(path.join(__dirname, '..', file), 'utf8').includes('\u21d2'), false, file);
+  const g = F.parse(task('A1').formal), d = F.derivation(g, part('A1', 'c').solution, 'aaab');
+  assert.ok(d.complete);
+  const result = Q.check(part('A1', 'c'), {text: part('A1', 'c').solution}, task('A1'));
+  assert.ok(result.feedback.some(s => s.includes('S -> aS')));
+  assert.ok(result.feedback.some(s => s.includes('Regel S → aS')));
+});
+test('Gespeicherte Ableitungsantworten werden ohne Änderungen an EBNF und Produktionen migriert', () => {
+  const old = 'S \u21d2 aS \u21d2 aaS \u21d2 aaaS \u21d2 aaab';
+  const ebnf = 's = "\u21d2";';
+  const saved = Q.cleanProgress({version: '4.1', attempts: {
+    A1: {answers: {c: {text: old}}, submitted: true},
+    C2: {answers: {a: {workspace: {text: ebnf, validText: ebnf, start: 's'}}}}
+  }}, A);
+  const answer = saved.attempts.A1.answers.c;
+  assert.equal(answer.text, 'S -> aS -> aaS -> aaaS -> aaab');
+  assert.equal(Q.check(part('A1', 'c'), answer, task('A1')).autoEarned, part('A1', 'c').be);
+  assert.equal(saved.attempts.C2.answers.a.workspace.text, ebnf);
+  assert.equal(F.ruleText(F.parse('S -> aS | b').rules[0]), 'S → aS');
 });
 test('B1: G1–G5 sowie alle Sonderfälle unabhängig festgelegt', () => {
   const expected = {B1: ['3', '2', '2', '3', '2'], B2: ['3', '3'], B3: ['2'], B4: ['2'], B5: ['3', '2'], B6: ['2'], B7: ['1'], B8: ['0'], B9: ['invalid', 'invalid', '0'], B11: ['3'], B12: ['0']};
@@ -90,7 +113,7 @@ test('Beispiele müssen verschieden und passend sein; ε und ausgeschlossene Wö
 });
 test('Erzwungene äußerste Operation bei mehrdeutigen Ableitungen kontrollieren', () => {
   const p = part('A8', 'b');
-  const wrong = Q.check(p, {text: 'E ⇒ E+E ⇒ x+E ⇒ x+E*E ⇒ x+x*E ⇒ x+x*x'}, task('A8'));
+  const wrong = Q.check(p, {text: 'E -> E+E -> x+E -> x+E*E -> x+x*E -> x+x*x'}, task('A8'));
   assert.notEqual(wrong.status, 'correct'); assert.ok(wrong.autoEarned < p.be);
 });
 test('Lernstands-Roundtrip bewahrt Texte, Zeichnungen, Baumaktionen, Abgaben und Kompetenzen', () => {

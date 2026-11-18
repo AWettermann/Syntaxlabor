@@ -29,20 +29,20 @@ test('Keine Typ-0-Grammatik mit ausschließlich Terminalen oder ε links', () =>
 });
 test('Einzelne Ersetzungen akzeptieren, Sprünge und Zeichenänderungen ablehnen', () => {
   const g = F.parse('S → aS | b');
-  assert.ok(F.derivation(g, 'S ⇒ aS ⇒ aaS ⇒ aaaS ⇒ aaab', 'aaab').complete);
-  assert.equal(F.derivation(g, 'S ⇒ aaS ⇒ aaab', 'aaab').valid, false);
-  assert.equal(F.derivation(g, 'aS ⇒ ab', 'ab').starts, false);
-  assert.equal(F.derivation(g, 'S ⇒ aS', 'ab').complete, false);
+  assert.ok(F.derivation(g, 'S -> aS -> aaS -> aaaS -> aaab', 'aaab').complete);
+  assert.equal(F.derivation(g, 'S -> aaS -> aaab', 'aaab').valid, false);
+  assert.equal(F.derivation(g, 'aS -> ab', 'ab').starts, false);
+  assert.equal(F.derivation(g, 'S -> aS', 'ab').complete, false);
 });
 test('Links- und Rechtsableitung unterscheiden', () => {
   const g = F.parse('S → AB\nA → a\nB → b');
-  assert.ok(F.derivation(g, 'S ⇒ AB ⇒ aB ⇒ ab', 'ab', 'left').complete);
-  assert.equal(F.derivation(g, 'S ⇒ AB ⇒ Ab ⇒ ab', 'ab', 'left').complete, false);
-  assert.ok(F.derivation(g, 'S ⇒ AB ⇒ Ab ⇒ ab', 'ab', 'right').complete);
+  assert.ok(F.derivation(g, 'S -> AB -> aB -> ab', 'ab', 'left').complete);
+  assert.equal(F.derivation(g, 'S -> AB -> Ab -> ab', 'ab', 'left').complete, false);
+  assert.ok(F.derivation(g, 'S -> AB -> Ab -> ab', 'ab', 'right').complete);
 });
 test('Typ-0-Kontextregel und ε-Schritte prüfen', () => {
-  assert.ok(F.derivation(F.parse('S → AB\nAB → a'), 'S ⇒ AB ⇒ a', 'a').complete);
-  assert.ok(F.derivation(F.parse('S → aSb | ε'), 'S ⇒ aSb ⇒ ab', 'ab').complete);
+  assert.ok(F.derivation(F.parse('S → AB\nAB → a'), 'S -> AB -> a', 'a').complete);
+  assert.ok(F.derivation(F.parse('S → aSb | ε'), 'S -> aSb -> ab', 'ab').complete);
 });
 test('Ableitungsbaum hat richtige Blätter und behält die gewählte Ersetzungsstelle', () => {
   const g = F.parse('S → SS | ε');
@@ -56,5 +56,26 @@ test('Ableitungsbaum hat richtige Blätter und behält die gewählte Ersetzungss
 });
 test('Ableitungs- und Parsergrenzen brechen mit Meldung ab', () => {
   assert.throws(() => F.parse(' '.repeat(12001)));
-  assert.throws(() => F.derivation(F.parse('S → aS | b'), Array(82).fill('S').join('⇒'), 'b'));
+  assert.throws(() => F.derivation(F.parse('S → aS | b'), Array(82).fill('S').join('->'), 'b'));
+});
+test('Ableitungspfeile: ASCII, Zeilenumbrüche und ältere gespeicherte Schreibweisen', () => {
+  const g = F.parse('S → aS | b');
+  for (const separator of [' -> ', '->', '\n', ' => ', ' \u21d2 ']) {
+    assert.ok(F.derivation(g, ['S', 'aS', 'aaS', 'aab'].join(separator), 'aab').complete);
+  }
+  assert.equal(F.normalizeDerivation('S \u21d2 aS => ab'), 'S -> aS -> ab');
+  assert.equal(F.normalizeDerivation('S\naS\nab'), 'S\naS\nab');
+});
+test('Ableitungspfeile innerhalb zitierter Terminale werden nicht getrennt oder geändert', () => {
+  for (const terminal of ['->', '=>', '\u21d2']) {
+    const grammar = F.parse('S → ' + JSON.stringify(terminal));
+    const source = 'S -> ' + JSON.stringify(terminal);
+    assert.deepEqual(F.splitDerivation(source), ['S', JSON.stringify(terminal)]);
+    assert.equal(F.normalizeDerivation(source), source);
+    assert.ok(F.derivation(grammar, source, terminal).complete);
+    const rendered = F.display(F.symbols(JSON.stringify(terminal)));
+    assert.ok(F.derivation(grammar, 'S -> ' + rendered, terminal).complete);
+  }
+  const source = 'S -> "\\\"->\\\""';
+  assert.deepEqual(F.splitDerivation(source), ['S', '"\\\"->\\\""']);
 });

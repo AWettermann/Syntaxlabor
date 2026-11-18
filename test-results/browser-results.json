@@ -8,52 +8,52 @@
     {
       "name": "Start und lokale HTTP-Auslieferung",
       "passed": true,
-      "ms": 315
+      "ms": 252
     },
     {
       "name": "14 — automatische EBNF-Synchronisierung und vier Diagramme",
       "passed": true,
-      "ms": 482
+      "ms": 523
     },
     {
       "name": "Ungültige Zwischenstände erhalten die letzten gültigen Diagramme",
       "passed": true,
-      "ms": 413
+      "ms": 392
     },
     {
       "name": "11/12 — vollständig löschen und leeres Diagramm neu anlegen",
       "passed": true,
-      "ms": 155
+      "ms": 176
     },
     {
       "name": "13 — grafisches Einfügen und direkte Textbearbeitung",
       "passed": true,
-      "ms": 131
+      "ms": 145
     },
     {
       "name": "Verschieben, Rückgängig und Wiederherstellen",
       "passed": true,
-      "ms": 186
+      "ms": 154
     },
     {
       "name": "Option, Alternative, Wiederholung und Auswahl von Containern",
       "passed": true,
-      "ms": 433
+      "ms": 398
     },
     {
       "name": "Baumeditor auswählen und Elemente vollständig entfernen",
       "passed": true,
-      "ms": 401
+      "ms": 436
     },
     {
       "name": "Nichtterminale, Umbenennen und konsistente Referenzen",
       "passed": true,
-      "ms": 550
+      "ms": 533
     },
     {
       "name": "Sprachbeschreibung, ε und sortierte Beispielwörter",
       "passed": true,
-      "ms": 1315
+      "ms": 1235
     },
     {
       "name": "Beide Roundtrips bewahren die Bedeutung",
@@ -63,47 +63,47 @@
     {
       "name": "19 — SVG- und PNG-Export als echte Dateien",
       "passed": true,
-      "ms": 566
+      "ms": 451
     },
     {
       "name": "EBNF-Datei importieren und speichern",
       "passed": true,
-      "ms": 73
+      "ms": 59
     },
     {
       "name": "20 — alle sechs Aufgaben in beiden Modi laden und bearbeiten",
       "passed": true,
-      "ms": 6136
+      "ms": 6010
     },
     {
       "name": "Training akzeptiert äquivalente Lösungen und erklärt Gegenbeispiele",
       "passed": true,
-      "ms": 766
+      "ms": 752
     },
     {
       "name": "Entwurf bleibt nach Neuladen erhalten",
       "passed": true,
-      "ms": 817
+      "ms": 798
     },
     {
       "name": "Tastaturbedienung im Diagramm",
       "passed": true,
-      "ms": 333
+      "ms": 317
     },
     {
       "name": "iPad-Touchbedienung des grafischen Editors",
       "passed": true,
-      "ms": 671
+      "ms": 670
     },
     {
       "name": "Desktop, iPad und Smartphone ohne Seitenüberlauf",
       "passed": true,
-      "ms": 1750
+      "ms": 1771
     },
     {
       "name": "Direkt per file:// und ohne Netzwerk nutzbar",
       "passed": true,
-      "ms": 705
+      "ms": 690
     },
     {
       "name": "Keine JavaScript- oder Konsolenfehler",

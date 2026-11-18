@@ -58,15 +58,40 @@ async function main() {
       }
       for (const task of A.tasks.filter(t => t.module === module.id)) {
         await choose(task.id); assert.equal(await page.locator('#task-content .question-card').count(), task.parts.length, task.id);
+        assert.equal((await page.locator('#task-content').textContent()).includes('\u21d2'), false, task.id);
         assert.equal(await page.locator('#task-content .part-feedback').count(), 0, task.id);
         assert.match(await page.locator('.task-title').textContent(), new RegExp(task.title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
       }
     }
   });
+  await check('Ableitungen verwenden -> in Eingaben, Rückmeldungen und Musterlösungen', async () => {
+    await nav('A');
+    assert.match(await card('c').locator('textarea').getAttribute('placeholder'), /S ->/);
+    await card('c').locator('textarea').fill('S -> aS -> aaS -> aaaS -> aaab');
+    await page.locator('#submit-task').click();
+    assert.match(await card('c').textContent(), /Schritt 1: S -> aS/);
+    await card('c').locator('summary').click();
+    assert.equal(await card('c').locator('.expectation pre').textContent(), 'S -> aS -> aaS -> aaaS -> aaab');
+    assert.equal((await page.locator('#task-content').textContent()).includes('\u21d2'), false);
+  });
+  await check('Alte gespeicherte Ableitungen werden beim Neuladen auf -> umgestellt', async () => {
+    const ctx = await browser.newContext();
+    await ctx.addInitScript(() => {
+      if (location.protocol.startsWith('http') && !localStorage.getItem('syntaxlabor-v41-progress')) localStorage.setItem('syntaxlabor-v41-progress', JSON.stringify({version: '4.1', attempts: {A1: {answers: {c: {text: 'S \u21d2 aS \u21d2 aaS \u21d2 aaaS \u21d2 aaab'}}}}}));
+    });
+    const legacy = await ctx.newPage(); legacy.on('pageerror', e => errors.push(e.message)); await legacy.goto(base);
+    await legacy.reload(); await legacy.locator('#primary-nav [data-view="A"]').click();
+    const input = legacy.locator('[data-part="c"] textarea');
+    assert.equal(await input.inputValue(), 'S -> aS -> aaS -> aaaS -> aaab');
+    await input.fill('S \u21d2 aS \u21d2 aaS \u21d2 aaaS \u21d2 aaab'); await input.press('Tab');
+    assert.equal(await input.inputValue(), 'S -> aS -> aaS -> aaaS -> aaab');
+    await legacy.locator('#submit-task').click(); assert.match(await legacy.locator('[data-part="c"]').textContent(), /4 \/ 4 BE/);
+    await ctx.close();
+  });
   await check('Trainieren: keine Hilfen vor Abgabe, danach Punkte und gesperrte Antworten', async () => {
     await nav('A'); await page.locator('#train-mode').click();
     await card('a').getByLabel('Nichtterminale N', {exact: true}).fill('S'); await card('a').getByLabel('Terminale T', {exact: true}).fill('a,b'); await card('a').getByLabel('Startsymbol S').fill('S');
-    await card('c').locator('textarea').fill('S ⇒ aS ⇒ aaS ⇒ aaaS ⇒ aaab');
+    await card('c').locator('textarea').fill('S -> aS -> aaS -> aaaS -> aaab');
     await card('b').locator('textarea').fill('P enthält die beiden Ersetzungen S → aS und S → b.');
     assert.equal(await page.locator('.task-help:visible').count(), 0); assert.equal(await page.locator('#task-content .expectation').count(), 0);
     await page.locator('#submit-task').click(); assert.match(await card('c').textContent(), /4 \/ 4 BE/); assert.equal(await card('c').locator('textarea').isDisabled(), true);
@@ -75,7 +100,7 @@ async function main() {
   await check('Lernen: Hinweise auf Wunsch; Wechsel zu Trainieren verdeckt vorherige Rückmeldung', async () => {
     await choose('A2'); await page.locator('#learn-mode').click();
     await page.getByRole('button', {name: 'Hinweis', exact: true}).click(); assert.match(await page.locator('#task-content').textContent(), /Bei jedem Schritt/);
-    await card('b').locator('textarea').fill('S ⇒ aSb ⇒ aaSbb ⇒ aaaSbbb ⇒ aaabbb'); await page.locator('#submit-task').click(); assert.ok(await page.locator('#task-content .part-feedback').count() > 0);
+    await card('b').locator('textarea').fill('S -> aSb -> aaSbb -> aaaSbbb -> aaabbb'); await page.locator('#submit-task').click(); assert.ok(await page.locator('#task-content .part-feedback').count() > 0);
     await page.locator('#train-mode').click(); assert.equal(await page.locator('#task-content .part-feedback').count(), 0); assert.match(await page.locator('#task-content').textContent(), /Hilfe oder Musterlösung/);
   });
   await check('Chomsky: G1–G5 automatisch mit fachlichen Begründungen kontrollieren', async () => {
@@ -88,8 +113,8 @@ async function main() {
   });
   await check('Ableitungen: unzulässige Linksableitung und korrekte Rechtsableitung unterscheiden', async () => {
     await nav('A'); await choose('A3');
-    await card('a').locator('textarea').fill('S ⇒ AB ⇒ AbB ⇒ Abb ⇒ aAbb ⇒ aabb');
-    await card('b').locator('textarea').fill('S ⇒ AB ⇒ AbB ⇒ Abb ⇒ aAbb ⇒ aabb'); await page.locator('#submit-task').click();
+    await card('a').locator('textarea').fill('S -> AB -> AbB -> Abb -> aAbb -> aabb');
+    await card('b').locator('textarea').fill('S -> AB -> AbB -> Abb -> aAbb -> aabb'); await page.locator('#submit-task').click();
     assert.match(await card('a').textContent(), /Keine zulässige Linksableitung/); assert.match(await card('b').textContent(), /4 \/ 4 BE/);
   });
   await check('Ableitungsbaum tatsächlich interaktiv erstellen und zurücknehmen', async () => {
@@ -158,7 +183,7 @@ async function main() {
     assert.equal(await page.locator('#primary-nav [data-view="labor"]').isDisabled(), true); assert.equal(await page.locator('#curriculum-note').isVisible(), false);
     assert.equal(await page.locator('.task-help:visible').count(), 0); assert.equal(await page.locator('#task-content .part-feedback').count(), 0);
     await card('a').getByLabel('Nichtterminale N', {exact: true}).fill('S'); await card('a').getByLabel('Terminale T', {exact: true}).fill('a,b'); await card('a').getByLabel('Startsymbol S').fill('S');
-    await card('c').locator('textarea').fill('S ⇒ aS ⇒ aaS ⇒ aaaS ⇒ aaab'); await card('b').locator('textarea').fill('P = {S → aS, S → b}.');
+    await card('c').locator('textarea').fill('S -> aS -> aaS -> aaaS -> aaab'); await card('b').locator('textarea').fill('P = {S → aS, S → b}.');
     await choose('E1'); await card('a').locator('.open-workspace').click(); assert.equal(await page.locator('#ebnf').inputValue(), 'paket = ε;');
     assert.equal(await page.locator('.diagram-panel').isVisible(), false);
     const t = A.tasks.find(t => t.id === 'E1'); await ebnf(t.parts.find(p => p.id === 'a').answer);
@@ -187,7 +212,7 @@ async function main() {
   });
   await check('Klausur 2 unabhängig starten, bearbeiten und abgeben', async () => {
     await nav('exam'); await page.locator('[data-exam="K2"]').click();
-    await card('a').locator('textarea').fill('S ⇒ AB ⇒ aAB ⇒ aaB ⇒ aabB ⇒ aabb');
+    await card('a').locator('textarea').fill('S -> AB -> aAB -> aaB -> aabB -> aabb');
     await choose('E5'); await card('a').locator('.open-workspace').click(); assert.equal(await page.locator('#ebnf').inputValue(), 'messung = ε;');
     await ebnf(A.tasks.find(t => t.id === 'E5').parts[0].answer); await page.locator('#submit-exam').click(); assert.match(await page.locator('#task-total').textContent(), /9 \/ 30 BE automatisch geprüft/);
     await nav('exam'); assert.match(await page.locator('#exam-view').textContent(), /Abgabe und Erwartungshorizont ansehen/);

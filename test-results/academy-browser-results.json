@@ -8,112 +8,122 @@
     {
       "name": "Sieben Hauptbereiche und unverändertes freies Labor",
       "passed": true,
-      "ms": 358
+      "ms": 372
     },
     {
       "name": "Alle 50 Aufgaben mit vollständigen Arbeitsformaten erreichbar",
       "passed": true,
-      "ms": 2912
+      "ms": 2992
+    },
+    {
+      "name": "Ableitungen verwenden -> in Eingaben, Rückmeldungen und Musterlösungen",
+      "passed": true,
+      "ms": 142
+    },
+    {
+      "name": "Alte gespeicherte Ableitungen werden beim Neuladen auf -> umgestellt",
+      "passed": true,
+      "ms": 635
     },
     {
       "name": "Trainieren: keine Hilfen vor Abgabe, danach Punkte und gesperrte Antworten",
       "passed": true,
-      "ms": 269
+      "ms": 256
     },
     {
       "name": "Lernen: Hinweise auf Wunsch; Wechsel zu Trainieren verdeckt vorherige Rückmeldung",
       "passed": true,
-      "ms": 263
+      "ms": 248
     },
     {
       "name": "Chomsky: G1–G5 automatisch mit fachlichen Begründungen kontrollieren",
       "passed": true,
-      "ms": 274
+      "ms": 289
     },
     {
       "name": "Ableitungen: unzulässige Linksableitung und korrekte Rechtsableitung unterscheiden",
       "passed": true,
-      "ms": 176
+      "ms": 162
     },
     {
       "name": "Ableitungsbaum tatsächlich interaktiv erstellen und zurücknehmen",
       "passed": true,
-      "ms": 398
+      "ms": 310
     },
     {
       "name": "EBNF-Teilaufgaben haben eigene persistente Arbeitsbereiche; äquivalente Lösung akzeptiert",
       "passed": true,
-      "ms": 689
+      "ms": 657
     },
     {
       "name": "Zeichenaufgabe im vorhandenen Editor lösen, ohne sichtbare EBNF",
       "passed": true,
-      "ms": 384
+      "ms": 385
     },
     {
       "name": "Fehlerdiagramme: fehlender Bypass und echte Anschlusslücke korrigierbar",
       "passed": true,
-      "ms": 454
+      "ms": 359
     },
     {
       "name": "Darstellungen mit einem eigenen Gegenbeispiel vergleichen",
       "passed": true,
-      "ms": 117
+      "ms": 105
     },
     {
       "name": "Rekursive EBNF: begrenztes Ergebnis bleibt ausdrücklich offen",
       "passed": true,
-      "ms": 501
+      "ms": 463
     },
     {
       "name": "Mehrteilige Transferaufgabe hält Grundlösung und Erweiterung getrennt",
       "passed": true,
-      "ms": 841
+      "ms": 833
     },
     {
       "name": "Lernfortschritt, Selbstbewertung und Reload",
       "passed": true,
-      "ms": 345
+      "ms": 298
     },
     {
       "name": "Lernstandsdatei exportieren und validiert wiederherstellen",
       "passed": true,
-      "ms": 172
+      "ms": 439
     },
     {
       "name": "Klausur 1: keine Lösungen oder Lernhilfen und keine Übernahme von Modulantworten",
       "passed": true,
-      "ms": 1080
+      "ms": 1317
     },
     {
       "name": "Laufende Klausur wird nach Reload mit ihren Antworten fortgesetzt",
       "passed": true,
-      "ms": 514
+      "ms": 257
     },
     {
       "name": "Klausur 1: Diagramm zeichnen und Abgabe mit getrennter Punkteauswertung",
       "passed": true,
-      "ms": 617
+      "ms": 541
     },
     {
       "name": "Klausur 2 unabhängig starten, bearbeiten und abgeben",
       "passed": true,
-      "ms": 808
+      "ms": 743
     },
     {
       "name": "Desktop- und iPad-Touchansicht der Aufgaben ohne Seitenüberlauf",
       "passed": true,
-      "ms": 2250
+      "ms": 2067
     },
     {
       "name": "Abiturtraining direkt offline per file:// nutzbar",
       "passed": true,
-      "ms": 673
+      "ms": 853
     },
     {
       "name": "Keine JavaScript- oder Konsolenfehler im Trainingslauf",
       "passed": true,
-      "ms": 1
+      "ms": 0
     }
   ],
   "errors": []

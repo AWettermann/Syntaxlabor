@@ -18,7 +18,7 @@
         }
         if (!closed) throw Error('Schließendes Anführungszeichen fehlt.');
       } else {
-        if (c === 'ε' || /[|→⇒=;]/.test(c)) throw Error('ε muss allein stehen; Produktionszeichen gehören nicht in eine Satzform.');
+        if (c === 'ε' || /[|→\u21d2=;]/.test(c)) throw Error('ε muss allein stehen; Produktionszeichen gehören nicht in eine Satzform.');
         const cp = c.charCodeAt(0);
         if (cp >= 0xD800 && cp <= 0xDBFF && i < source.length) out.push(T(c + source[i++]));
         else out.push(/^[A-Z]$/.test(c) ? N(c) : T(c));
@@ -56,7 +56,7 @@
     if (!nonterminals.has(start)) throw Error('Das Startsymbol kommt in der Grammatik nicht vor.');
     return {rules, start, nonterminals: [...nonterminals].sort(), terminals: [...terminals].sort()};
   }
-  function display(form) { return form.length ? form.map(s => isN(s) ? name(s) : /^[A-Z]$/.test(name(s)) || name(s) === 'ε' ? JSON.stringify(name(s)) : name(s)).join('') : 'ε'; }
+  function display(form) { return form.length ? form.map(s => isN(s) ? name(s) : /^[A-Z]$/.test(name(s)) || /[\s|→\u21d2=;'"\\>\-]/.test(name(s)) || name(s) === 'ε' ? JSON.stringify(name(s)) : name(s)).join('') : 'ε'; }
   function ruleText(rule) { return display(rule.lhs) + ' → ' + display(rule.rhs); }
   function classify(grammar) {
     const rs = grammar.rules, start = N(grammar.start), startOnRight = rs.some(r => r.rhs.includes(start));
@@ -97,9 +97,33 @@
     }
     return {valid: false, message: order === 'any' ? 'Keine einzelne zulässige Regelanwendung ergibt diese Satzform.' : `Keine zulässige ${order === 'left' ? 'Links' : 'Rechts'}ableitung: Ersetze genau das ${order === 'left' ? 'linkeste' : 'rechteste'} Nichtterminal.`};
   }
+  // Only separators outside quoted terminal strings are derivation arrows.
+  // Legacy separators are read for saved answers, but always normalized to ->.
+  function derivationParts(source) {
+    const parts = []; let quote = '', escaped = false, current = '';
+    for (let i = 0; i < source.length; i++) {
+      const c = source[i];
+      if (quote) {
+        current += c;
+        if (escaped) escaped = false;
+        else if (c === '\\') escaped = true;
+        else if (c === quote) quote = '';
+        continue;
+      }
+      if (c === '"' || c === "'") { quote = c; current += c; continue; }
+      const pair = source.slice(i, i + 2);
+      if (pair === '->' || pair === '=>' || c === '\u21d2' || c === '\n') {
+        parts.push({value: current}, {separator: true, value: c === '\n' ? '\n' : '->'}); current = '';
+        if (pair === '->' || pair === '=>') i++;
+      } else current += c;
+    }
+    parts.push({value: current}); return parts;
+  }
+  function splitDerivation(source) { return derivationParts(source).filter(p => !p.separator).map(p => p.value.trim()).filter(Boolean); }
+  function normalizeDerivation(source) { return derivationParts(source).map(p => p.value).join(''); }
   function derivation(grammar, source, target, order = 'any') {
     if (source.length > 15000) throw Error('Ableitung zu lang.');
-    const forms = source.split(/⇒|=>|\n/).map(s => s.trim()).filter(Boolean).map(symbols);
+    const forms = splitDerivation(source).map(symbols);
     if (!forms.length || forms.length > 80) throw Error('Zwischen 1 und 80 Satzformen angeben.');
     const starts = same(forms[0], [N(grammar.start)]), steps = [];
     for (let i = 1; i < forms.length; i++) steps.push({...step(grammar, forms[i - 1], forms[i], order), index: i});
@@ -128,6 +152,6 @@
     const C = typeof module !== 'undefined' && module.exports ? require('./core.js') : scope.SyntaxCore;
     return grammar.nonterminals.map(n => ({name: n, node: C.alternative(grammar.rules.filter(r => r.lhs[0] === N(n)).map(r => C.sequence(r.rhs.map(s => isN(s) ? {type: 'ref', value: name(s)} : C.lit(name(s))))))}));
   }
-  const api = {N, T, name, isN, symbols, parse, display, ruleText, classify, same, apply, step, derivation, tree, toEBNF};
+  const api = {N, T, name, isN, symbols, parse, display, ruleText, classify, same, apply, step, splitDerivation, normalizeDerivation, derivation, tree, toEBNF};
   if (typeof module !== 'undefined' && module.exports) module.exports = api; else scope.SyntaxFormal = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this);

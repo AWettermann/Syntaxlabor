@@ -26,51 +26,51 @@
     task('A1', 'Eine Kette aus a und ein Schlusszeichen', 'Gegeben ist S → aS | b.', [
       p('a', 'sets', 'Gib N, T und das Startsymbol an.', 'I', 3, {formal: 'S → aS | b'}),
       text('b', 'Gib die Produktionsmenge P an.', 'I', [['Beide Produktionen vollständig angegeben.', 1]], 'P = {S → aS, S → b}.'),
-      derive('c', 'Leite aaab vollständig ab. Eine Satzform pro Zeile oder ⇒ verwenden.', 'aaab', 'S ⇒ aS ⇒ aaS ⇒ aaaS ⇒ aaab'),
+      derive('c', 'Leite aaab vollständig ab. Eine Satzform pro Zeile oder -> verwenden.', 'aaab', 'S -> aS -> aaS -> aaaS -> aaab'),
       examples('d', 'Gib drei andere Wörter an; aaab ist ausgeschlossen.', 'S = "a" S | "b";', 3, true),
       text('e', 'Beschreibe L(G) mathematisch.', 'II', [['Beliebig viele a, auch null.', 1], ['Genau ein abschließendes b; Mengenschreibweise mit n ≥ 0.', 2]], 'L(G) = {aⁿb | n ≥ 0}.'),
       text('f', 'Begründe, weshalb aba nicht erzeugt werden kann.', 'II', [['b kann nur die Ableitung beenden.', 1], ['Danach kann kein weiteres a entstehen.', 1]], 'S → b entfernt das einzige Nichtterminal. Daher muss b das letzte Zeichen sein; aba endet auf a.')
     ], {formal: 'S → aS | b', excludedExamples: ['aaab'], hint: 'Wiederhole S → aS dreimal und beende dann mit S → b.'}),
     task('A2', 'Gleiche Anzahlen', 'Gegeben ist S → aSb | ε.', [
       p('a', 'sets', 'Gib die Bestandteile N, T und S an.', 'I', 3, {formal: 'S → aSb | ε'}),
-      derive('b', 'Leite aaabbb vollständig ab.', 'aaabbb', 'S ⇒ aSb ⇒ aaSbb ⇒ aaaSbbb ⇒ aaabbb'),
+      derive('b', 'Leite aaabbb vollständig ab.', 'aaabbb', 'S -> aSb -> aaSbb -> aaaSbbb -> aaabbb'),
       words('c', 'Prüfe die Wörter. ε bezeichnet das leere Wort.', 'S = "a" S "b" | ε;', ['', 'ab', 'aabb', 'abab']),
       text('d', 'Beschreibe die Sprache und begründe die gleiche Anzahl.', 'II', [['L(G) = {aⁿbⁿ | n ≥ 0}.', 2], ['Jeder Rekursionsschritt fügt genau ein a links und ein b rechts hinzu.', 2]], 'L(G) = {aⁿbⁿ | n ≥ 0}. Die Rekursion erzeugt paarweise a und b; ε ist die Abbruchregel.')
     ], {formal: 'S → aSb | ε', hint: 'Bei jedem Schritt wachsen beide Seiten gleichzeitig. ε löscht nur das verbleibende S.'}),
     task('A3', 'Links oder rechts zuerst?', 'S → AB\nA → aA | a\nB → bB | b', [
-      derive('a', 'Leite aabb als Linksableitung ab.', 'aabb', 'S ⇒ AB ⇒ aAB ⇒ aaB ⇒ aabB ⇒ aabb', 'left'),
-      derive('b', 'Leite aabb als Rechtsableitung ab.', 'aabb', 'S ⇒ AB ⇒ AbB ⇒ Abb ⇒ aAbb ⇒ aabb', 'right'),
-      p('c', 'tree', 'Erstelle einen Ableitungsbaum für aabb. Klicke ein Nichtterminal und wähle seine Produktion.', 'II', 4, {target: 'aabb', solution: 'S ⇒ AB ⇒ aAB ⇒ aaB ⇒ aabB ⇒ aabb'}),
+      derive('a', 'Leite aabb als Linksableitung ab.', 'aabb', 'S -> AB -> aAB -> aaB -> aabB -> aabb', 'left'),
+      derive('b', 'Leite aabb als Rechtsableitung ab.', 'aabb', 'S -> AB -> AbB -> Abb -> aAbb -> aabb', 'right'),
+      p('c', 'tree', 'Erstelle einen Ableitungsbaum für aabb. Klicke ein Nichtterminal und wähle seine Produktion.', 'II', 4, {target: 'aabb', solution: 'S -> AB -> aAB -> aaB -> aabB -> aabb'}),
       text('d', 'Vergleiche die beiden Ableitungen: Was bleibt gleich?', 'II', [['Gleiches Wort und gleicher möglicher Ableitungsbaum.', 1], ['Nur die Reihenfolge der Nichtterminalersetzungen unterscheidet sich.', 1]], 'Beide erreichen aabb. A und B können im selben Baum unabhängig entwickelt werden; links/rechts legt die Bearbeitungsreihenfolge fest.'),
       text('e', 'Nenne die Nichtterminal- und Terminalmengen.', 'I', [['N = {S, A, B}.', 1], ['T = {a, b}.', 1]], 'N = {S, A, B}, T = {a, b}.')
     ], {formal: 'S → AB\nA → aA | a\nB → bB | b', hint: 'In einer Linksableitung wird stets das linkeste noch vorhandene Nichtterminal ersetzt.'}),
     task('A4', 'Eine endliche Sprache', 'S → aA | bB\nA → a | b\nB → a | b', [
       p('a', 'sets', 'Gib N, T und das Startsymbol an.', 'I', 3, {formal: 'S → aA | bB\nA → a | b\nB → a | b'}),
       examples('b', 'Gib drei verschiedene gültige Wörter an.', 'S = "a" A | "b" B; A = "a" | "b"; B = "a" | "b";'),
-      p('c', 'tree', 'Erstelle einen Ableitungsbaum für ba.', 'II', 3, {target: 'ba', solution: 'S ⇒ bB ⇒ ba'}),
+      p('c', 'tree', 'Erstelle einen Ableitungsbaum für ba.', 'II', 3, {target: 'ba', solution: 'S -> bB -> ba'}),
       text('d', 'Gib L(G) vollständig an und begründe die Wortlänge.', 'II', [['Genau {aa, ab, ba, bb}.', 2], ['Jede Ableitung erzeugt genau zwei Terminalzeichen.', 1]], 'L(G) = {aa, ab, ba, bb}. Ein Schritt erzeugt ein Terminal und ein Nichtterminal, der zweite ersetzt das Nichtterminal durch ein Terminal.')
     ], {formal: 'S → aA | bB\nA → a | b\nB → a | b'}),
     task('A5', 'Klammerwörter', 'S → SS | (S) | ε', [
-      derive('a', 'Leite (()) ab.', '(())', 'S ⇒ (S) ⇒ ((S)) ⇒ (())'),
+      derive('a', 'Leite (()) ab.', '(())', 'S -> (S) -> ((S)) -> (())'),
       words('b', 'Prüfe die Klammerwörter.', 'S = S S | "(" S ")" | ε;', ['', '()', '(())', '()()', ')(', '(()']),
       text('c', 'Erläutere die Funktionen der drei Produktionen.', 'II', [['SS verkettet zwei Klammerwörter.', 1], ['(S) schachtelt ein Klammerwort ein.', 1], ['ε beendet eine Teilableitung und erlaubt das leere Wort.', 1]], 'SS erlaubt Verkettung, (S) eine zusätzliche Schachtelung und ε den Abschluss. Dadurch entstehen korrekt geschachtelte Klammerfolgen.'),
       text('d', 'Begründe, weshalb gleiche Anzahlen von ( und ) allein nicht ausreichen.', 'III', [['Gegenbeispiel )( mit gleichen Anzahlen.', 1], ['In jedem Präfix dürfen nicht mehr schließende als öffnende Klammern vorkommen.', 2]], ')( enthält gleich viele Klammern, beginnt aber mit einer unzulässigen schließenden Klammer. Zusätzlich muss jedes Präfix mindestens so viele öffnende wie schließende Klammern enthalten.')
     ], {formal: 'S → SS | (S) | ε', hint: 'Die Reihenfolge und die Präfixbedingung sind ebenso wichtig wie die Gesamtanzahl.'}),
     task('A6', 'Regelwechsel und unzulässige Sprünge', 'S → aS | A\nA → bA | b', [
-      derive('a', 'Leite aabb vollständig ab.', 'aabb', 'S ⇒ aS ⇒ aaS ⇒ aaA ⇒ aabA ⇒ aabb'),
-      text('b', 'Beurteile den angeblichen Einzelschritt S ⇒ ab.', 'III', [['S → aS erzeugt aS, nicht ab.', 1], ['Für ab sind weitere Ersetzungen einschließlich S → A nötig.', 2]], 'S ⇒ ab ist kein Einzelschritt. Eine vollständige Ableitung lautet S ⇒ aS ⇒ aA ⇒ ab.'),
+      derive('a', 'Leite aabb vollständig ab.', 'aabb', 'S -> aS -> aaS -> aaA -> aabA -> aabb'),
+      text('b', 'Beurteile den angeblichen Einzelschritt S -> ab.', 'III', [['S → aS erzeugt aS, nicht ab.', 1], ['Für ab sind weitere Ersetzungen einschließlich S → A nötig.', 2]], 'S -> ab ist kein Einzelschritt. Eine vollständige Ableitung lautet S -> aS -> aA -> ab.'),
       words('c', 'Prüfe die Wörter.', 'S = "a" S | A; A = "b" A | "b";', ['b', 'aabb', 'aa', 'ba']),
       text('d', 'Beschreibe L(G) einschließlich der unteren Grenzen.', 'II', [['aⁿbᵐ mit n ≥ 0 und m ≥ 1.', 2], ['Der Wechsel zu A verhindert spätere a.', 1]], 'L(G) = {aⁿbᵐ | n ≥ 0, m ≥ 1}. Nach S → A werden ausschließlich b erzeugt.')
     ], {formal: 'S → aS | A\nA → bA | b'}),
     task('A7', 'Alle binären Wörter', 'S → aS | bS | ε', [
-      derive('a', 'Leite abba vollständig ab.', 'abba', 'S ⇒ aS ⇒ abS ⇒ abbS ⇒ abbaS ⇒ abba'),
+      derive('a', 'Leite abba vollständig ab.', 'abba', 'S -> aS -> abS -> abbS -> abbaS -> abba'),
       examples('b', 'Gib drei verschiedene gültige Wörter an.', 'S = "a" S | "b" S | ε;'),
       text('c', 'Beschreibe L(G) und erläutere die Rolle von ε.', 'II', [['L(G) = {a,b}*.', 2], ['ε beendet jede endliche Zeichenfolge, auch die leere.', 1]], 'Die Sprache ist {a,b}*. Für jedes nächste Zeichen kann die passende Rekursion gewählt werden; S → ε beendet die Ableitung.'),
       text('d', 'Beurteile: Weil die Grammatik rekursiv ist, ist ihre Sprache nicht regulär.', 'III', [['Aussage falsch.', 1], ['Ein endlicher Automat mit einem akzeptierenden Zustand und a-/b-Schleifen erkennt die Sprache.', 2]], 'Falsch. Rekursion in einer Grammatik beweist keine Nichtregularität. Die Sprache {a,b}* wird bereits von einem einzigen akzeptierenden Automatenzustand mit zwei Schleifen erkannt.')
     ], {formal: 'S → aS | bS | ε'}),
     task('A8', 'Ein Wort, zwei Strukturen', 'E → E+E | E*E | x. E ist das Startsymbol.', [
-      p('a', 'tree', 'Erstelle einen Ableitungsbaum für x+x*x. Wähle am Wurzelknoten eine der beiden Rechenoperationen.', 'II', 5, {target: 'x+x*x', solution: 'E ⇒ E+E ⇒ x+E ⇒ x+E*E ⇒ x+x*E ⇒ x+x*x'}),
-      derive('b', 'Leite dasselbe Wort mit Multiplikation als äußerster Operation ab.', 'x+x*x', 'E ⇒ E*E ⇒ E+E*E ⇒ x+E*E ⇒ x+x*E ⇒ x+x*x', 'any', 5),
+      p('a', 'tree', 'Erstelle einen Ableitungsbaum für x+x*x. Wähle am Wurzelknoten eine der beiden Rechenoperationen.', 'II', 5, {target: 'x+x*x', solution: 'E -> E+E -> x+E -> x+E*E -> x+x*E -> x+x*x'}),
+      derive('b', 'Leite dasselbe Wort mit Multiplikation als äußerster Operation ab.', 'x+x*x', 'E -> E*E -> E+E*E -> x+E*E -> x+x*E -> x+x*x', 'any', 5),
       text('c', 'Beurteile die Eignung der Grammatik für übliche Rechenprioritäten.', 'III', [['Zwei unterschiedliche Bäume für dasselbe Wort möglich.', 1], ['Strukturen x+(x*x) und (x+x)*x benannt.', 2], ['Getrennte Regeln für Ausdruck, Term und Faktor als Verbesserung.', 1]], 'Die Grammatik ist mehrdeutig: x+(x*x) und (x+x)*x besitzen dieselbe Terminalfolge. Eine Ebenentrennung in Ausdruck/Term/Faktor kann Punkt-vor-Strich festlegen.')
     ], {formal: 'E → E+E | E*E | x', start: 'E', hint: 'Mehrdeutigkeit betrifft verschiedene Bäume, nicht nur verschiedene Ersetzungsreihenfolgen desselben Baums.'}),
 
@@ -84,7 +84,7 @@
     task('B2', 'Linkslinear und rechtslinear', 'Vergleiche G1: S → Sa | b und G2: S → aS | b.', [
       classify('a', [{label: 'G1', formal: 'S → Sa | b'}, {label: 'G2', formal: 'S → aS | b'}]),
       p('b', 'choice', 'Erzeugen beide Grammatiken dieselbe Sprache?', 'II', 1, {options: ['Ja', 'Nein'], expected: 'Nein', solution: 'G1 erzeugt baⁿ, G2 aⁿb. Das Wort ba unterscheidet die Sprachen.'}),
-      text('c', 'Begründe deine Entscheidung mit einem Gegenbeispiel und beschreibe beide Sprachen.', 'II', [['ba in G1, nicht G2; oder ab umgekehrt.', 2], ['G1 erzeugt baⁿ, G2 aⁿb mit n ≥ 0.', 1]], 'G1 erzeugt baⁿ, G2 aⁿb, jeweils n ≥ 0. G1: S ⇒ Sa ⇒ ba. In G2 steht b immer am Ende, daher ist ba dort nicht ableitbar.')
+      text('c', 'Begründe deine Entscheidung mit einem Gegenbeispiel und beschreibe beide Sprachen.', 'II', [['ba in G1, nicht G2; oder ab umgekehrt.', 2], ['G1 erzeugt baⁿ, G2 aⁿb mit n ≥ 0.', 1]], 'G1 erzeugt baⁿ, G2 aⁿb, jeweils n ≥ 0. G1: S -> Sa -> ba. In G2 steht b immer am Ende, daher ist ba dort nicht ableitbar.')
     ]),
     task('B3', 'Die Richtung darf nicht beliebig wechseln', 'S → aA\nA → Sb | b', [
       classify('a', [{label: 'G', formal: 'S → aA\nA → Sb | b'}]),
@@ -107,12 +107,12 @@
     ], {extension: true}),
     task('B7', 'Ein Kontext auf der linken Seite', 'S → aAB\nA → a\nAB → BA\nB → b', [
       classify('a', [{label: 'G', formal: 'S → aAB\nA → a\nAB → BA\nB → b'}]),
-      derive('b', 'Leite aba ab. Hier ist eine allgemeine Ableitung erlaubt.', 'aba', 'S ⇒ aAB ⇒ aBA ⇒ abA ⇒ aba'),
+      derive('b', 'Leite aba ab. Hier ist eine allgemeine Ableitung erlaubt.', 'aba', 'S -> aAB -> aBA -> abA -> aba'),
       text('c', 'Erläutere, weshalb AB → BA keine kontextfreie Produktion ist.', 'II', [['Links stehen zwei Nichtterminale.', 1], ['Länge bleibt gleich; Nichtverkürzung allein reicht nicht für Typ 2.', 2]], 'Kontextfreie Regeln ersetzen genau ein Nichtterminal. AB → BA benötigt beide Symbole gleichzeitig. Die Regel ist aber längenerhaltend und damit im verwendeten Typ-1-Kriterium zulässig.')
     ], {formal: 'S → aAB\nA → a\nAB → BA\nB → b', extension: true}),
     task('B8', 'Verkürzende Regeln', 'S → AB\nAB → a', [
       classify('a', [{label: 'G', formal: 'S → AB\nAB → a'}]),
-      derive('b', 'Leite a ab.', 'a', 'S ⇒ AB ⇒ a', 'any', 2),
+      derive('b', 'Leite a ab.', 'a', 'S -> AB -> a', 'any', 2),
       p('c', 'choice', 'Welche minimale Sprachklasse hat {a}?', 'II', 1, {options: ['Typ 3', 'Typ 2', 'Typ 1', 'Typ 0'], expected: 'Typ 3', solution: 'Die einelementige Sprache ist regulär. Die Form AB → a verkürzt aber und ist nicht kontextfrei; die vorliegende Grammatik ist nur Typ 0.'}),
       text('d', 'Begründe beide Einordnungen getrennt.', 'II', [['AB → a hat links zwei Symbole und verkürzt.', 1], ['Die äquivalente Grammatik S → a ist regulär.', 1]], 'Die Form ist Typ 0, die Sprache hingegen Typ 3. Die Regel S → a genügt zur Beschreibung derselben Sprache.')
     ], {formal: 'S → AB\nAB → a', extension: true}),

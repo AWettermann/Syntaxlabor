@@ -16,7 +16,7 @@ Gegeben ist S → aS | b.
 
 **b) Gib die Produktionsmenge P an.** (AFB I, 1 BE)
 
-**c) Leite aaab vollständig ab. Eine Satzform pro Zeile oder ⇒ verwenden.** (AFB II, 4 BE)
+**c) Leite aaab vollständig ab. Eine Satzform pro Zeile oder -> verwenden.** (AFB II, 4 BE)
 
 **f) Begründe, weshalb aba nicht erzeugt werden kann.** (AFB II, 2 BE)
 
@@ -128,7 +128,7 @@ P = {S → aS, S → b}.
 
 **c) 4 BE**
 
-S ⇒ aS ⇒ aaS ⇒ aaaS ⇒ aaab
+S -> aS -> aaS -> aaaS -> aaab
 
 **f) 2 BE**
 
@@ -200,15 +200,15 @@ Nicht gleichwertig. Beispiel: `a`. 1 BE für die Entscheidung, 2 BE für ein tat
 
 **a) 4 BE**
 
-S ⇒ AB ⇒ aAB ⇒ aaB ⇒ aabB ⇒ aabb
+S -> AB -> aAB -> aaB -> aabB -> aabb
 
 **b) 4 BE**
 
-S ⇒ AB ⇒ AbB ⇒ Abb ⇒ aAbb ⇒ aabb
+S -> AB -> AbB -> Abb -> aAbb -> aabb
 
 **c) 4 BE**
 
-S ⇒ AB ⇒ aAB ⇒ aaB ⇒ aabB ⇒ aabb
+S -> AB -> aAB -> aaB -> aabB -> aabb
 
 **d) 2 BE**
 
@@ -273,7 +273,7 @@ G1 erzeugt baⁿ, G2 aⁿb. Das Wort ba unterscheidet die Sprachen.
 
 **c) 3 BE**
 
-G1 erzeugt baⁿ, G2 aⁿb, jeweils n ≥ 0. G1: S ⇒ Sa ⇒ ba. In G2 steht b immer am Ende, daher ist ba dort nicht ableitbar.
+G1 erzeugt baⁿ, G2 aⁿb, jeweils n ≥ 0. G1: S -> Sa -> ba. In G2 steht b immer am Ende, daher ist ba dort nicht ableitbar.
 
 - ba in G1, nicht G2; oder ab umgekehrt. — 2 BE
 - G1 erzeugt baⁿ, G2 aⁿb mit n ≥ 0. — 1 BE

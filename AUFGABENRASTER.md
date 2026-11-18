@@ -23,7 +23,7 @@ GK-Kern · Q3.1.
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | A1 · Eine Kette aus a und ein Schlusszeichen | a | Gib N, T und das Startsymbol an. | Grammatikbestandteile | I | 3 | 1 | GK-bezogen / eigene Anwendung |
 | A1 · Eine Kette aus a und ein Schlusszeichen | b | Gib die Produktionsmenge P an. | Begründung / Selbstkontrolle | I | 1 | 8 | GK-bezogen / eigene Anwendung |
-| A1 · Eine Kette aus a und ein Schlusszeichen | c | Leite aaab vollständig ab. Eine Satzform pro Zeile oder ⇒ verwenden. | Ableitung prüfen | II | 4 | 2 | GK-bezogen / eigene Anwendung |
+| A1 · Eine Kette aus a und ein Schlusszeichen | c | Leite aaab vollständig ab. Eine Satzform pro Zeile oder -> verwenden. | Ableitung prüfen | II | 4 | 2 | GK-bezogen / eigene Anwendung |
 | A1 · Eine Kette aus a und ein Schlusszeichen | d | Gib drei andere Wörter an; aaab ist ausgeschlossen. | Beispiele angeben | II | 3 | 3 | GK-bezogen / eigene Anwendung |
 | A1 · Eine Kette aus a und ein Schlusszeichen | e | Beschreibe L(G) mathematisch. | Begründung / Selbstkontrolle | II | 3 | 8 | GK-bezogen / eigene Anwendung |
 | A1 · Eine Kette aus a und ein Schlusszeichen | f | Begründe, weshalb aba nicht erzeugt werden kann. | Begründung / Selbstkontrolle | II | 2 | 8 | GK-bezogen / eigene Anwendung |
@@ -45,7 +45,7 @@ GK-Kern · Q3.1.
 | A5 · Klammerwörter | c | Erläutere die Funktionen der drei Produktionen. | Begründung / Selbstkontrolle | II | 3 | 8 | GK-bezogen / eigene Anwendung |
 | A5 · Klammerwörter | d | Begründe, weshalb gleiche Anzahlen von ( und ) allein nicht ausreichen. | Begründung / Selbstkontrolle | III | 3 | 8 | GK-bezogen / eigene Anwendung |
 | A6 · Regelwechsel und unzulässige Sprünge | a | Leite aabb vollständig ab. | Ableitung prüfen | II | 4 | 2 | GK-bezogen / eigene Anwendung |
-| A6 · Regelwechsel und unzulässige Sprünge | b | Beurteile den angeblichen Einzelschritt S ⇒ ab. | Begründung / Selbstkontrolle | III | 3 | 8 | GK-bezogen / eigene Anwendung |
+| A6 · Regelwechsel und unzulässige Sprünge | b | Beurteile den angeblichen Einzelschritt S -> ab. | Begründung / Selbstkontrolle | III | 3 | 8 | GK-bezogen / eigene Anwendung |
 | A6 · Regelwechsel und unzulässige Sprünge | c | Prüfe die Wörter. | Wörter zuordnen | II | 4 | 1, 3 | GK-bezogen / eigene Anwendung |
 | A6 · Regelwechsel und unzulässige Sprünge | d | Beschreibe L(G) einschließlich der unteren Grenzen. | Begründung / Selbstkontrolle | II | 3 | 8 | GK-bezogen / eigene Anwendung |
 | A7 · Alle binären Wörter | a | Leite abba vollständig ab. | Ableitung prüfen | II | 4 | 2 | GK-bezogen / eigene Anwendung |

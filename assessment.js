@@ -40,14 +40,14 @@
       }
       if (part.kind === 'derive' || part.kind === 'tree') {
         const grammar = F.parse(part.formal || task.formal, task.start || 'S');
-        const source = part.kind === 'tree' ? (answer.forms || [grammar.start]).join(' ⇒ ') : answer.text || grammar.start;
+        const source = part.kind === 'tree' ? (answer.forms || [grammar.start]).join(' -> ') : answer.text || grammar.start;
         const d = F.derivation(grammar, source, part.target, part.order || 'any');
         let complete = d.complete;
         if (part.firstProduction && d.steps[0]?.rule !== part.firstProduction) { complete = false; base.feedback.push(`Die erste Ersetzung muss ${part.firstProduction} sein, damit die verlangte äußerste Operation entsteht.`); }
         const fraction = d.steps.length ? d.steps.filter(s => s.valid).length / d.steps.length : 0;
         base.autoEarned = d.starts ? round(Math.min(part.be - 1, (part.be - 1) * fraction) + (complete ? 1 : 0)) : 0;
         base.status = complete ? 'correct' : 'incorrect'; base.feedback.push(d.message);
-        d.steps.forEach(s => base.feedback.push(`Schritt ${s.index}: ${s.valid ? s.rule : s.message}`)); return base;
+        d.steps.forEach(s => base.feedback.push(`Schritt ${s.index}: ${F.display(d.forms[s.index - 1])} -> ${F.display(d.forms[s.index])}. ${s.valid ? 'Regel ' + s.rule : s.message}`)); return base;
       }
       if (part.kind === 'sets') {
         const grammar = F.parse(part.formal, task.start || 'S');
@@ -128,7 +128,10 @@
     for (const [key, a] of Object.entries(raw.attempts || {})) {
       if (!validKey(key) || !a || typeof a !== 'object') continue;
       const taskId = key.includes(':') ? key.split(':')[1] : key, task = curriculum.tasks.find(t => t.id === taskId), answers = {};
-      for (const p of task.parts) answers[p.id] = cleanAnswer(a.answers?.[p.id]);
+      for (const p of task.parts) {
+        answers[p.id] = cleanAnswer(a.answers?.[p.id]);
+        if (p.kind === 'derive' && typeof answers[p.id].text === 'string') answers[p.id].text = F.normalizeDerivation(answers[p.id].text);
+      }
       out.attempts[key] = {answers, submitted: !!a.submitted, assisted: !!a.assisted, checked: !!a.checked, updated: Number.isFinite(a.updated) ? a.updated : 0};
     }
     for (const ex of curriculum.exams) {

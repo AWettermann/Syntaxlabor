@@ -30,7 +30,7 @@ Modul E ist über **Abiturtraining → Transferaufgaben öffnen** erreichbar. Mo
 
 Jede EBNF-/Zeichen-Teilaufgabe hat einen eigenen gespeicherten Arbeitsbereich. **Im EBNF-Editor bearbeiten** bzw. **Im grafischen Editor zeichnen** öffnet den vorhandenen Labor-Editor direkt in der Aufgabe. Beim Wechsel bleiben die anderen Teilantworten erhalten. Im Zeichenmodus bleibt die automatisch mitgeführte EBNF vor Abgabe verdeckt. In selbstständigen EBNF-Aufgaben bleiben automatische Diagrammvorschauen ebenfalls verdeckt; im freien Labor und im normalen EBNF-Lernmodus ist die bidirektionale Ansicht sichtbar. Zeichenaufgaben müssen grafisch bearbeitet werden; ein unveränderter Startzustand wird nicht als eigene Zeichnung gewertet.
 
-Ableitungsbäume werden tatsächlich aufgebaut: Ein noch nicht ersetztes Nichtterminal anklicken und eine passende Produktion auswählen. Die letzte Ersetzung kann zurückgenommen werden. Für eingegebene Ableitungen ist eine Satzform pro Zeile oder die Trennung mit `⇒`/`=>` möglich. Der Prüfer kontrolliert jeden einzelnen Regelanwendungsschritt.
+Ableitungsbäume werden tatsächlich aufgebaut: Ein noch nicht ersetztes Nichtterminal anklicken und eine passende Produktion auswählen. Die letzte Ersetzung kann zurückgenommen werden. Für eingegebene Ableitungen ist eine Satzform pro Zeile oder die Trennung mit `->` möglich, beispielsweise `S -> aS -> aaS -> aab`. Der Prüfer kontrolliert jeden einzelnen Regelanwendungsschritt. Ältere gespeicherte Ableitungsantworten werden auf diese Schreibweise umgestellt; zitierte Terminalzeichen und EBNF-Arbeitsstände bleiben erhalten.
 
 ## Abiturmodus und Lernstand
 
@@ -113,7 +113,7 @@ npm run test:academy
 
 Playwright ist ausschließlich eine Entwicklungsabhängigkeit. Die Tests starten einen temporären HTTP-Server und das auf diesem Mac installierte Google Chrome. Auf anderen Geräten `CHROME_PATH` auf die ausführbare Chrome-/Chromium-Datei setzen. Keine Browserinstallation durch die App und keine Bibliothek aus einem CDN.
 
-Die Browserprüfungen speichern Ergebnisse, Bildschirmaufnahmen und geprüfte Exporte unter `test-results/`. Abschlussstand: **61 Fach-/Layout-/Inhaltstests, 21 Labor-Browsergruppen und alle 22 Trainings-Browsergruppen bestanden**. Geprüft wurden unter anderem die vollständige Chomsky-Übersicht, verdeckte Zeichenaufgaben, interaktive Ableitungsbäume, Lernstandsexport/-import und beide Klausuren einschließlich Fortsetzung nach Neuladen und Punkteauswertung. Einzelheiten: [TESTBERICHT.md](TESTBERICHT.md).
+Die Browserprüfungen speichern Ergebnisse, Bildschirmaufnahmen und geprüfte Exporte unter `test-results/`. Abschlussstand: **65 Fach-/Layout-/Inhaltstests, 21 Labor-Browsergruppen und alle 24 Trainings-Browsergruppen bestanden**. Geprüft wurden unter anderem die einheitlichen Ableitungspfeile einschließlich älterer Lernstände, die vollständige Chomsky-Übersicht, verdeckte Zeichenaufgaben, interaktive Ableitungsbäume, Lernstandsexport/-import und beide Klausuren einschließlich Fortsetzung nach Neuladen und Punkteauswertung. Einzelheiten: [TESTBERICHT.md](TESTBERICHT.md).
 
 Die vollständigen Aufgabendokumente lassen sich aus den geprüften Quelldaten neu erzeugen:
 

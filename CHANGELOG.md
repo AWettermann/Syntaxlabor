@@ -2,6 +2,15 @@
 
 ## V4.1 · Abiturtraining Q3
 
+### 18. November 2026 · Ableitungspfeile
+
+- Grammatische Ableitungen verwenden durchgängig `->`: Aufgaben, Musterlösungen, Lernhinweise, Eingabefelder, automatisch zusammengesetzte Schritte und erzeugte Unterrichtsdokumente.
+- Der Ableitungsprüfer erkennt den neuen Pfeil, auch ohne umgebende Leerzeichen. Ältere gespeicherte Ableitungsantworten bleiben lesbar und werden in der neuen Schreibweise angezeigt.
+- Zitierte Terminalzeichen werden beim Erkennen und Umstellen von Pfeilen geschützt. EBNF-Syntax, Produktionsbedeutung und Syntaxdiagramme bleiben erhalten.
+- 65 Fachtests sowie 21 Labor- und 24 Trainings-Browsergruppen bestanden; zusätzlich gezielte Tests für Eingabe, Rückmeldung, Musterlösung und alte Lernstände.
+
+### Vorherige V4.1-Erweiterungen
+
 - Nachfolgende Präzisierung: Die vollständige Chomsky-Hierarchie ist auf Wunsch fester Lerninhalt. Typ 0/1 werden in den Aufgaben nicht mehr als freiwillig abgesetzt. Eine zusammenhängende Übersicht erklärt alle vier Typen, Produktionsformen, Beispiele, Maschinenmodelle und Sprachklasseninklusion. Die offizielle GK-Abgrenzung bleibt sachlich dokumentiert.
 
 - Offizielle KCGO-/Abiturvorgaben 2027 und Abgleich 2028 sowie aktuelle Operatorenliste geprüft. Offizieller Grundkurskern und der gewünschte erweiterte Lernumfang sind unterschieden; keine behauptete Vollabdeckung des Landesabiturs. Quellen und Konventionen in `QUELLEN.md`.
@@ -17,7 +26,7 @@
 - Fach-/Inhaltstests kontrollieren alle Muster-EBNF, alle Musterableitungen, die vorgesehenen Chomsky-Einordnungen, beide Klausurpunktesummen und Lernstands-Roundtrips.
 - `AUFGABENRASTER.md` und `KLAUSUREN.md` werden aus denselben Aufgabendaten wie die Oberfläche erzeugt. Vorheriger V4.0-Stand bleibt in `archive/v4.0/` gesichert.
 
-Die Browserabnahme ist abgeschlossen: 22/22 Trainingsgruppen bestanden, zusätzlich zu 61 Fachtests und 21 Labor-Browsergruppen. Die Tests wählen Terminalflächen und Gegenbeispielfelder eindeutig aus und vergleichen beim Wiederherstellen einer Zeichnung auch ihre erhaltenen Hilfsproduktionen. Prüfprotokolle und verbleibende fachliche Grenzen stehen in `TESTBERICHT.md`.
+Die aktuelle Browserabnahme ist abgeschlossen: 24/24 Trainingsgruppen bestanden, zusätzlich zu 65 Fachtests und 21 Labor-Browsergruppen. Die Tests wählen Terminalflächen und Gegenbeispielfelder eindeutig aus und vergleichen beim Wiederherstellen einer Zeichnung auch ihre erhaltenen Hilfsproduktionen. Prüfprotokolle und verbleibende fachliche Grenzen stehen in `TESTBERICHT.md`.
 
 ## V4.0 · Ausgangsstand der Erweiterung
 

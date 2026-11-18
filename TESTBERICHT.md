@@ -1,8 +1,16 @@
 # Syntaxlabor V4.1 — Testbericht
 
-Abschlussprüfung: **17. November 2026**. Die Browserabnahme des neuen Trainingsbereichs ist abgeschlossen.
+Abschlussprüfung: **18. November 2026**. Die Browserabnahme einschließlich der vereinheitlichten Ableitungspfeile ist abgeschlossen.
 
-Ergebnis: **61 von 61 Fach-/Layout-/Inhaltstests**, **21 von 21 Labor-Browsergruppen** und **22 von 22 Trainings-Browsergruppen bestanden**. In den vollständigen Browserläufen gab es keine JavaScript- oder Konsolenfehler.
+Ergebnis: **65 von 65 Fach-/Layout-/Inhaltstests**, **21 von 21 Labor-Browsergruppen** und **24 von 24 Trainings-Browsergruppen bestanden**. In den vollständigen Browserläufen gab es keine JavaScript- oder Konsolenfehler.
+
+## Ableitungspfeile
+
+Alle aktuellen Aufgaben, Musterlösungen, automatisch zusammengesetzten Ableitungen, Platzhalter und Schrittrückmeldungen verwenden `->`. Aufgabenraster und druckbare Klausuren wurden aus den geänderten Aufgabendaten neu erzeugt. Eine abschließende Textsuche fand in den Projekttexten keinen alten Doppelpfeil mehr.
+
+Zusätzliche Tests prüfen `S -> aS -> aaS -> aab`, Links-/Rechtsableitungen, Zeilenumbrüche, ältere gespeicherte Antworten, ihre unveränderte Bewertung und zitierte Pfeilzeichen als Terminale. Trennzeichen werden nur außerhalb von Anführungszeichen erkannt. Die produktionsbezogene Anzeige `S → aS` bleibt als Regelbezeichnung erhalten; tatsächliche Schritte werden beispielsweise als `Schritt 1: S -> aS. Regel S → aS` dargestellt.
+
+Auch im Browser wurden die neue Eingabe, Rückmeldung, Musterlösung sowie die Umstellung alter Lernstände geprüft. EBNF- und Diagrammregression einschließlich Roundtrips und Exporten bestehen weiterhin. EBNF-Parser, SVG-Renderer und der grafische Laborcontroller wurden für diese Änderung nicht verändert.
 
 ## Abgeschlossene Trainings-Browserabnahme
 
@@ -18,7 +26,7 @@ Der erfolgreiche Lauf lässt sich wiederholen mit:
 npm run test:academy
 ```
 
-Alle 22 Prüfgruppen einschließlich Lernstandsexport/-import, Desktop-/Mobilansicht, iPad-Touchbedienung und direktem Offline-Aufruf über `file://` wurden erfolgreich ausgeführt. Frühere Abbrüche an unpräzisen Testselektoren und Text-Erwartungen sind korrigiert; das verlinkte Rohprotokoll enthält den abschließenden erfolgreichen Lauf.
+Alle 24 Prüfgruppen einschließlich Ableitungspfeilen, älteren Lernständen, Lernstandsexport/-import, Desktop-/Mobilansicht, iPad-Touchbedienung und direktem Offline-Aufruf über `file://` wurden erfolgreich ausgeführt. Das verlinkte Rohprotokoll enthält den abschließenden erfolgreichen Lauf.
 
 ## Neue Fach- und Inhaltstests
 
@@ -59,7 +67,7 @@ Belege:
 
 - [Aktuelle Fach-/Layout-/Inhaltstestergebnisse](test-results/core-results-v4.1.txt)
 - [Browserergebnisse einschließlich Browser- und Node-Version](test-results/browser-results.json)
-- [Vollständiger Trainings-Browserlauf: 22/22 bestanden](test-results/academy-browser-results.json)
+- [Vollständiger Trainings-Browserlauf: 24/24 bestanden](test-results/academy-browser-results.json)
 - [Vollständige Chomsky-Hierarchie](test-results/chomsky-hierarchy.png)
 - [Trainingsansicht Desktop](test-results/academy-desktop.png)
 - [Grafischer Editor in der iPad-Touchansicht](test-results/academy-ipad.png)

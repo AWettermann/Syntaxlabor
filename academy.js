@@ -43,7 +43,7 @@
   function locked() { return examID ? !!progress.exams[examID]?.submitted : progress.mode === 'train' && attempt().submitted; }
   function revealed() { return examID ? !!progress.exams[examID]?.submitted : progress.mode === 'train' ? attempt().submitted : attempt().checked || attempt().submitted || modelVisible; }
   function draft(part) { const a = attempt(); if (!a.answers[part.id]) a.answers[part.id] = {}; return a.answers[part.id]; }
-  function record(part, field, value) { const a = draft(part); a[field] = value; attempt().updated = Date.now(); if (!locked()) { if (attempt().checked) attempt().assisted = true; attempt().checked = false; } save(); }
+  function record(part, field, value) { const a = draft(part); a[field] = part.kind === 'derive' && field === 'text' ? F.normalizeDerivation(value) : value; attempt().updated = Date.now(); if (!locked()) { if (attempt().checked) attempt().assisted = true; attempt().checked = false; } save(); }
   function park() {
     if (activePart) {
       const current = Lab.value(), snapshot = Lab.capture(); sessions.set(activePart.key, snapshot);
@@ -170,7 +170,9 @@
     select.value = value || ''; return select;
   }
   function inputArea(part, value, field = 'text', placeholder = '') {
-    return node('textarea', {'aria-label': `${taskID}${part.id} · ${part.prompt}`, placeholder, rows: 4, oninput: event => record(part, field, event.target.value)}, value || '');
+    return node('textarea', {'aria-label': `${taskID}${part.id} · ${part.prompt}`, placeholder, rows: 4, oninput: event => record(part, field, event.target.value), onblur: event => {
+      if (part.kind === 'derive') event.target.value = F.normalizeDerivation(event.target.value);
+    }}, value || '');
   }
   function treeEditor(part) {
     const a = draft(part), grammar = F.parse(task().formal, task().start || 'S');
@@ -206,7 +208,7 @@
     const a = draft(part), card = node('section', {class: 'question-card', 'data-part': part.id},
       node('div', {class: 'question-heading'}, node('h4', {text: `${part.id}) ${part.prompt}`}), node('span', {class: 'badge', text: `AFB ${part.afb} · ${part.be} BE`}))), body = node('div', {class: 'answer-body'});
     if (part.kind === 'text' || part.kind === 'derive' || part.kind === 'examples') {
-      body.append(inputArea(part, a.text, 'text', part.kind === 'derive' ? 'S ⇒ … ⇒ Zielwort' : part.kind === 'examples' ? 'Ein Wort pro Zeile · ε für das leere Wort' : 'Deine fachliche Begründung …'));
+      body.append(inputArea(part, a.text, 'text', part.kind === 'derive' ? 'S -> … -> Zielwort' : part.kind === 'examples' ? 'Ein Wort pro Zeile · ε für das leere Wort' : 'Deine fachliche Begründung …'));
     } else if (part.kind === 'sets') {
       for (const [field, label] of [['n', 'Nichtterminale N'], ['t', 'Terminale T'], ['start', 'Startsymbol S']]) {
         const input = node('input', {value: a[field] || '', 'aria-label': label, placeholder: field === 'start' ? 'S' : 'Mit Komma trennen', oninput: event => record(part, field, event.target.value)});
