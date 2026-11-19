@@ -1,4 +1,5 @@
-/* All activities are original exercises. Solutions are local assets, not official exam material. */
+/* Core activities are original exercises; wiki3.js adds the supplied worksheet.
+   Solutions are local assets, not official exam material. */
 (function (scope) {
   'use strict';
   const skills = [

@@ -1,6 +1,69 @@
 {
   "version": "4.1",
   "attempts": {
+    "F1": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "F2": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "F3": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "F4": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
     "A1": {
       "answers": {
         "a": {
@@ -28,12 +91,25 @@
         },
         "f": {
           "edits": 0
+        },
+        "g": {
+          "edits": 0
+        },
+        "h": {
+          "edits": 0
+        },
+        "i": {
+          "edits": 0
+        },
+        "j": {
+          "edits": 0
         }
       },
       "submitted": true,
       "assisted": true,
+      "hintCount": 0,
       "checked": true,
-      "updated": 1795014441789
+      "updated": 1795073185932
     },
     "A2": {
       "answers": {
@@ -49,12 +125,22 @@
         },
         "d": {
           "edits": 0
+        },
+        "e": {
+          "edits": 0
+        },
+        "f": {
+          "edits": 0
+        },
+        "g": {
+          "edits": 0
         }
       },
       "submitted": false,
       "assisted": true,
+      "hintCount": 1,
       "checked": true,
-      "updated": 1795014442045
+      "updated": 1795073186256
     },
     "A3": {
       "answers": {
@@ -81,8 +167,9 @@
       },
       "submitted": true,
       "assisted": false,
+      "hintCount": 0,
       "checked": true,
-      "updated": 1795014442536
+      "updated": 1795073186999
     },
     "A4": {
       "answers": {
@@ -116,8 +203,9 @@
       },
       "submitted": true,
       "assisted": false,
+      "hintCount": 0,
       "checked": true,
-      "updated": 1795014442861
+      "updated": 1795073187422
     },
     "A5": {
       "answers": {
@@ -136,8 +224,9 @@
       },
       "submitted": false,
       "assisted": false,
+      "hintCount": 0,
       "checked": false,
-      "updated": 1795014438227
+      "updated": 0
     },
     "A6": {
       "answers": {
@@ -156,8 +245,9 @@
       },
       "submitted": false,
       "assisted": false,
+      "hintCount": 0,
       "checked": false,
-      "updated": 1795014438278
+      "updated": 0
     },
     "A7": {
       "answers": {
@@ -176,8 +266,9 @@
       },
       "submitted": false,
       "assisted": false,
+      "hintCount": 0,
       "checked": false,
-      "updated": 1795014438328
+      "updated": 0
     },
     "A8": {
       "answers": {
@@ -196,210 +287,9 @@
       },
       "submitted": false,
       "assisted": false,
+      "hintCount": 0,
       "checked": false,
-      "updated": 1795014438378
-    },
-    "B1": {
-      "answers": {
-        "a": {
-          "choices": {
-            "0": "3",
-            "1": "2",
-            "2": "2",
-            "3": "3",
-            "4": "2"
-          },
-          "edits": 0
-        },
-        "b": {
-          "edits": 0
-        }
-      },
-      "submitted": true,
-      "assisted": false,
-      "checked": true,
-      "updated": 1795014442220
-    },
-    "B2": {
-      "answers": {
-        "a": {
-          "edits": 0
-        },
-        "b": {
-          "edits": 0
-        },
-        "c": {
-          "edits": 0
-        }
-      },
-      "submitted": false,
-      "assisted": false,
-      "checked": false,
-      "updated": 1795014438545
-    },
-    "B3": {
-      "answers": {
-        "a": {
-          "edits": 0
-        },
-        "b": {
-          "edits": 0
-        },
-        "c": {
-          "edits": 0
-        }
-      },
-      "submitted": false,
-      "assisted": false,
-      "checked": false,
-      "updated": 1795014438596
-    },
-    "B4": {
-      "answers": {
-        "a": {
-          "edits": 0
-        },
-        "b": {
-          "edits": 0
-        },
-        "c": {
-          "edits": 0
-        }
-      },
-      "submitted": false,
-      "assisted": false,
-      "checked": false,
-      "updated": 1795014438647
-    },
-    "B5": {
-      "answers": {
-        "a": {
-          "edits": 0
-        },
-        "b": {
-          "edits": 0
-        }
-      },
-      "submitted": false,
-      "assisted": false,
-      "checked": false,
-      "updated": 1795014438697
-    },
-    "B6": {
-      "answers": {
-        "a": {
-          "edits": 0
-        },
-        "b": {
-          "edits": 0
-        },
-        "c": {
-          "edits": 0
-        }
-      },
-      "submitted": false,
-      "assisted": false,
-      "checked": false,
-      "updated": 1795014438747
-    },
-    "B7": {
-      "answers": {
-        "a": {
-          "edits": 0
-        },
-        "b": {
-          "edits": 0
-        },
-        "c": {
-          "edits": 0
-        }
-      },
-      "submitted": false,
-      "assisted": false,
-      "checked": false,
-      "updated": 1795014438795
-    },
-    "B8": {
-      "answers": {
-        "a": {
-          "edits": 0
-        },
-        "b": {
-          "edits": 0
-        },
-        "c": {
-          "edits": 0
-        },
-        "d": {
-          "edits": 0
-        }
-      },
-      "submitted": false,
-      "assisted": false,
-      "checked": false,
-      "updated": 1795014438848
-    },
-    "B9": {
-      "answers": {
-        "a": {
-          "edits": 0
-        },
-        "b": {
-          "edits": 0
-        }
-      },
-      "submitted": false,
-      "assisted": false,
-      "checked": false,
-      "updated": 1795014438898
-    },
-    "B10": {
-      "answers": {
-        "a": {
-          "edits": 0
-        },
-        "b": {
-          "edits": 0
-        },
-        "c": {
-          "edits": 0
-        }
-      },
-      "submitted": false,
-      "assisted": false,
-      "checked": false,
-      "updated": 1795014438947
-    },
-    "B11": {
-      "answers": {
-        "a": {
-          "edits": 0
-        },
-        "b": {
-          "edits": 0
-        }
-      },
-      "submitted": false,
-      "assisted": false,
-      "checked": false,
-      "updated": 1795014438999
-    },
-    "B12": {
-      "answers": {
-        "a": {
-          "edits": 0
-        },
-        "b": {
-          "edits": 0
-        },
-        "c": {
-          "edits": 0
-        }
-      },
-      "submitted": false,
-      "assisted": false,
-      "checked": false,
-      "updated": 1795014439048
+      "updated": 0
     },
     "C1": {
       "answers": {
@@ -418,8 +308,9 @@
       },
       "submitted": false,
       "assisted": false,
+      "hintCount": 0,
       "checked": false,
-      "updated": 1795014439095
+      "updated": 0
     },
     "C2": {
       "answers": {
@@ -440,8 +331,9 @@
       },
       "submitted": true,
       "assisted": false,
+      "hintCount": 0,
       "checked": true,
-      "updated": 1795014443313
+      "updated": 1795073188029
     },
     "C3": {
       "answers": {
@@ -462,8 +354,9 @@
       },
       "submitted": false,
       "assisted": false,
+      "hintCount": 0,
       "checked": false,
-      "updated": 1795014439270
+      "updated": 0
     },
     "C4": {
       "answers": {
@@ -479,8 +372,9 @@
       },
       "submitted": false,
       "assisted": false,
+      "hintCount": 0,
       "checked": false,
-      "updated": 1795014439346
+      "updated": 0
     },
     "C5": {
       "answers": {
@@ -496,8 +390,9 @@
       },
       "submitted": false,
       "assisted": false,
+      "hintCount": 0,
       "checked": false,
-      "updated": 1795014439396
+      "updated": 0
     },
     "C6": {
       "answers": {
@@ -513,8 +408,9 @@
       },
       "submitted": false,
       "assisted": false,
+      "hintCount": 0,
       "checked": false,
-      "updated": 1795014439447
+      "updated": 0
     },
     "C7": {
       "answers": {
@@ -530,8 +426,9 @@
       },
       "submitted": false,
       "assisted": false,
+      "hintCount": 0,
       "checked": false,
-      "updated": 1795014439496
+      "updated": 0
     },
     "C8": {
       "answers": {
@@ -547,8 +444,9 @@
       },
       "submitted": false,
       "assisted": false,
+      "hintCount": 0,
       "checked": false,
-      "updated": 1795014439547
+      "updated": 0
     },
     "C9": {
       "answers": {
@@ -561,16 +459,17 @@
       },
       "submitted": false,
       "assisted": false,
+      "hintCount": 0,
       "checked": false,
-      "updated": 1795014439597
+      "updated": 0
     },
     "C10": {
       "answers": {
         "a": {
           "workspace": {
-            "text": "wort = ε | \"(\" wort \")\";",
-            "validText": "wort = ε | \"(\" wort \")\";",
-            "start": "wort"
+            "text": "anders = [\"(\" anders \")\"];",
+            "validText": "anders = [\"(\" anders \")\"];",
+            "start": "anders"
           },
           "edits": 0
         },
@@ -583,8 +482,9 @@
       },
       "submitted": true,
       "assisted": false,
+      "hintCount": 0,
       "checked": true,
-      "updated": 1795014444805
+      "updated": 1795073189891
     },
     "C11": {
       "answers": {
@@ -600,8 +500,9 @@
       },
       "submitted": false,
       "assisted": false,
+      "hintCount": 0,
       "checked": false,
-      "updated": 1795014439695
+      "updated": 0
     },
     "C12": {
       "answers": {
@@ -617,8 +518,9 @@
       },
       "submitted": false,
       "assisted": false,
+      "hintCount": 0,
       "checked": false,
-      "updated": 1795014439748
+      "updated": 0
     },
     "D1": {
       "answers": {
@@ -634,8 +536,9 @@
       },
       "submitted": false,
       "assisted": false,
+      "hintCount": 0,
       "checked": false,
-      "updated": 1795014439796
+      "updated": 0
     },
     "D2": {
       "answers": {
@@ -651,8 +554,9 @@
       },
       "submitted": false,
       "assisted": false,
+      "hintCount": 0,
       "checked": false,
-      "updated": 1795014439896
+      "updated": 0
     },
     "D3": {
       "answers": {
@@ -670,8 +574,9 @@
       },
       "submitted": true,
       "assisted": false,
+      "hintCount": 0,
       "checked": true,
-      "updated": 1795014444116
+      "updated": 1795073189039
     },
     "D4": {
       "answers": {
@@ -689,8 +594,9 @@
       },
       "submitted": true,
       "assisted": false,
+      "hintCount": 0,
       "checked": true,
-      "updated": 1795014443829
+      "updated": 1795073188737
     },
     "D5": {
       "answers": {
@@ -703,8 +609,9 @@
       },
       "submitted": false,
       "assisted": false,
+      "hintCount": 0,
       "checked": false,
-      "updated": 1795014440098
+      "updated": 0
     },
     "D6": {
       "answers": {
@@ -720,8 +627,9 @@
       },
       "submitted": false,
       "assisted": false,
+      "hintCount": 0,
       "checked": false,
-      "updated": 1795014440149
+      "updated": 0
     },
     "D7": {
       "answers": {
@@ -737,8 +645,9 @@
       },
       "submitted": false,
       "assisted": false,
+      "hintCount": 0,
       "checked": false,
-      "updated": 1795014440197
+      "updated": 0
     },
     "D8": {
       "answers": {
@@ -754,8 +663,9 @@
       },
       "submitted": false,
       "assisted": false,
+      "hintCount": 0,
       "checked": false,
-      "updated": 1795014440248
+      "updated": 0
     },
     "D9": {
       "answers": {
@@ -773,8 +683,9 @@
       },
       "submitted": true,
       "assisted": false,
+      "hintCount": 0,
       "checked": true,
-      "updated": 1795014444257
+      "updated": 1795073189177
     },
     "D10": {
       "answers": {
@@ -790,8 +701,9 @@
       },
       "submitted": false,
       "assisted": false,
+      "hintCount": 0,
       "checked": false,
-      "updated": 1795014440348
+      "updated": 0
     },
     "D11": {
       "answers": {
@@ -809,8 +721,9 @@
       },
       "submitted": true,
       "assisted": false,
+      "hintCount": 0,
       "checked": true,
-      "updated": 1795014444360
+      "updated": 1795073189293
     },
     "D12": {
       "answers": {
@@ -829,8 +742,649 @@
       },
       "submitted": false,
       "assisted": false,
+      "hintCount": 0,
       "checked": false,
-      "updated": 1795014440446
+      "updated": 0
+    },
+    "G4": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "forms": [
+            "S"
+          ],
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        },
+        "d": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "G5": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        },
+        "d": {
+          "edits": 0
+        },
+        "e": {
+          "edits": 0
+        },
+        "f": {
+          "edits": 0
+        },
+        "g": {
+          "edits": 0
+        },
+        "h": {
+          "edits": 0
+        },
+        "i": {
+          "edits": 0
+        },
+        "j": {
+          "edits": 0
+        },
+        "k": {
+          "edits": 0
+        },
+        "l": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "G6": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        },
+        "d": {
+          "edits": 0
+        },
+        "e": {
+          "edits": 0
+        },
+        "f": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "G7": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "G8": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        },
+        "d": {
+          "edits": 0
+        },
+        "e": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "G9": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "forms": [
+            "T"
+          ],
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "G11": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "G10A": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        },
+        "d": {
+          "edits": 0
+        },
+        "e": {
+          "edits": 0
+        },
+        "f": {
+          "edits": 0
+        },
+        "g": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "G10B": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        },
+        "d": {
+          "edits": 0
+        },
+        "e": {
+          "edits": 0
+        },
+        "f": {
+          "edits": 0
+        },
+        "g": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "W0": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        },
+        "d": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "B1": {
+      "answers": {
+        "a": {
+          "choices": {
+            "0": "3",
+            "1": "2",
+            "2": "2",
+            "3": "3",
+            "4": "2"
+          },
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        }
+      },
+      "submitted": true,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": true,
+      "updated": 1795073186476
+    },
+    "B2": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "B3": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "B4": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "B5": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "B6": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "B7": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "B8": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        },
+        "d": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "B9": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "B10": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "B11": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "B12": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "W1": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        },
+        "d": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "W2": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        },
+        "d": {
+          "edits": 0
+        },
+        "e": {
+          "edits": 0
+        },
+        "f": {
+          "edits": 0
+        },
+        "g": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "W3": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        },
+        "d": {
+          "edits": 0
+        },
+        "e": {
+          "edits": 0
+        },
+        "f": {
+          "edits": 0
+        },
+        "g": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "W4": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        },
+        "d": {
+          "edits": 0
+        },
+        "e": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "W5": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        },
+        "d": {
+          "edits": 0
+        },
+        "e": {
+          "edits": 0
+        },
+        "f": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "B13": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "H1": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
     },
     "E1": {
       "answers": {
@@ -862,8 +1416,9 @@
       },
       "submitted": false,
       "assisted": false,
+      "hintCount": 0,
       "checked": false,
-      "updated": 1795014445651
+      "updated": 1795073190725
     },
     "E2": {
       "answers": {
@@ -885,8 +1440,9 @@
       },
       "submitted": false,
       "assisted": false,
+      "hintCount": 0,
       "checked": false,
-      "updated": 1795014440649
+      "updated": 0
     },
     "E3": {
       "answers": {
@@ -908,8 +1464,9 @@
       },
       "submitted": false,
       "assisted": false,
+      "hintCount": 0,
       "checked": false,
-      "updated": 1795014440697
+      "updated": 0
     },
     "E4": {
       "answers": {
@@ -931,8 +1488,9 @@
       },
       "submitted": false,
       "assisted": false,
+      "hintCount": 0,
       "checked": false,
-      "updated": 1795014440747
+      "updated": 0
     },
     "E5": {
       "answers": {
@@ -954,8 +1512,9 @@
       },
       "submitted": false,
       "assisted": false,
+      "hintCount": 0,
       "checked": false,
-      "updated": 1795014440796
+      "updated": 0
     },
     "E6": {
       "answers": {
@@ -977,8 +1536,72 @@
       },
       "submitted": false,
       "assisted": false,
+      "hintCount": 0,
       "checked": false,
-      "updated": 1795014440846
+      "updated": 0
+    },
+    "H2": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "H3": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        },
+        "d": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "H4": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        },
+        "d": {
+          "edits": 0
+        },
+        "e": {
+          "edits": 0
+        },
+        "f": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
     }
   },
   "exams": {},

@@ -2,12 +2,16 @@
 (function (scope) {
   'use strict';
   const N = s => 'N:' + s, T = s => 'T:' + s, name = s => s.slice(2), isN = s => s.startsWith('N:');
-  function symbols(source) {
+  function symbols(source, named = false) {
     const out = []; let i = 0;
     source = source.trim(); if (!source || source === 'ε') return out;
     while (i < source.length) {
       const c = source[i++]; if (/\s/.test(c)) continue;
-      if (c === '"' || c === "'") {
+      if (named && c === '<') {
+        const match = /^([A-Za-zÄÖÜäöü][A-Za-z0-9_ÄÖÜäöü]*)>/.exec(source.slice(i));
+        if (!match) throw Error('Benannte Nichtterminale als <Name> schreiben.');
+        out.push(N(match[1])); i += match[0].length;
+      } else if (c === '"' || c === "'") {
         const quote = c; let closed = false;
         while (i < source.length) {
           let value = source[i++]; if (value === quote) { closed = true; break; }
@@ -38,25 +42,27 @@
     }
     out.push(current); return out;
   }
-  function parse(source, start = 'S') {
+  function parse(source, start = 'S', named = false, ruleLimit = 100) {
+    ruleLimit = Math.min(160, Math.max(100, Number(ruleLimit) || 100));
     if (source.length > 12000) throw Error('Maximal 12.000 Zeichen Produktionsregeln.');
-    if (!/^[A-Z]$/.test(start)) throw Error('Das Startsymbol muss ein einzelner Großbuchstabe sein.');
+    if (named && /^<[A-Za-zÄÖÜäöü][A-Za-z0-9_ÄÖÜäöü]*>$/.test(start)) start = start.slice(1, -1);
+    if (!(named ? /^[A-Za-zÄÖÜäöü][A-Za-z0-9_ÄÖÜäöü]*$/ : /^[A-Z]$/).test(start)) throw Error(named ? 'Ein gültiges Startsymbol angeben, z. B. Z oder <Liste>.' : 'Das Startsymbol muss ein einzelner Großbuchstabe sein.');
     const rules = [], nonterminals = new Set(), terminals = new Set();
     for (const line of source.split(/\n/).map(l => l.trim()).filter(Boolean)) {
-      const match = /^(.*?)\s*(?:→|->)\s*(.*?)\s*;?$/.exec(line);
+      const match = /^(.*?)\s*(?:→|->|::=)\s*(.*?)\s*;?$/.exec(line);
       if (!match) throw Error('Eine Regel pro Zeile: S → aS | b.');
-      const lhs = symbols(match[1]); if (!lhs.some(isN)) throw Error('Jede linke Seite muss mindestens ein Nichtterminal enthalten.');
+      const lhs = symbols(match[1], named); if (!lhs.some(isN)) throw Error('Jede linke Seite muss mindestens ein Nichtterminal enthalten.');
       for (const rhs of splitAlternatives(match[2])) {
-        const right = symbols(rhs); rules.push({lhs, rhs: right});
+        const right = symbols(rhs, named); rules.push({lhs, rhs: right});
         for (const s of [...lhs, ...right]) (isN(s) ? nonterminals : terminals).add(name(s));
       }
     }
     if (!rules.length) throw Error('Mindestens eine Produktionsregel angeben.');
-    if (rules.length > 100) throw Error('Maximal 100 Produktionsalternativen.');
+    if (rules.length > ruleLimit) throw Error(`Maximal ${ruleLimit} Produktionsalternativen.`);
     if (!nonterminals.has(start)) throw Error('Das Startsymbol kommt in der Grammatik nicht vor.');
-    return {rules, start, nonterminals: [...nonterminals].sort(), terminals: [...terminals].sort()};
+    return {rules, start, nonterminals: [...nonterminals].sort(), terminals: [...terminals].sort(), ...(named ? {named: true} : {})};
   }
-  function display(form) { return form.length ? form.map(s => isN(s) ? name(s) : /^[A-Z]$/.test(name(s)) || /[\s|→\u21d2=;'"\\>\-]/.test(name(s)) || name(s) === 'ε' ? JSON.stringify(name(s)) : name(s)).join('') : 'ε'; }
+  function display(form) { return form.length ? form.map(s => isN(s) ? (/^[A-Z]$/.test(name(s)) ? name(s) : '<' + name(s) + '>') : /^[A-Z]$/.test(name(s)) || /[\s|→\u21d2=;'"\\<>\-]/.test(name(s)) || name(s) === 'ε' ? JSON.stringify(name(s)) : name(s)).join('') : 'ε'; }
   function ruleText(rule) { return display(rule.lhs) + ' → ' + display(rule.rhs); }
   function classify(grammar) {
     const rs = grammar.rules, start = N(grammar.start), startOnRight = rs.some(r => r.rhs.includes(start));
@@ -123,11 +129,11 @@
   function normalizeDerivation(source) { return derivationParts(source).map(p => p.value).join(''); }
   function derivation(grammar, source, target, order = 'any') {
     if (source.length > 15000) throw Error('Ableitung zu lang.');
-    const forms = splitDerivation(source).map(symbols);
+    const forms = splitDerivation(source).map(s => symbols(s, !!grammar.named).filter(s => !grammar.ignoreWhitespace || isN(s) || !/\s/.test(name(s))));
     if (!forms.length || forms.length > 80) throw Error('Zwischen 1 und 80 Satzformen angeben.');
     const starts = same(forms[0], [N(grammar.start)]), steps = [];
     for (let i = 1; i < forms.length; i++) steps.push({...step(grammar, forms[i - 1], forms[i], order), index: i});
-    const targetForm = Array.from(target, T), ends = same(forms.at(-1), targetForm);
+    const targetForm = Array.from(grammar.ignoreWhitespace ? target.replace(/\s/g, '') : target, T), ends = same(forms.at(-1), targetForm);
     const valid = starts && steps.every(s => s.valid), complete = valid && ends;
     return {forms, steps, starts, ends, valid, complete, message: !starts ? `Beginne mit ${grammar.start}.` : steps.some(s => !s.valid) ? `Schritt ${steps.find(s => !s.valid).index}: ${steps.find(s => !s.valid).message}` : !ends ? `Die Ableitung ist noch nicht beim Zielwort ${target || 'ε'} angekommen.` : 'Alle Schritte sind zulässig; die Ableitung erreicht das Zielwort.'};
   }

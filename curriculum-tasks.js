@@ -183,5 +183,5 @@
   ];
   // The default model solution for A8b must use multiplication at its root.
   A.tasks.find(t => t.id === 'A8').parts.find(p => p.id === 'b').firstProduction = 'E → E*E';
-  if (typeof module !== 'undefined' && module.exports) module.exports = A;
+  if (typeof module !== 'undefined' && module.exports) { require('./wiki3.js')(A); require('./q31.js')(A); module.exports = A; }
 })(typeof globalThis !== 'undefined' ? globalThis : this);

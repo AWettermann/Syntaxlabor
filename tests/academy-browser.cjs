@@ -15,9 +15,17 @@ async function check(name, fn) {
 }
 async function nav(module) {
   if (module === 'E') { await page.locator('#primary-nav [data-view="exam"]').click(); await page.locator('#open-transfer').click(); }
-  else await page.locator(`#primary-nav [data-view="${module}"]`).click();
+  else {
+    const alias = A.legacyViews[module];
+    await page.locator(`#primary-nav [data-view="${alias?.module || module}"]`).click();
+    if (alias) await choose(alias.start);
+  }
 }
-async function choose(id) { await page.locator(`#task-list [data-task="${id}"]`).click(); }
+async function choose(id) {
+  const link = page.locator(`#task-list [data-task="${id}"]`);
+  if (!await link.isVisible()) await page.locator('#task-list .additional-tasks > summary').click();
+  await link.click();
+}
 const card = id => page.locator(`#task-content [data-part="${id}"]`);
 async function ebnf(source) {
   await page.locator('#ebnf').fill(source);
@@ -45,14 +53,14 @@ async function main() {
   browser = await chromium.launch({executablePath: process.env.CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true}); environment.browser = await browser.version();
   const context = await browser.newContext({viewport: {width: 1440, height: 1000}, acceptDownloads: true});
   page = await context.newPage(); page.on('pageerror', e => errors.push(e.message)); page.on('console', m => { if (m.type() === 'error') errors.push(m.text()); }); await page.goto(base);
-  await check('Sieben Hauptbereiche und unverändertes freies Labor', async () => {
+  await check('Vier Lernmodule, Labor, Abiturtraining und Fortschritt und unverändertes freies Labor', async () => {
     assert.equal(await page.locator('#primary-nav button').count(), 7); await ebnf('freilabor = "bleibt";');
     assert.match(await page.locator('#lab-view').textContent(), /EBNF-Editor/); await noOverflow();
   });
-  await check('Alle 50 Aufgaben mit vollständigen Arbeitsformaten erreichbar', async () => {
+  await check('Alle 74 Aufgaben mit vollständigen Arbeitsformaten erreichbar', async () => {
     for (const module of A.modules) {
       await nav(module.id); assert.equal(await page.locator('#task-list button').count(), A.tasks.filter(t => t.module === module.id).length);
-      if (module.id === 'B') {
+      if (module.id === 'M3') {
         assert.equal(await page.locator('#hierarchy-guide').isVisible(), true);
         assert.deepEqual(await page.locator('#hierarchy-guide .badge').allTextContents(), ['Typ 3', 'Typ 2', 'Typ 1', 'Typ 0']);
       }
@@ -80,7 +88,7 @@ async function main() {
       if (location.protocol.startsWith('http') && !localStorage.getItem('syntaxlabor-v41-progress')) localStorage.setItem('syntaxlabor-v41-progress', JSON.stringify({version: '4.1', attempts: {A1: {answers: {c: {text: 'S \u21d2 aS \u21d2 aaS \u21d2 aaaS \u21d2 aaab'}}}}}));
     });
     const legacy = await ctx.newPage(); legacy.on('pageerror', e => errors.push(e.message)); await legacy.goto(base);
-    await legacy.reload(); await legacy.locator('#primary-nav [data-view="A"]').click();
+    await legacy.reload(); await legacy.locator('#primary-nav [data-view="M2"]').click();
     const input = legacy.locator('[data-part="c"] textarea');
     assert.equal(await input.inputValue(), 'S -> aS -> aaS -> aaaS -> aaab');
     await input.fill('S \u21d2 aS \u21d2 aaS \u21d2 aaaS \u21d2 aaab'); await input.press('Tab');
@@ -95,11 +103,11 @@ async function main() {
     await card('b').locator('textarea').fill('P enthält die beiden Ersetzungen S → aS und S → b.');
     assert.equal(await page.locator('.task-help:visible').count(), 0); assert.equal(await page.locator('#task-content .expectation').count(), 0);
     await page.locator('#submit-task').click(); assert.match(await card('c').textContent(), /4 \/ 4 BE/); assert.equal(await card('c').locator('textarea').isDisabled(), true);
-    await card('b').locator('summary').click(); await card('b').getByRole('combobox').selectOption('1'); assert.match(await page.locator('#task-total').textContent(), /1 \/ 6 BE selbst eingeschätzt/);
+    await card('b').locator('summary').click(); await card('b').getByRole('combobox').selectOption('1'); assert.match(await page.locator('#task-total').textContent(), /1 \/ 8 BE selbst eingeschätzt/);
   });
   await check('Lernen: Hinweise auf Wunsch; Wechsel zu Trainieren verdeckt vorherige Rückmeldung', async () => {
     await choose('A2'); await page.locator('#learn-mode').click();
-    await page.getByRole('button', {name: 'Hinweis', exact: true}).click(); assert.match(await page.locator('#task-content').textContent(), /Bei jedem Schritt/);
+    await page.getByRole('button', {name: 'Nächste Hilfe (1/5)', exact: true}).click(); assert.match(await page.locator('.task-help + .hint').textContent(), /linke und rechte Seiten/);
     await card('b').locator('textarea').fill('S -> aSb -> aaSbb -> aaaSbbb -> aaabbb'); await page.locator('#submit-task').click(); assert.ok(await page.locator('#task-content .part-feedback').count() > 0);
     await page.locator('#train-mode').click(); assert.equal(await page.locator('#task-content .part-feedback').count(), 0); assert.match(await page.locator('#task-content').textContent(), /Hilfe oder Musterlösung/);
   });
@@ -154,8 +162,8 @@ async function main() {
     await page.locator('#submit-task').click(); assert.match(await card('a').textContent(), /3 \/ 3 BE/);
   });
   await check('Rekursive EBNF: begrenztes Ergebnis bleibt ausdrücklich offen', async () => {
-    await nav('C'); await choose('C10'); const solution = A.tasks.find(t => t.id === 'C10').parts[0].answer;
-    await code('a', solution); await page.locator('#submit-task').click(); assert.match(await card('a').textContent(), /kein Gleichwertigkeitsbeweis/); assert.match(await card('a').textContent(), /fachlich offen/);
+    await nav('C'); await choose('C10');
+    await code('a', 'anders = ["(" anders ")"];'); await page.locator('#submit-task').click(); assert.match(await card('a').textContent(), /kein Gleichwertigkeitsbeweis/); assert.match(await card('a').textContent(), /fachlich offen/);
   });
   await check('Mehrteilige Transferaufgabe hält Grundlösung und Erweiterung getrennt', async () => {
     await nav('E'); const t = A.tasks.find(t => t.id === 'E1'); await code('a', t.parts.find(p => p.id === 'a').answer);
@@ -195,7 +203,7 @@ async function main() {
   });
   await check('Laufende Klausur wird nach Reload mit ihren Antworten fortgesetzt', async () => {
     await page.reload(); assert.match(await page.locator('#academy-title').textContent(), /Übungsklausur 1/);
-    assert.equal(await page.locator('#primary-nav [data-view="A"]').isDisabled(), true);
+    assert.equal(await page.locator('#primary-nav [data-view="M2"]').isDisabled(), true);
     await choose('E1'); await card('a').locator('.open-workspace').click(); assert.equal(await page.locator('#ebnf').inputValue(), A.tasks.find(t => t.id === 'E1').parts[0].answer);
     await card('b').locator('.open-workspace').click(); assert.equal(await page.locator('#ebnf').inputValue(), examDrawingDraft); assert.equal(await page.locator('#ebnf-panel').isVisible(), false);
   });
@@ -225,18 +233,18 @@ async function main() {
     await page.evaluate(() => scrollTo(0, 0));
     await page.screenshot({path: path.join(output, 'academy-desktop.png')});
     const touch = await browser.newContext({viewport: {width: 820, height: 1180}, isMobile: true, hasTouch: true}); const tablet = await touch.newPage(); tablet.on('pageerror', e => errors.push(e.message)); await tablet.goto(base);
-    await tablet.locator('#primary-nav [data-view="D"]').tap(); await tablet.locator('#task-list [data-task="D4"]').tap(); await tablet.locator('[data-part="a"] .open-workspace').tap();
+    await tablet.locator('#primary-nav [data-view="M2"]').tap(); await tablet.locator('#task-list .additional-tasks > summary').tap(); await tablet.locator('#task-list [data-task="D4"]').tap(); await tablet.locator('[data-part="a"] .open-workspace').tap();
     await tablet.locator('#nodetype').selectOption('seq'); const sizes = await tablet.evaluate(() => [innerWidth, document.documentElement.scrollWidth]); assert.ok(sizes[1] <= sizes[0] + 1);
     assert.equal(await tablet.locator('#ebnf-panel').isVisible(), false); await tablet.screenshot({path: path.join(output, 'academy-ipad.png')}); await touch.close();
     await page.setViewportSize({width: 390, height: 844}); await noOverflow(); await page.screenshot({path: path.join(output, 'academy-phone.png')});
     const study = await browser.newContext({viewport: {width: 1440, height: 1000}}), overview = await study.newPage();
-    overview.on('pageerror', e => errors.push(e.message)); await overview.goto(base); await overview.locator('#primary-nav [data-view="B"]').click();
+    overview.on('pageerror', e => errors.push(e.message)); await overview.goto(base); await overview.locator('#primary-nav [data-view="M3"]').click(); await overview.locator('#hierarchy-guide summary').click();
     await overview.screenshot({path: path.join(output, 'chomsky-hierarchy.png')}); await study.close();
   });
   await check('Abiturtraining direkt offline per file:// nutzbar', async () => {
     const offline = await browser.newContext({offline: true}); const local = await offline.newPage(); local.on('pageerror', e => errors.push(e.message));
-    await local.goto(pathToFileURL(path.join(root, 'index.html')).href); await local.locator('#primary-nav [data-view="B"]').click();
-    assert.equal(await local.locator('#task-list [data-task]').count(), 12); await local.locator('#train-mode').click();
+    await local.goto(pathToFileURL(path.join(root, 'index.html')).href); await local.locator('#primary-nav [data-view="M3"]').click(); await local.locator('[data-task="B1"]').click();
+    assert.equal(await local.locator('#task-list [data-task]').count(), 19); await local.locator('#train-mode').click();
     await local.locator('[data-part="a"] select').first().selectOption('3'); await local.locator('#submit-task').click(); assert.match(await local.locator('[data-part="a"]').textContent(), /1 \/ 5 BE/); await offline.close();
   });
   await check('Keine JavaScript- oder Konsolenfehler im Trainingslauf', async () => assert.deepEqual(errors, []));

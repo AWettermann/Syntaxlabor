@@ -1,0 +1,95 @@
+{
+  "environment": {
+    "node": "v24.21.0",
+    "platform": "darwin",
+    "browser": "157.0.8103.40"
+  },
+  "records": [
+    {
+      "name": "Eigenes Modul mit sechs Arbeitsblatt-Blöcken, keine Musterlösungen vor der Prüfung",
+      "passed": true,
+      "ms": 833
+    },
+    {
+      "name": "Vorbereitende Hierarchietabelle und schrittweise Hilfen bedienbar",
+      "passed": true,
+      "ms": 283
+    },
+    {
+      "name": "Wortentscheidungen, vollständige Ableitungen und getrennte Begründung",
+      "passed": true,
+      "ms": 144
+    },
+    {
+      "name": "Analysegrammatik mit Start Z und automatisch erkanntem aussichtslosen Zweig",
+      "passed": true,
+      "ms": 149
+    },
+    {
+      "name": "Intercity: umbenannte Grammatik und eigene Produktionsklassifikation",
+      "passed": true,
+      "ms": 153
+    },
+    {
+      "name": "Eigene Grammatikdiagramme und Wortprobe zeigen den tatsächlichen Arbeitsstand",
+      "passed": true,
+      "ms": 206
+    },
+    {
+      "name": "Alternative rekursive Grammatik: offen mit Musterlösung und Prüfaspekten",
+      "passed": true,
+      "ms": 112
+    },
+    {
+      "name": "Hierarchie: Wahrheitswerte automatisch, Begründungen als Selbstkontrolle",
+      "passed": true,
+      "ms": 179
+    },
+    {
+      "name": "LaTeX: Originalmaterialien, lesbare Listen und skalierbare Diagramme",
+      "passed": true,
+      "ms": 730
+    },
+    {
+      "name": "Syntaxdiagramm Zahl im bestehenden grafischen Editor bearbeitbar",
+      "passed": true,
+      "ms": 257
+    },
+    {
+      "name": "LaTeX-Grammatik und Ableitung mit umbenannten Nichtterminalen",
+      "passed": true,
+      "ms": 114
+    },
+    {
+      "name": "Arbeitsstände, Startsymbole und grafischer Entwurf bleiben nach Reload erhalten",
+      "passed": true,
+      "ms": 477
+    },
+    {
+      "name": "Trainingsmodus hält Hilfen verdeckt und friert nach Abgabe ein",
+      "passed": true,
+      "ms": 302
+    },
+    {
+      "name": "Neue Kompetenzen und Lernstandsexport/-import berücksichtigen die eigene Grammatik",
+      "passed": true,
+      "ms": 554
+    },
+    {
+      "name": "iPad Hoch-/Querformat und Smartphone: alle Aufgaben ohne Seitenüberlauf",
+      "passed": true,
+      "ms": 3940
+    },
+    {
+      "name": "Tastaturbedienung, Offline-Aufruf und unverändertes freies Labor",
+      "passed": true,
+      "ms": 851
+    },
+    {
+      "name": "Keine JavaScript- oder Konsolenfehler",
+      "passed": true,
+      "ms": 2
+    }
+  ],
+  "errors": []
+}

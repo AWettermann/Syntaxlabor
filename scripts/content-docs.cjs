@@ -5,13 +5,17 @@ const A = require('../curriculum-tasks.js'), C = require('../core.js'), F = requ
 const root = path.resolve(__dirname, '..');
 const names = {sets: 'Grammatikbestandteile', text: 'Begründung / Selbstkontrolle', derive: 'Ableitung prüfen', tree: 'Ableitungsbaum erstellen', words: 'Wörter zuordnen', examples: 'Beispiele angeben', classify: 'Chomsky-Klassifikation', mapping: 'Zuordnung', choice: 'Auswahl und Erklärung', ebnf: 'EBNF schreiben', draw: 'Grafisch zeichnen', compare: 'Darstellungen vergleichen'};
 const skills = {sets: [1], text: [8], derive: [2], tree: [2], words: [1, 3], examples: [3], classify: [4], mapping: [4], choice: [4], ebnf: [5, 7], draw: [6, 7], compare: [7, 8]};
+Object.assign(names, {word: 'Wagenfolge', grammar: 'Eigene Grammatik / Beweis oder Selbstkontrolle', 'own-classify': 'Eigene Produktionsform klassifizieren', 'own-derive': 'Ableitung mit eigener Grammatik', 'dead-derive': 'Aussichtslosen Ableitungszweig prüfen'});
+Object.assign(skills, {word: [1, 3], grammar: [1, 3], 'own-classify': [4], 'own-derive': [2], 'dead-derive': [2]});
+Object.assign(names, {derivations: 'Eigene Wörter vollständig ableiten', 'chunk-derive': 'Materialableitung mit geprüften Wort-/Textblöcken'});
+Object.assign(skills, {derivations: [2], 'chunk-derive': [2]});
 const esc = s => s.replace(/\|/g, '\\|').replace(/\n/g, ' ');
-let raster = '# Aufgaben- und Kompetenzraster · Syntaxlabor V4.1\n\n50 eigene Aufgaben mit 166 Teilaufgaben plus sechs erhaltene V4.0-Kurzübungen. Die beiden Klausuren stellen ausgewählte Teilaufgaben zu vollständigen Q3-Arbeiten mit je 40 BE zusammen. Es sind keine offiziellen Abituraufgaben.\n\n';
+let raster = `# Aufgaben- und Kompetenzraster · Syntaxlabor V4.1\n\n${A.tasks.length} Aufgaben mit ${A.tasks.reduce((s, t) => s + t.parts.length, 0)} Teilaufgaben (56 erhaltene Aufgabenblöcke und 18 neue Aufgaben; Quellenaufgaben werden im Lernpfad gebündelt) plus sechs erhaltene V4.0-Kurzübungen. Die beiden Klausuren stellen ausgewählte Teilaufgaben zu vollständigen Q3-Arbeiten mit je 40 BE zusammen. Es sind keine offiziellen Abituraufgaben.\n\n`;
 raster += 'Die vollständige Chomsky-Hierarchie von Typ 0 bis Typ 3 ist fester Bestandteil des gewünschten Lernprogramms. Der offizielle GK-Prüfungsumfang und der erweiterte Lernumfang bleiben sachlich unterschieden: [Quellen und Abgrenzung](QUELLEN.md). AFB sind kontextbezogene Einschätzungen dieser eigenen Aufgaben.\n\n## Kompetenzen\n\n';
 A.skills.forEach((s, i) => { raster += `${i + 1}. ${s}\n`; });
 for (const m of A.modules) {
-  raster += `\n## Modul ${m.id} · ${m.title}\n\n${m.scope}.\n\n| Aufgabe | Teil | Arbeitsauftrag / Operator | Format | AFB | BE | Kompetenz | Einordnung |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n`;
-  for (const t of A.tasks.filter(t => t.module === m.id)) for (const p of t.parts) raster += `| ${t.id} · ${esc(t.title)} | ${p.id} | ${esc(p.prompt)} | ${names[p.kind]} | ${p.afb} | ${p.be} | ${skills[p.kind].join(', ')} | ${t.module === 'B' ? 'Vollständige Chomsky-Hierarchie' : 'GK-bezogen / eigene Anwendung'} |\n`;
+  raster += `\n## Modul ${m.number} · ${m.title}\n\n${m.scope}.\n\n| Aufgabe | Teil | Arbeitsauftrag / Operator | Format | AFB | BE | Kompetenz | Einordnung |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n`;
+  for (const t of A.tasks.filter(t => t.module === m.id)) for (const p of t.parts) raster += `| ${t.id} · ${esc(t.title)} | ${p.id} | ${esc(p.prompt)} | ${names[p.kind]} | ${p.afb} | ${p.be} | ${(p.skills ? p.skills.map(i => i + 1) : skills[p.kind]).join(', ')} | ${t.module === 'M1' ? 'Eigene Einstiegsaufgabe; Wikiseite 1 fehlt' : t.source || t.legacyModule === 'W' ? 'Bereitgestellte Q3.1-Quelle' : 'Erhaltene eigene Zusatzübung'} |\n`;
 }
 raster += '\n## Klausurraster\n\n| Klausur | Aufgaben / Teilaufgaben | AFB I | AFB II | AFB III | Gesamt | Automatisch prüfbar | Freitext / Selbstkontrolle |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n';
 for (const exam of A.exams) {
@@ -59,4 +63,19 @@ for (const exam of A.exams) {
   }
 }
 fs.writeFileSync(path.join(root, 'KLAUSUREN.md'), papers);
+let learning = '# Vier Lernmodule · Aufgabenübersicht\n\nStand: 19. November 2026. Alle 56 bisherigen Aufgabenblöcke sind unter ihren stabilen IDs erhalten. Insgesamt 74 Aufgaben / 283 Teilaufgaben; die sechs freien Kurzübungen und beide 40-BE-Klausuren bleiben zusätzlich erhalten.\n\nLernpfad und weitere Übungen werden getrennt angezeigt. Bei Aufgabe 10 in Modul 2 genügt Wahlweg A oder B; beide bilden einen Lernschritt. Beim Datum in Modul 4 genügt EBNF oder Diagramm; diese Modellierungsleistung wird höchstens einmal gewertet.\n\n';
+for (const m of A.modules) {
+  const all = A.tasks.filter(t => t.module === m.id);
+  learning += `## Modul ${m.number} · ${m.title}\n\n${m.main.length} Aufgaben im Lernpfad (${m.completionGroups.length} Lernschritte) und ${all.filter(t => t.practice).length} weitere Übungen.\n\n`;
+  if (m.sourceGap) learning += '**Quellenlücke:** Wikiseite 1 fehlt und ist angefragt. Die vier eigenen Einstiegsaufgaben folgen den Lernzielen des Auftrags; sie sind keine behaupteten Originalaufgaben.\n\n';
+  learning += '| ID | Aufgabe | Grundlage | AFB | Max. BE |\n| --- | --- | --- | --- | --- |\n';
+  for (const id of m.main) {
+    const t = A.tasks.find(t => t.id === id), source = t.source ? `${t.source.sheet}: ${t.source.exercises.join(', ')}` : m.sourceGap ? 'Eigene Einstiegsaufgabe' : 'Erhaltene eigene Übung';
+    learning += `| ${id} | ${esc(t.title)} | ${source} | ${[...new Set(t.parts.map(p => p.afb))].sort().join(', ')} | ${Q.maximum(t)} |\n`;
+  }
+  const more = all.filter(t => t.practice); if (more.length) learning += '\nWeitere erhaltene Übungen: ' + more.map(t => `${t.id} (${t.title})`).join('; ') + '.\n';
+  learning += '\n';
+}
+learning += 'Alle Teilaufgaben, Kompetenzen und BE: [Aufgabenraster](AUFGABENRASTER.md). Fachliche Randfragen, Auswertung, behobene Fehler und technische Einbindung: [Q3.1-Anpassung](Q31-ANPASSUNG.md). Veröffentlichung im bestehenden [GitHub-Repository](https://github.com/AWettermann/Syntaxlabor) nach ausdrücklicher Freigabe.\n';
+fs.writeFileSync(path.join(root, 'LERNPFAD.md'), learning);
 console.log(`Aufgabenraster und Klausuren aus ${A.tasks.length} Aufgaben erzeugt.`);

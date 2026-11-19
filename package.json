@@ -4,9 +4,11 @@
   "private": true,
   "description": "Lokales Syntaxlabor für EBNF, Syntaxdiagramme und formale Sprachen",
   "scripts": {
-    "test": "node --test tests/core.test.cjs tests/renderer.test.cjs tests/formal.test.cjs tests/curriculum.test.cjs",
+    "test": "node --test tests/core.test.cjs tests/renderer.test.cjs tests/formal.test.cjs tests/curriculum.test.cjs tests/wiki3.test.cjs tests/q31.test.cjs",
     "test:browser": "node tests/browser.cjs",
-    "test:academy": "node tests/academy-browser.cjs"
+    "test:academy": "node tests/academy-browser.cjs",
+    "test:wiki3": "node tests/wiki3-browser.cjs",
+    "test:q31": "node tests/q31-browser.cjs"
   },
   "devDependencies": {
     "playwright": "^1.65.1"

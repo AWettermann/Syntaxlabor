@@ -1,131 +1,94 @@
-# Syntaxlabor V4.1 — Testbericht
+# Syntaxlabor Q3.1 · Testbericht
 
-Abschlussprüfung: **18. November 2026**. Die Browserabnahme einschließlich der vereinheitlichten Ableitungspfeile ist abgeschlossen.
+Abschlussstand: **19. November 2026**. Die folgenden Fach- und Browserprüfungen betreffen den lokalen Vier-Modul-Stand. Dieser Stand wird nach ausdrücklicher Freigabe im bestehenden [GitHub-Repository](https://github.com/AWettermann/Syntaxlabor) veröffentlicht.
 
-Ergebnis: **65 von 65 Fach-/Layout-/Inhaltstests**, **21 von 21 Labor-Browsergruppen** und **24 von 24 Trainings-Browsergruppen bestanden**. In den vollständigen Browserläufen gab es keine JavaScript- oder Konsolenfehler.
+**102/102 Fach-, Layout- und Inhaltstests sowie 83/83 Browser-Prüfgruppen bestanden.** In allen abschließenden Browserläufen gab es keine JavaScript- oder Konsolenfehler.
 
-## Ableitungspfeile
-
-Alle aktuellen Aufgaben, Musterlösungen, automatisch zusammengesetzten Ableitungen, Platzhalter und Schrittrückmeldungen verwenden `->`. Aufgabenraster und druckbare Klausuren wurden aus den geänderten Aufgabendaten neu erzeugt. Eine abschließende Textsuche fand in den Projekttexten keinen alten Doppelpfeil mehr.
-
-Zusätzliche Tests prüfen `S -> aS -> aaS -> aab`, Links-/Rechtsableitungen, Zeilenumbrüche, ältere gespeicherte Antworten, ihre unveränderte Bewertung und zitierte Pfeilzeichen als Terminale. Trennzeichen werden nur außerhalb von Anführungszeichen erkannt. Die produktionsbezogene Anzeige `S → aS` bleibt als Regelbezeichnung erhalten; tatsächliche Schritte werden beispielsweise als `Schritt 1: S -> aS. Regel S → aS` dargestellt.
-
-Auch im Browser wurden die neue Eingabe, Rückmeldung, Musterlösung sowie die Umstellung alter Lernstände geprüft. EBNF- und Diagrammregression einschließlich Roundtrips und Exporten bestehen weiterhin. EBNF-Parser, SVG-Renderer und der grafische Laborcontroller wurden für diese Änderung nicht verändert.
-
-## Abgeschlossene Trainings-Browserabnahme
-
-Der vollständige Lauf hat alle 50 Aufgaben gerendert und die interaktiven Formate geprüft: Grammatikbestandteile, Chomsky-Zuordnungen, Links-/Rechtsableitungen, Baumaufbau mit Rücknahme, EBNF-Bearbeitung, eigene grafische Zeichnungen und Gegenbeispiele. Die vollständige Übersicht für Typ 0–3 ist im Lernmodus sichtbar und im selbstständigen Trainingsmodus verdeckt.
-
-Die Zeichenaufgaben wurden im vorhandenen grafischen Editor gelöst. Vor Abgabe blieben EBNF, Sprachhilfen und Exporte verdeckt; danach waren die gespeicherten Abgaben schreibgeschützt. Die EBNF-Prüfungsansicht zeigte ebenfalls keine automatische Diagrammvorschau.
-
-Beide Klausuren wurden unabhängig gestartet, bearbeitet und abgegeben. Der Lauf prüfte die Trennung von Modulantworten und Klausurantworten, Navigation ohne freie Hilfen während der Klausur, Fortsetzung nach Neuladen, die Erhaltung aller Produktionen einer Zeichnung, gesperrte Antworten nach Abgabe, getrennte automatische und selbst eingeschätzte BE sowie einen neuen Versuch mit archivierter Ergebnisübersicht.
-
-Der erfolgreiche Lauf lässt sich wiederholen mit:
-
-```sh
-npm run test:academy
-```
-
-Alle 24 Prüfgruppen einschließlich Ableitungspfeilen, älteren Lernständen, Lernstandsexport/-import, Desktop-/Mobilansicht, iPad-Touchbedienung und direktem Offline-Aufruf über `file://` wurden erfolgreich ausgeführt. Das verlinkte Rohprotokoll enthält den abschließenden erfolgreichen Lauf.
-
-## Neue Fach- und Inhaltstests
-
-| Bereich | Geprüftes Verhalten | Ergebnis |
+| Lauf | Ergebnis | Rohprotokoll |
 | --- | --- | --- |
-| Aufgabenumfang | 8/12/12/12/6 eigene Aufgaben, eindeutige IDs, vollständige BE-/AFB-/Formatangaben | Bestanden |
-| Muster-EBNF | Sämtliche Lösungen parsebar, keine undefinierten Referenzen, keine Folgetrennkommas; Modell gegen eigenes Roundtrip geprüft | Bestanden |
-| Musterableitungen | Alle angegebenen Folgen einschließlich Links-/Rechtsableitung erreichen das richtige Ziel | Bestanden |
-| Alle Wortentscheidungen | Sämtliche 24 Wortprüfungs-Teilaufgaben gegen separat festgelegte Zugehörigkeitslisten geprüft; Transfer-Erweiterungen mit positiven und negativen Fällen geprüft | Bestanden |
-| Chomsky | G1–G5 und alle vorgesehenen ε-/Kontext-/Verkürzungs-/Einheitsregel-Sonderfälle unter erklärter Konvention | Bestanden |
-| Vollständige Hierarchie | Die Übersicht enthält Typ 3, 2, 1, 0; Beispiele stimmen mit ihrer Typangabe überein; Sichtbarkeit im Lern-/Trainingsmodus geprüft | Bestanden, Fach- und Browserprüfung |
-| Bäume | Frontierreihenfolge, Terminalblätter, ε, gewählte Ersetzungsstellen bei identischen Satzformen | Bestanden |
-| Sprachvergleich | Gleichwertige EBNF akzeptieren; Unterschiede und fehlende Definitionen erklären; komplexe Rekursion offen lassen | Bestanden |
-| Zeichenkontrolle | Sprachvergleich plus Nachweis einer grafischen Bearbeitung; eigene Zeichnungen mit verdeckter EBNF erstellt und abgegeben | Bestanden, Fach- und Browserprüfung |
-| Freitext | Keine automatische Wortsuche-Benotung; Selbstpunkte getrennt und begrenzt; leere Antwort zählt nicht | Bestanden |
-| Klausuren | Beide genau 40 BE, AFB I–III vorhanden, nur GK-bezogene Aufgaben gewählt | Bestanden |
-| Klausurwertung | K1-Szenario: 29/34 automatisch und 1/6 selbst eingeschätzt; K2-Szenario: 9/30 automatisch und 0/10 selbst eingeschätzt | Bestanden, Fach- und Browserprüfung |
-| Lernstand | JSON-Roundtrip, echter Export-/Importdownload, Reload, Abgaben und Kompetenzwerte; beschädigte Daten zurückweisen | Bestanden, Fach- und Browserprüfung |
+| `npm test` | 102 bestanden, 0 fehlgeschlagen | [Fachtests](test-results/core-results-q31.txt) |
+| `npm run test:browser` | 21/21 Prüfgruppen | [Freies Labor](test-results/browser-results.json) |
+| `npm run test:academy` | 24/24 Prüfgruppen | [Trainings- und Klausurlauf](test-results/academy-browser-results.json) |
+| `npm run test:wiki3` | 17/17 Prüfgruppen | [Chomsky, Intercity und LaTeX](test-results/wiki3-browser-results.json) |
+| `npm run test:q31` | 21/21 Prüfgruppen | [Vier Module und neue Originalaufgaben](test-results/q31-browser-results.json) |
 
-Die fachlichen Musterbegründungen wurden zusätzlich gelesen und mit den formulierten Aufgabenbedingungen abgeglichen. Das ersetzt keine externe didaktische Begutachtung oder Lehrkraftkorrektur.
+## Nachprüfung von Hilfen und Bearbeitungsstatus
 
-## Umgebung und reproduzierbare Ergebnisse
+Geöffnete Hilfestufen wurden nach Aufgabenwechsel, Reload und echtem Export/Import wiederhergestellt. Weitere Stufen bleiben zunächst geschlossen; vollständig geöffnete Hilfen bleiben vollständig sichtbar und der zugehörige Button deaktiviert. Im Training sind die gespeicherten Hilfen weiterhin verdeckt. Der Import begrenzt die Zähler, setzt die Kennzeichnung „mit Hilfe“ konsistent und übernimmt keine Hilfestufen in Klausurversuche. Alte Lernstände ohne Zähler bleiben nutzbar.
 
-- Node.js v24.21.0 auf macOS (`darwin`).
-- Installiertes Google Chrome 157.0.8103.40, gesteuert mit Playwright; Headless-Browser mit echten Klicks, Doppelklicks, Texteingaben, Tastaturaktionen, Downloads und Touchaktionen.
-- Prüfung über einen temporären lokalen HTTP-Server und zusätzlich direkt über `file://` bei deaktiviertem Netzwerk.
-- Desktop 1440 × 1000, iPad-Ansicht 820 × 1180, Smartphone 390 × 844. Touchbedienung zusätzlich in einem eigenen Browserkontext mit `hasTouch` und `isMobile` geprüft.
+Neu geöffnete Aufgaben sowie ausschließlich betrachtete Hilfen bleiben „Noch offen“. Erst eine tatsächliche Antwortänderung erzeugt „In Bearbeitung“. Der Browserlauf prüft die sofortige Statusänderung und die Grundlagenfolge Begriffe → ε/∅ → Sprachbeschreibung → Syntax/Semantik.
+
+## Fachliche Abnahme
+
+| Bereich | Geprüftes Verhalten |
+| --- | --- |
+| Bestand und Quellen | Vier Lernmodule; alle 56 bisherigen IDs erhalten; insgesamt 74 Aufgaben und 283 Teile; alle zehn Grammatik- und vier EBNF-II-Aufgaben zugeordnet; Originalkopien anhand SHA-256 geprüft; fehlende Wikiseite 1 sichtbar gekennzeichnet |
+| Notationen | BNF mit ::=; EBNF mit Kommas und Punktabschluss sowie Leerraum/Semikolon; zitierte Punkte, Kommas, Leerzeichen, Backslashes und Pfeile bleiben Terminale; Parserfehler und Zwischenstände bleiben nachvollziehbar |
+| Ableitungen | Einzelne Schritte, Links-/Rechtsableitungen, eigene vollständige Ketten, verschiedene selbst gewählte Wörter, eigene Grammatik als Regelgrundlage, ε, ungültige Sprünge und konsistente Zielwörter |
+| Sackgassen | Gültige begonnene Zweige und genaue Zielunerreichbarkeit ab der letzten Satzform; erreichbare oder regelwidrige Zweige zurückweisen |
+| Grammatikbestandteile | Terminale, Nichtterminale, Startsymbol und Produktionen; alternative Bezeichnungen und Regelreihenfolgen; konsistente Umbenennung |
+| Chomsky | Alle vier Typen; ε-Konvention; links-/rechtslineare und gemischt lineare Formen; verkürzende und kontextabhängige Regeln; unerreichbare Regeln zählen zur Form; Sprachklasse separat begründen |
+| Vollständiger Typ 1 | Kontextgrammatik für aⁿbⁿcⁿ aus Wikiseite 3 und vollständige Ableitung von aabbcc einschließlich CB → BC und Terminalkontexten |
+| Sprachvergleich | Exakter Strukturbeweis auch für rekursive EBNF; exakter Automatenvergleich geeigneter Alternativen; echte Gegenbeispiele; andere Rekursion ausdrücklich offen statt unbewiesen richtig |
+| Original-Wortdiagramm | Alle Wörter über a,b,c,x bis Länge 6 gegen unabhängig festgelegten regulären Ausdruck geprüft; Lesekonvention zur uneinheitlichen Formgebung ausdrücklich dokumentiert |
+| Sprachbeschreibungen | Mindestens ein abc; keine Folge aaa; Zahlengrenzen; bitweise gekoppelte Anzahlen; Dateinamen mit exakt drei Erweiterungszeichen |
+| EBNF-II 1 | Originale Satz/Wortgruppe/Adjektiv; führendes Komma ist im ursprünglichen Pfad möglich, in der zusätzlich bereinigten Regel ausgeschlossen |
+| EBNF-II 2 | Nichtleere Terme; Operator und folgende Zahl gemeinsam wiederholen; keine leeren Operanden oder alleinigen Operatoren; nur gekennzeichneter Zahl-Platzhalter |
+| EBNF-II 3 | Alle Tag-/Monatswerte und vier Trennerkombinationen; feste Stellenzahlen; keine zusätzliche Kalenderprüfung; mehrstellige führende Nullen ausgeschlossen; zwei deklarierte Jahr-0-Lesarten akzeptiert |
+| E-Mail | Alle drei Adressformen, Gruppen auch ohne Inhalt, nichtleere Text-/Wortteile, echte Leerzeichen und Kommas, ASCII-Zeichenmengen, Domain-/Namensstruktur und beide Originaladresslisten |
+| E-Mail-Ableitung | Vollständige Betty-H-Ableitung; nur Wort und Text dürfen als nach ihren Regeln gültige Blöcke ersetzt werden; pauschale Gesamtwortsprünge und unzulässige Zeichen zurückweisen |
+| LaTeX | Natürliche Zahlen einschließlich 0, keine führenden Nullen, positive Nenner, nichtleere Listen, mehrere Elemente, beliebige endliche Schachtelung, eigene Grammatik und Ableitungsreihenfolgen; Leerraumregel auf die Aufgabe begrenzt |
+| Wahlmöglichkeiten | Aufgabe 10 A/B zählt einmal im Fortschritt; beim Datum EBNF oder Zeichnung genügt und wird nicht doppelt verlangt; unveränderte Klausur-Maxima |
+| Freitext | Keine Schlüsselwortbenotung; Musterlösungen und konkrete Kriterien; begrenzte, getrennte Selbstpunkte; keine Selbstpunkte für leere Antworten |
+| Lernstände | Alte IDs und ältere Ableitungspfeile lesbar; neue Antworten, Startsymbole, Zeichnungen und Macro-Ableitungen über Export/Import und Reload erhalten; beschädigte Daten zurückweisen |
+
+Sämtliche **33 Wortentscheidungs-Teilaufgaben** werden zusätzlich gegen separat festgelegte Zugehörigkeitslisten geprüft. Die zwei Klausuren behalten ihre ursprüngliche Zusammenstellung und jeweils 40 BE. Beide umfassen weiterhin AFB I–III.
+
+## Browserabnahme
+
+Der Trainingslauf hat alle 74 Aufgaben mit sämtlichen Arbeitsformaten gerendert. Alte und neue Editoren verwenden denselben Labor-Arbeitsbereich; der freie Entwurf wird beim Aufgabenwechsel nicht überschrieben. Grafische Zeichnung, Texteingabe, Auswahl, Baumaufbau, Rücknahme, Referenzen, Umbenennungen, Roundtrips und echte SVG-/PNG-/Text-/JSON-Downloads wurden geprüft.
+
+Der neue Vier-Modul-Lauf hat insbesondere geprüft:
+
+- Einstiegskarten und vier klar bezeichnete Module; Quellenlücke in Modul 1 und lokal erreichbare Originaldateien.
+- Wortzugehörigkeit, Syntax/Semantik, passende schrittweise Hilfen, Fortschrittsanzeige und Vor-/Zurück-Navigation.
+- Stabile alte Aufgabenstände, BNF, Komma-/Punkt-EBNF, selbst gewählte Mehrfachableitungen und eigene umbenannte Grammatiken.
+- Gliederung langer Aufgaben; alle Quellenbilder; Originaldiagramm-Randfälle; tatsächliche 125-Prozent-Vergrößerung eines SVG-Bausteins.
+- Einen Term vollständig durch reale Aktionen im grafischen Editor erstellt und korrekt bewertet; große vorbereitete Hilfsdiagramme aufklappbar und nach Aufgabenwechsel erhalten.
+- Gemischte Datumstrenner, Wortentscheidungen, Jahr-0-Erklärung und korrekte einmalige Wahlwertung.
+- E-Mail-Material, strukturierte Gesamtgrammatik, geprüfte Wort-/Textschritte, automatische und manuelle Ergebnisse getrennt.
+- Veraltete Bewertungen nach Änderungen sichtbar entwertet; geänderte Trainingsantworten verlangen eine neue Abgabe.
+- Neue Antworten und Startsymbole nach Reload sowie echtem Export-/Importdownload erhalten.
+
+Im separaten Chomsky-/LaTeX-Lauf bleiben sämtliche 17 Prüfgruppen erfolgreich. Beide Klausuren wurden im bestehenden Trainingslauf gestartet, bearbeitet und abgegeben. Antworten bleiben während einer laufenden Klausur bei Reload erhalten; freie Lernhilfen und Navigation sind gesperrt, nach Abgabe sind die Antworten schreibgeschützt. Automatische, offene und selbst eingeschätzte BE bleiben getrennt. K1-Szenario: 29/34 automatisch sowie 1/6 selbst eingeschätzt; K2-Szenario: 9/30 automatisch sowie 0/10 selbst eingeschätzt. Ein neuer Versuch erhält die vorherige Ergebnisübersicht.
+
+## Bildschirmgrößen und Umgebung
+
+Node.js v24.21.0 auf macOS; Google Chrome 157.0.8103.40, über Playwright gesteuert. Die Tests verwenden temporäre lokale Server beziehungsweise direkt `file://` und schließen Browser und Server am Ende. Es werden keine App-Laufzeitabhängigkeiten aus dem Netz geladen.
+
+Desktop 1440 × 1000; iPad-Simulation mit Touch bei 820 × 1180 und 1180 × 820; zusätzlich 390 Pixel Breite. Alle geprüften Ansichten ohne Seitenüberlauf. Die Bildschirmaufnahmen wurden visuell kontrolliert; lange Diagramme und vergrößerte Originalbilder werden innerhalb ihrer Bereiche verschoben.
+
+- [Einstieg und unverändertes freies Labor](test-results/q31-lernweg-desktop.png)
+- [Datum und Rückmeldungen](test-results/q31-datum-desktop.png)
+- [E-Mail-Aufgabe](test-results/q31-email-desktop.png)
+- [iPad Hochformat](test-results/q31-ipad-820.png)
+- [iPad Querformat](test-results/q31-ipad-1180.png)
+- [Schmale Ansicht](test-results/q31-phone.png)
+- [Exportierter neuer Lernstand](test-results/q31-lernstand.json)
+
+Die Touch-Prüfung ist eine Chrome-Simulation; ein physisches iPad mit Safari sowie Firefox/Windows wurden nicht separat abgenommen. Bei nicht unterstützten rekursiven Umformungen bleibt die Sprachgleichheit fachlich offen. Wikiseite 1 fehlt für einen vollständigen Originalquellenabgleich; die eigenen Einstiegsaufgaben sind entsprechend gekennzeichnet.
+
+## Wiederholen und Dokumentation
 
 ```sh
 npm test
 npm run test:browser
 npm run test:academy
+npm run test:wiki3
+npm run test:q31
+node scripts/content-docs.cjs
 ```
 
-Browserabhängigkeit vorher bei Bedarf mit `npm ci` installieren. Der Testserver und die gestarteten Browser werden am Ende geschlossen.
+Playwright ist nur Entwicklungsabhängigkeit. Bei Bedarf vorher `npm ci`; auf anderen Systemen `CHROME_PATH` auf die Chrome-/Chromium-Datei setzen. Produktbetrieb benötigt weder Build noch Installation.
 
-Belege:
-
-- [Aktuelle Fach-/Layout-/Inhaltstestergebnisse](test-results/core-results-v4.1.txt)
-- [Browserergebnisse einschließlich Browser- und Node-Version](test-results/browser-results.json)
-- [Vollständiger Trainings-Browserlauf: 24/24 bestanden](test-results/academy-browser-results.json)
-- [Vollständige Chomsky-Hierarchie](test-results/chomsky-hierarchy.png)
-- [Trainingsansicht Desktop](test-results/academy-desktop.png)
-- [Grafischer Editor in der iPad-Touchansicht](test-results/academy-ipad.png)
-- [Trainingsansicht Smartphone](test-results/academy-phone.png)
-- [Im Browser exportierter Lernstand](test-results/lernstand-v4.1.json)
-- [Desktopaufnahme](test-results/desktop.png)
-- [iPad-Aufnahme](test-results/ipad.png)
-- [Smartphoneaufnahme, erster Bildschirm](test-results/phone.png)
-- [Geprüfter SVG-Export](test-results/export.svg)
-- [Geprüfter PNG-Export](test-results/export.png)
-- [Gespeicherte EBNF-Datei](test-results/saved.ebnf)
-
-Die Bildschirmaufnahmen wurden zusätzlich visuell geprüft. Labor und Training haben in den geprüften Breiten keinen horizontalen Seitenüberlauf. Lange Diagramme und die Hauptnavigation scrollen innerhalb ihrer vorgesehenen Bereiche. Die Trainingsaufnahmen zeigen jeweils einen Bildschirm, die Laboraufnahmen teils die ganze Seite.
-
-## Labor-Regressionsabdeckung der 20 bisherigen Fälle
-
-| Nr. | Fall | Prüfung und Ergebnis |
-| --- | --- | --- |
-| 1 | Einzelnes Terminal | `s = "a";` akzeptiert nur das erwartete Wort; bestanden. |
-| 2 | Folge | Leerzeichenfolgen, mehrstellige Terminale und feste Satzzeichen; bestanden. |
-| 3 | Alternative | Alternativen mit Priorität der Folge vor `|`; bestanden. |
-| 4 | Optional | Null oder ein Durchlauf, keine unbeabsichtigte Wiederholung; bestanden. |
-| 5 | Wiederholung | ε, ein und mehrere Durchläufe; SVG mit Bypass und gerichteter Rückführung; bestanden. |
-| 6 | Verschachtelte Alternativen | Gruppierung, Wortprüfung und Layoutgrenzen; bestanden. |
-| 7 | Verschachtelte Wiederholungen | Auch nullable Kinder; Terminierung, Sprache und Layout; bestanden. |
-| 8 | Mehrere Nichtterminale | Vier gleichzeitig sichtbare Diagramme und Startsymbolauswahl im Browser; bestanden. |
-| 9 | Referenzen | Zahlen aus Ziffern, Auswahl eines Referenzbausteins und konsistentes Umbenennen; bestanden. |
-| 10 | Leere Produktion/ε | `ε`, `""`, leere rechte Seite, leere Gruppen und Wortprüfung mit leerem Feld; bestanden. |
-| 11 | Vollständig löschen | Keine Regeln, keine Diagramme, leerer EBNF-Text und deaktivierte Startsymbolauswahl; bestanden. |
-| 12 | Danach neu anlegen | Neue Regel mit ε, Bearbeitung sowie Undo/Redo der Löschung; bestanden. |
-| 13 | Grafik → EBNF automatisch | Typwechsel, direkte Texteingabe per Doppelklick, Formular, Folge, Alternative, Option, Schleife, Verschieben und Entfernen; bestanden. |
-| 14 | EBNF → Grafik automatisch | Vier Produktionen nach Schreibpause ohne Umwandlungsklick; unvollständiger Entwurf bewahrt das Modell; bestanden. |
-| 15 | Wortprüfung | Positive/negative Wörter, Unicode, Leerzeichen und Escapes; Anklicken von Beispielen; bestanden. |
-| 16 | Ungültige EBNF | Fehlende Abschlusszeichen, offene Literale/Klammern, ungültige Zeichen, doppelte Regeln; Positionsmeldung und Wiederherstellung; bestanden. |
-| 17 | Undefinierte Nichtterminale | Sichtbare Diagnose und offene Fehlermeldung bei Wortprüfung; ungenutzte fehlende Regeln blockieren andere Startsymbole nicht; bestanden. |
-| 18 | Rekursion | Links-, rechts-, gegenseitige und nichtproduktive Rekursion, nullable Zyklen, `aⁿbⁿ`; begrenzte Generierung; bestanden. |
-| 19 | SVG/PNG | Echte heruntergeladene Dateien; eigenständiges SVG ohne Auswahl, PNG mit korrekter Dateisignatur; bestanden. |
-| 20 | Training | Alle sechs Aufgaben in beiden Modi gestartet und anschließend mit ihrer Lösung bearbeitet/geprüft; Musterlösung nur auf Wunsch; bestanden. |
-
-## Zusätzliche fachliche Prüfungen
-
-- **Roundtrip EBNF → Modell/Diagramm → EBNF:** Alle Konstruktionen inklusive rekursiver Referenzen, Legacy-Kommaschreibweise und leerer Grammatik. Struktur bzw. Sprache bleibt erhalten.
-- **Roundtrip Grafik → EBNF → Grafik:** Grafisch erzeugte Konstruktionen werden automatisch als gültige EBNF geschrieben; erneutes Parsen bewahrt ihre Bedeutung.
-- **Automatenvergleich:** Unterschiedliche gleichwertige Lösungen, etwa `"ab"` und `"a" "b"`, werden akzeptiert. Optionalität und ausgeschriebene ε-Alternative sowie verschiedene Regelbenennungen werden verglichen.
-- **Rechtslineare Rekursion:** Direkte und gegenseitige Rekursion werden exakt mit äquivalenten EBNF-Wiederholungen verglichen. Zusätzlich wird die Automatenakzeptanz für mehrere rekursive Grammatiken auf allen Wörtern über `{a,b}` bis Länge 4 gegen die unabhängige CFG-Wortprüfung geprüft.
-- **Gegenbeispiele:** Unterschiede einschließlich des leeren Wortes und der fehlenden Wörter `abb` bzw. `abc` werden gefunden und erklärt.
-- **Komplexe Rekursion:** Eine identische `aⁿbⁿ`-Grammatik führt im Training ausdrücklich zu einem offenen begrenzten Ergebnis; keine unbelegte Gleichwertigkeitsbehauptung.
-- **Generierung:** Ausgegebene Wörter sind sortiert, halten die Grenzen ein und werden vom unabhängigen Wortprüfer akzeptiert.
-- **Sichere Namen und Texte:** Regelnamen `constructor`/`__proto__` funktionieren; XML-Sonderzeichen werden escaped. Unicode- und Steuerzeichen überstehen die Serialisierung.
-- **Verlauf und Entwürfe:** Grafikänderungen, Verschieben und vollständiges Löschen lassen sich rückgängig machen/wiederherstellen. Gültige und unvollständige Entwürfe bleiben nach Neuladen erhalten.
-- **Dateien und Offline-Betrieb:** EBNF importiert und bytegenau wieder gespeichert. Direkter Offline-Aufruf der lokalen HTML-Datei einschließlich automatischer Diagrammänderung bestanden.
-
-## Verbleibende Grenzen
-
-Die ausgeführten Browserprüfungen erfolgten in Chrome. iPad-Ansicht und Touch wurden für Labor und Training emuliert; ein physisches iPad und Safari/Firefox/Windows wurden nicht separat geprüft. Das ist keine Behauptung einer Prüfung auf echter iPad-Hardware oder allen Betriebssystemen.
-
-Die Diagrammtests prüfen Geometrie, Anschlüsse, Bypass/Rückweg und ausgewählte verschachtelte Darstellungen. Sie sind kein mathematischer Beweis, dass jede innerhalb der Größengrenzen mögliche Zeichnung in jedem Browser fehlerfrei gerastert wird.
-
-Generierung, Beschreibung und komplexe Äquivalenzvergleiche haben die in [README.md](README.md) dokumentierten Grenzen. Ein offenes Analyseergebnis ist kein Fehler und kein Gleichwertigkeitsnachweis. Eine allgemeine automatische verständliche Beschreibung beliebiger kontextfreier Sprachen ist nicht implementiert.
-
-V4.1 ist browsergeprüft auf [GitHub Pages](https://awettermann.github.io/Syntaxlabor/) veröffentlicht. Der Quellcode liegt in [AWettermann/Syntaxlabor](https://github.com/AWettermann/Syntaxlabor), Hauptzweig `main`. Der GitHub-Pages-Build war erfolgreich; die ausgelieferte HTML-Datei und alle elf JavaScript-/CSS-Ressourcen wurden bytegenau mit dem lokalen Stand abgeglichen. Alle 55 Repository-Dateien wurden zusätzlich anhand ihrer Git-Blob-Prüfsummen verifiziert. Der vorherige V4.0-Stand bleibt gesichert.
+[Aufgabenübersicht je Modul](LERNPFAD.md), [vollständiges Kompetenzraster](AUFGABENRASTER.md), [Änderungen, Quellen und offene Randfragen](Q31-ANPASSUNG.md).

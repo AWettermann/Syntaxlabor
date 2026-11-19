@@ -38,7 +38,7 @@
         if (source[i] !== quote) throw new GrammarError('Schließendes Anführungszeichen fehlt', source, pos);
         i++; tokens.push({kind: 'literal', value, pos}); continue;
       }
-      if ('=;|[]{}(),'.includes(c)) { tokens.push({kind: c, value: c, pos}); i++; continue; }
+      if ('=;.|[]{}(),'.includes(c)) { tokens.push({kind: c, value: c, pos}); i++; continue; }
       if (c === 'ε') { tokens.push({kind: 'epsilon', value: c, pos}); i++; continue; }
       const match = /^[A-Za-z_ÄÖÜäöüß][A-Za-z_0-9ÄÖÜäöüß]*/u.exec(source.slice(i));
       if (!match) throw new GrammarError(`Ungültiges Zeichen „${c}“`, source, pos);
@@ -82,7 +82,9 @@
     while (i < tokens.length) {
       const name = eat('name').value;
       if (rules.some(r => r.name === name)) fail(`Regel „${name}“ ist doppelt definiert`);
-      eat('='); const node = expression(); eat(';'); rules.push({name, node});
+      eat('='); const node = expression();
+      if (peek() !== ';' && peek() !== '.') fail('Regelabschluss „;“ oder „.“ erwartet');
+      i++; rules.push({name, node});
       if (rules.length > 60) fail('Maximal 60 Regeln erlaubt');
     }
     return {rules, legacyCommas};

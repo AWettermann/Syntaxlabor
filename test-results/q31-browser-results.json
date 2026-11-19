@@ -1,0 +1,115 @@
+{
+  "environment": {
+    "node": "v24.21.0",
+    "platform": "darwin",
+    "browser": "157.0.8103.40"
+  },
+  "records": [
+    {
+      "name": "Vier erkennbare Lernmodule im vorhandenen Labor und transparenter fehlender Quelltext",
+      "passed": true,
+      "ms": 488
+    },
+    {
+      "name": "Öffnen und Hilfe ansehen zählt noch nicht als Bearbeitung; echte Eingaben aktualisieren den Status",
+      "passed": true,
+      "ms": 344
+    },
+    {
+      "name": "Geöffnete Hilfestufen bleiben nach Aufgabenwechsel und Reload erhalten",
+      "passed": true,
+      "ms": 516
+    },
+    {
+      "name": "Grundlagen: Wortzugehörigkeit, passende Hilfestufen und sichtbarer Bearbeitungsfortschritt",
+      "passed": true,
+      "ms": 248
+    },
+    {
+      "name": "Syntax und Semantik werden auch bei Division durch null getrennt bewertet",
+      "passed": true,
+      "ms": 118
+    },
+    {
+      "name": "Geänderte Antworten entwerten alte Rückmeldungen und benötigen im Training eine neue Abgabe",
+      "passed": true,
+      "ms": 329
+    },
+    {
+      "name": "Modul 2 bündelt Quellen und erhält alte Aufgabenstände unter stabilen IDs",
+      "passed": true,
+      "ms": 253
+    },
+    {
+      "name": "BNF mit ::= und EBNF aus der Wiki-Komma/Punktnotation werden akzeptiert",
+      "passed": true,
+      "ms": 492
+    },
+    {
+      "name": "Mehrere eigenständig gewählte Ableitungen werden pro Kette semantisch geprüft",
+      "passed": true,
+      "ms": 285
+    },
+    {
+      "name": "Lange Aufgaben sind gegliedert und äquivalente verschachtelte EBNF wird erkannt",
+      "passed": true,
+      "ms": 488
+    },
+    {
+      "name": "Wahlaufgabe nutzt die eigene Grammatik; A und B sind alternative Lernwege",
+      "passed": true,
+      "ms": 231
+    },
+    {
+      "name": "Vollständige Hierarchie einschließlich echter kontextabhängiger Typ-1-Ableitung",
+      "passed": true,
+      "ms": 203
+    },
+    {
+      "name": "EBNF-II 1: alle Originaldiagramme und explizite Analyse des Komma-Rückwegs",
+      "passed": true,
+      "ms": 1028
+    },
+    {
+      "name": "EBNF-II 2: Term ausschließlich im vorhandenen grafischen Editor vollständig gezeichnet",
+      "passed": true,
+      "ms": 410
+    },
+    {
+      "name": "EBNF-II 3: gemischte Datumstrenner, Kalenderabgrenzung und erklärter Randfall Jahr 0",
+      "passed": true,
+      "ms": 827
+    },
+    {
+      "name": "EBNF-II 4: Originalmaterial und große Hilfsdiagramme bleiben lesbar aufklappbar",
+      "passed": true,
+      "ms": 650
+    },
+    {
+      "name": "E-Mail-Listen und vollständige Ableitung mit erlaubten Wort-/Textblöcken",
+      "passed": true,
+      "ms": 1082
+    },
+    {
+      "name": "Neue Antworten, Wahlweg und E-Mail-Ableitung bleiben nach Reload und Export/Import erhalten",
+      "passed": true,
+      "ms": 656
+    },
+    {
+      "name": "Desktop und iPad-Touchansichten: vier Module, Originalbilder und Zeicheneditor ohne Seitenüberlauf",
+      "passed": true,
+      "ms": 3759
+    },
+    {
+      "name": "Vier Lernmodule und Originalmaterial funktionieren direkt offline per file://",
+      "passed": true,
+      "ms": 632
+    },
+    {
+      "name": "Keine JavaScript- oder Konsolenfehler im vollständigen Vier-Modul-Lauf",
+      "passed": true,
+      "ms": 0
+    }
+  ],
+  "errors": []
+}

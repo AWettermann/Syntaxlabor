@@ -8,102 +8,102 @@
     {
       "name": "Start und lokale HTTP-Auslieferung",
       "passed": true,
-      "ms": 252
+      "ms": 482
     },
     {
       "name": "14 — automatische EBNF-Synchronisierung und vier Diagramme",
       "passed": true,
-      "ms": 523
+      "ms": 632
     },
     {
       "name": "Ungültige Zwischenstände erhalten die letzten gültigen Diagramme",
       "passed": true,
-      "ms": 392
+      "ms": 396
     },
     {
       "name": "11/12 — vollständig löschen und leeres Diagramm neu anlegen",
       "passed": true,
-      "ms": 176
+      "ms": 166
     },
     {
       "name": "13 — grafisches Einfügen und direkte Textbearbeitung",
       "passed": true,
-      "ms": 145
+      "ms": 143
     },
     {
       "name": "Verschieben, Rückgängig und Wiederherstellen",
       "passed": true,
-      "ms": 154
+      "ms": 142
     },
     {
       "name": "Option, Alternative, Wiederholung und Auswahl von Containern",
       "passed": true,
-      "ms": 398
+      "ms": 448
     },
     {
       "name": "Baumeditor auswählen und Elemente vollständig entfernen",
       "passed": true,
-      "ms": 436
+      "ms": 382
     },
     {
       "name": "Nichtterminale, Umbenennen und konsistente Referenzen",
       "passed": true,
-      "ms": 533
+      "ms": 502
     },
     {
       "name": "Sprachbeschreibung, ε und sortierte Beispielwörter",
       "passed": true,
-      "ms": 1235
+      "ms": 1265
     },
     {
       "name": "Beide Roundtrips bewahren die Bedeutung",
       "passed": true,
-      "ms": 659
+      "ms": 648
     },
     {
       "name": "19 — SVG- und PNG-Export als echte Dateien",
       "passed": true,
-      "ms": 451
+      "ms": 548
     },
     {
       "name": "EBNF-Datei importieren und speichern",
       "passed": true,
-      "ms": 59
+      "ms": 230
     },
     {
       "name": "20 — alle sechs Aufgaben in beiden Modi laden und bearbeiten",
       "passed": true,
-      "ms": 6010
+      "ms": 6022
     },
     {
       "name": "Training akzeptiert äquivalente Lösungen und erklärt Gegenbeispiele",
       "passed": true,
-      "ms": 752
+      "ms": 699
     },
     {
       "name": "Entwurf bleibt nach Neuladen erhalten",
       "passed": true,
-      "ms": 798
+      "ms": 902
     },
     {
       "name": "Tastaturbedienung im Diagramm",
       "passed": true,
-      "ms": 317
+      "ms": 329
     },
     {
       "name": "iPad-Touchbedienung des grafischen Editors",
       "passed": true,
-      "ms": 670
+      "ms": 789
     },
     {
       "name": "Desktop, iPad und Smartphone ohne Seitenüberlauf",
       "passed": true,
-      "ms": 1771
+      "ms": 2225
     },
     {
       "name": "Direkt per file:// und ohne Netzwerk nutzbar",
       "passed": true,
-      "ms": 690
+      "ms": 758
     },
     {
       "name": "Keine JavaScript- oder Konsolenfehler",

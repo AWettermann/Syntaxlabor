@@ -2,6 +2,8 @@
   'use strict';
   const common = typeof module !== 'undefined' && module.exports;
   const C = common ? require('./core.js') : scope.SyntaxCore, F = common ? require('./formal.js') : scope.SyntaxFormal;
+  const W = common ? require('./wiki3-engine.js') : scope.SyntaxWiki3;
+  const L = common ? require('./q31-engine.js') : scope.SyntaxQ31Checks;
   const round = n => Math.round(n * 100) / 100;
   const list = s => [...new Set(String(s || '').replace(/[{}]/g, '').split(/[\s,;]+/).filter(Boolean))].sort();
   const equal = (a, b) => JSON.stringify(a) === JSON.stringify(b);
@@ -9,9 +11,11 @@
     try { return {value: String(F.classify(F.parse(source, start)).type), info: F.classify(F.parse(source, start)).reasons.join(' ')}; }
     catch (e) { return {value: 'invalid', info: e.message}; }
   }
-  function check(part, answer = {}, task = {}) {
+  function check(part, answer = {}, task = {}, answers = {}) {
     const base = {status: 'incorrect', autoEarned: 0, autoMax: part.kind === 'text' ? 0 : part.be, manualMax: part.kind === 'text' ? part.be : 0, selfEarned: 0, pending: 0, feedback: []};
     try {
+      if (['derivations', 'chunk-derive'].includes(part.kind)) return L.check(part, answer, task, answers, base);
+      if (['word', 'grammar', 'own-classify', 'own-derive', 'dead-derive'].includes(part.kind)) return W.check(part, answer, task, answers, base);
       if (part.kind === 'text') {
         base.status = answer.text?.trim() ? 'manual' : 'empty';
         base.selfEarned = answer.text?.trim() ? round(part.criteria.reduce((sum, c, i) => sum + Math.max(0, Math.min(c[1], Number(answer.self?.[i]) || 0)), 0)) : 0;
@@ -20,18 +24,22 @@
       if (part.kind === 'ebnf' || part.kind === 'draw') {
         if (part.kind === 'draw' && !answer.edits) { base.feedback.push('Bearbeite die Struktur im grafischen Editor. Ein unveränderter Arbeitsbereich ist noch keine gezeichnete Lösung.'); return base; }
         const source = answer.workspace?.text ?? '';
-        const model = C.parse(source).rules, target = C.parse(part.answer).rules;
+        const model = C.parse(source).rules, targets = [part.answer, ...(part.alternatives || [])].map(s => C.parse(s).rules);
         if (!model.length) { base.feedback.push('Die Grammatik ist noch leer.'); return base; }
         const diagnostics = C.diagnostics(model); if (diagnostics.length) { base.feedback.push(...diagnostics); return base; }
         const start = answer.workspace?.start || model[0].name;
-        const compare = C.equivalent(model, start, target, target[0].name);
+        const comparisons = targets.map(target => W.ebnfIsomorphic(model, start, target, target[0].name) ? {kind: 'equal', structural: true} : C.equivalent(model, start, target, target[0].name));
+        const compare = comparisons.find(c => c.kind === 'equal') || comparisons.find(c => c.kind === 'unknown') || comparisons[0];
         if (compare.kind === 'equal') {
           base.status = 'correct'; base.autoEarned = part.be;
-          base.feedback.push('Die Sprachgleichheit wurde exakt durch Automatenvergleich nachgewiesen.');
+          base.feedback.push(compare.structural ? 'Die Sprachgleichheit ist exakt nachgewiesen: Die erreichbaren EBNF-Strukturen stimmen einschließlich Rekursion bis auf Regelreihenfolge und Nichtterminalnamen überein.' : 'Die Sprachgleichheit wurde exakt durch Automatenvergleich nachgewiesen.');
           if (part.kind === 'draw') base.feedback.push('Die bearbeitete Knotenstruktur ist gültig. Verbindungen und Pfeile werden vom Diagrammeditor konsistent erzeugt.');
+          if (part.alternativeNote) base.feedback.push(part.alternativeNote);
         } else if (compare.kind === 'different') {
-          const own = C.recognizer(model, start)(compare.witness);
-          base.feedback.push(`Gegenbeispiel ${compare.witness ? JSON.stringify(compare.witness) : 'ε'}: ${own ? 'Deine Lösung lässt es zu, die Aufgabe nicht.' : 'Die Aufgabe lässt es zu, deine Lösung nicht.'}`);
+          for (const [i, c] of comparisons.entries()) {
+            const own = C.recognizer(model, start)(c.witness);
+            base.feedback.push(`${comparisons.length > 1 ? 'Zulässige Lesart ' + (i + 1) + ': ' : ''}Gegenbeispiel ${c.witness ? JSON.stringify(c.witness) : 'ε'}: ${own ? 'Deine Lösung lässt es zu, diese Aufgabenlesart nicht.' : 'Diese Aufgabenlesart lässt es zu, deine Lösung nicht.'}`);
+          }
         } else {
           base.status = 'open'; base.pending = part.be;
           base.feedback.push(`Kein Unterschied in ${compare.tested} begrenzten Testwörtern gefunden. Das ist kein Gleichwertigkeitsbeweis. ${compare.reason} Die ${part.be} BE bleiben fachlich offen und brauchen eine manuelle Prüfung.`);
@@ -101,8 +109,17 @@
     } catch (e) { base.feedback.push(e.message); return base; }
   }
   function summary(task, answers) {
-    const parts = task.parts.map(p => ({id: p.id, ...check(p, answers[p.id], task)}));
-    return parts.reduce((sum, p) => ({auto: round(sum.auto + p.autoEarned), autoMax: sum.autoMax + p.autoMax, self: round(sum.self + p.selfEarned), manualMax: sum.manualMax + p.manualMax, pending: sum.pending + p.pending, parts}), {auto: 0, autoMax: 0, self: 0, manualMax: 0, pending: 0, parts});
+    const parts = task.parts.map(p => ({id: p.id, ...check(p, answers[p.id], task, answers)}));
+    for (const group of task.choiceGroups || []) {
+      const alternatives = parts.filter(p => group.ids.includes(p.id));
+      const best = [...alternatives].sort((a, b) => b.autoEarned - a.autoEarned || b.pending - a.pending)[0];
+      alternatives.forEach(p => { p.counted = p === best; });
+    }
+    return parts.filter(p => p.counted !== false).reduce((sum, p) => ({auto: round(sum.auto + p.autoEarned), autoMax: sum.autoMax + p.autoMax, self: round(sum.self + p.selfEarned), manualMax: sum.manualMax + p.manualMax, pending: sum.pending + p.pending, parts}), {auto: 0, autoMax: 0, self: 0, manualMax: 0, pending: 0, parts});
+  }
+  function maximum(task) {
+    const grouped = new Set((task.choiceGroups || []).flatMap(g => g.ids));
+    return task.parts.filter(p => !grouped.has(p.id)).reduce((n, p) => n + p.be, 0) + (task.choiceGroups || []).reduce((n, g) => n + Math.max(0, ...task.parts.filter(p => g.ids.includes(p.id)).map(p => p.be)), 0);
   }
   function cleanWorkspace(w) {
     if (!w || typeof w.text !== 'string' || typeof w.validText !== 'string' || w.text.length > 24000 || w.validText.length > 24000) return null;
@@ -130,9 +147,10 @@
       const taskId = key.includes(':') ? key.split(':')[1] : key, task = curriculum.tasks.find(t => t.id === taskId), answers = {};
       for (const p of task.parts) {
         answers[p.id] = cleanAnswer(a.answers?.[p.id]);
-        if (p.kind === 'derive' && typeof answers[p.id].text === 'string') answers[p.id].text = F.normalizeDerivation(answers[p.id].text);
+        if (['derive', 'own-derive', 'dead-derive', 'derivations', 'chunk-derive'].includes(p.kind) && typeof answers[p.id].text === 'string') answers[p.id].text = F.normalizeDerivation(answers[p.id].text);
       }
-      out.attempts[key] = {answers, submitted: !!a.submitted, assisted: !!a.assisted, checked: !!a.checked, updated: Number.isFinite(a.updated) ? a.updated : 0};
+      const hintCount = !key.includes(':') && Number.isInteger(a.hintCount) ? Math.max(0, Math.min(task.hints?.length || 1, a.hintCount)) : 0;
+      out.attempts[key] = {answers, submitted: !!a.submitted, assisted: !!a.assisted || hintCount > 0, hintCount, checked: !!a.checked, updated: Number.isFinite(a.updated) ? a.updated : 0};
     }
     for (const ex of curriculum.exams) {
       const e = raw.exams?.[ex.id]; if (!e) continue;
@@ -142,6 +160,6 @@
     if (Object.values(out.exams).filter(e => e.started && !e.submitted).length > 1) throw Error('Der Lernstand enthält mehrere gleichzeitig laufende Klausuren.');
     return out;
   }
-  const api = {check, summary, productionType, cleanProgress, cleanAnswer, cleanWorkspace};
+  const api = {check, summary, maximum, productionType, cleanProgress, cleanAnswer, cleanWorkspace};
   if (common) module.exports = api; else scope.SyntaxAssessment = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this);

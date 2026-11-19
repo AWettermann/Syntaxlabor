@@ -1,6 +1,6 @@
 # Prüfungsbezug und fachliche Konventionen
 
-Quellen geprüft am **17. November 2026**. Bezugsjahrgang ist das Landesabitur **2027**; der bereits veröffentlichte Erlass 2028 wurde zusätzlich abgeglichen. Alle Aufgaben, Lösungen, BE und Zeitvorschläge im Syntaxlabor sind selbst erstellt.
+Quellen geprüft am **17. November 2026**. Bezugsjahrgang ist das Landesabitur **2027**; der bereits veröffentlichte Erlass 2028 wurde zusätzlich abgeglichen. Die ursprünglichen Übungen sind selbst erstellt. Für die lokale Q3.1-Anpassung wurden die bereitgestellten Wikiseiten und Originalarbeitsblätter ergänzt; [Quellenabgleich und Originalkopien](Q31-ANPASSUNG.md). BE, AFB-Einschätzungen und Zeitvorschläge sind didaktische Setzungen der Anwendung.
 
 ## Offizielle hessische Grundlagen
 
@@ -18,13 +18,11 @@ Quellen geprüft am **17. November 2026**. Bezugsjahrgang ist das Landesabitur *
 
 | Bereich | Einordnung im Syntaxlabor |
 | --- | --- |
-| A: Grammatikbestandteile, Ableitungen, Bäume, L(G) | GK-Kern mit vertiefenden Anwendungen |
-| B: reguläre/kontextfreie Produktionsformen | GK-bezogener Kern |
-| B: Typ 0/1, Maschinenzuordnung, detaillierte ε-Konventionen | Fester Bestandteil des gewünschten Lernumfangs über den offiziellen GK-Kern hinaus |
-| C: EBNF schreiben, prüfen und korrigieren | Werkzeugtraining zu Q3.1 |
-| D: Syntaxdiagramme zeichnen und umwandeln | GK-Kern |
-| E: Anwendungskontexte und Erweiterungen | Eigene abiturorientierte Transferübungen |
-| K1/K2: je 40 BE und 100 Minuten Empfehlung | Vollständige eigene Q3-Übungsklausuren, keine vollständigen Landesabitur-Simulationen |
+| Modul 1: Alphabet, Wort, Sprache, Syntax/Semantik | Eigene Einstiegsaufgaben nach den Lernzielen; Wikiseite 1 fehlt noch |
+| Modul 2: Bestandteile, Ableitungen, Bäume, L(G), BNF/EBNF, Syntaxdiagramme | GK-Kern und Werkzeugtraining; Wikiseite 2 und überarbeitetes Grammatik-Arbeitsblatt |
+| Modul 3: vollständige Chomsky-Hierarchie und Grammatikanalyse | Typ 0/1 bleiben auf Wunsch fester Lerninhalt über den offiziellen GK-Kern hinaus; vollständige Quellenmaterialien einschließlich Transfer |
+| Modul 4: komplexe EBNF und Syntaxdiagramme | Wikiseite 4 und vier EBNF-II-Übungen; sechs erhaltene eigene Anwendungskontexte als Zusatzübungen |
+| K1/K2: je 40 BE und 100 Minuten Empfehlung | Eigene Q3-Übungsklausuren mit unveränderter Zusammenstellung, keine vollständigen Landesabitur-Simulationen |
 
 Die beiden Q3-Klausuren konzentrieren sich auf Konstruktion und Analyse und enthalten überwiegend AFB II. Es wird weder eine offizielle AFB-Prozentverteilung noch eine amtliche Notenberechnung behauptet. Die BE-Verteilung steht vollständig im [Aufgabenraster](AUFGABENRASTER.md).
 

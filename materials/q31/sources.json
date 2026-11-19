@@ -1,0 +1,37 @@
+{
+  "provided": [
+    {
+      "file": "wiki2.pdf",
+      "original": "Wikiseite2.pdf",
+      "sha256": "94085818504adf7df6bfc1524daebdcdb0909d22760e497952e001adaec61808"
+    },
+    {
+      "file": "wiki3.pdf",
+      "original": "Wikiseite3.pdf",
+      "sha256": "d2671e3d1af8521d83fcf98d71ae7875079b37175f034f29e0364ca8307f8e88"
+    },
+    {
+      "file": "wiki4.pdf",
+      "original": "Wikiseite4.pdf",
+      "sha256": "2db541f406c6210358264b997b2c14aab80cb7eae199444039dd473fbf29836d"
+    },
+    {
+      "file": "grammatiken.docx",
+      "original": "Arbeitsblatt_Q3_Grammatiken_GK_ueberarbeitet (4).docx",
+      "sha256": "663512021fd7ce29265138fcd388a08e3130a09ddaf72225d216beca4fdf15bd"
+    },
+    {
+      "file": "ebnf2.docx",
+      "original": "Syntaxdiagramme und EBNF-II (2).docx",
+      "sha256": "c50be94bce2e7a42d26dcfaa5d09cafc5ff976987180729b3d06d66d6c102915"
+    },
+    {
+      "file": "../wiki3/arbeitsblatt.docx",
+      "original": "Chomsky_Hierarchie_korrigiertes_Arbeitsblatt (1) (4).docx",
+      "sha256": "6736b903def457049bebbf049e20cf0d2ae79ab34087859462d42eefd87d32d8"
+    }
+  ],
+  "missing": [
+    "Wikiseite 1 – Formale Sprachen: Aufbau von Sprachen"
+  ]
+}

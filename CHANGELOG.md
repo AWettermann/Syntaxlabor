@@ -2,6 +2,46 @@
 
 ## V4.1 · Abiturtraining Q3
 
+### 19. November 2026 · Veröffentlichung des Vier-Modul-Stands
+
+- Nach ausdrücklicher Freigabe im bestehenden Repository `AWettermann/Syntaxlabor` und über dessen GitHub Pages veröffentlicht.
+- Wikiseite-3-Aufgaben, Q3.1-Lernpfad, EBNF-II-Materialien, Hilfen und Bearbeitungsstatus gemeinsam übernommen; 74 Aufgaben mit 283 Teilaufgaben.
+- 102 Fachtests vor Veröffentlichung erneut erfolgreich; die 83 erfolgreichen Browser-Prüfgruppen sind dokumentiert. Der Hinweis auf die fehlende Originalquelle Wikiseite 1 bleibt erhalten.
+
+### 19. November 2026 · Nachprüfung von Lernfolge und Hilfen
+
+- Grundlagenreihenfolge präzisiert: Begriffe, ε/∅, Sprachbeschreibung, Syntax/Semantik; Aufgaben-IDs und gespeicherte Antworten bleiben erhalten.
+- Geöffnete Hilfestufen bleiben nach Aufgabenwechsel, Reload und Export/Import erhalten. Weitere Hilfen werden weiterhin einzeln geöffnet; Training und Klausuren zeigen sie nicht an.
+- Bloßes Öffnen einer neuen Aufgabe oder Lesen einer Hilfe erzeugt keinen Bearbeitungsstatus mehr. Tatsächliche Text-, Auswahl-, Baum- und Editoränderungen werden weiterhin gespeichert.
+- Quellenlose erhaltene Vertiefungsaufgaben werden in der Aufgabenübersicht korrekt als eigene Übungen bezeichnet.
+- 102 Fachtests und 83 Browser-Prüfgruppen erfolgreich; keine Veröffentlichung.
+
+### 19. November 2026 · Vier Wikiseiten Q3.1, lokale Anpassung
+
+- Vier aufeinander aufbauende Lernmodule statt paralleler Fachrubriken; 74 Aufgaben mit 283 Teilen. Alle 56 bisherigen Blöcke, sechs Kurzübungen, zwei 40-BE-Klausuren und gespeicherte IDs bleiben erhalten.
+- Alle zehn Aufgaben des überarbeiteten Grammatik-Arbeitsblatts und alle vier EBNF-II-Übungen integriert; gleiche Ausgangsgrammatiken gebündelt, weitere bisherige Aufgaben aufklappbar. Binärdarstellung von −114 nicht als Aufgabe übernommen.
+- BNF mit ::= und Wiki-EBNF mit Kommas/Punkt zusätzlich akzeptiert; zitierte echte Trennzeichen bleiben erhalten. Rekursive EBNF kann durch nachgewiesene Strukturgleichheit exakt bestätigt werden; unbeweisbare Vergleiche bleiben offen.
+- Eigenständig gewählte Mehrfachableitungen, eigene Grammatik als Regelgrundlage und geprüfte Wort-/Textblöcke bei E-Mail-Listen ergänzt.
+- Datumsformat mit unabhängigen Trennern, korrekten Stellenzahlen und ohne zusätzliche Kalenderprüfung. Beide ausdrücklich gekennzeichneten Lesarten zu Jahr 0 zulässig. EBNF oder Diagramm zählt nur einmal.
+- Typ-1-Kontextgrammatik aus der Wikiseite und getrennter Korrektheits-/Vollständigkeitsnachweis beim Intercity-Zug ergänzt. Grammatikform bleibt von Sprachklasse unterschieden.
+- Quellenauffälligkeiten transparent behandelt: uneinheitliche Formen im Wort-Diagramm, führendes Komma in Wortgruppe und fehlende Zahl-Definition im Term. Originale unverändert erhalten.
+- Sichtbarer Lernpfad-Fortschritt mit Wahlwegen, gegliederte lange Aufgaben, echte Diagrammvergrößerung und aufklappbare große Hilfsdiagramme.
+- Alte Bewertungen werden nach Antwortenänderung als veraltet gekennzeichnet; bearbeitete Trainingsabgaben brauchen eine neue Abgabe.
+- Wikiseite 1 fehlt und wurde angefragt; eigene Einstiegsaufgaben sind entsprechend gekennzeichnet. Keine behauptete vollständige Quellenabdeckung für dieses Modul.
+- Änderungen, Aufgabenübersicht und Quellenprüfungen in `Q31-ANPASSUNG.md` und `LERNPFAD.md`. Kein GitHub-Push.
+
+### 18. November 2026 · Wikiseite 3, lokale Erweiterung
+
+- Korrigiertes Arbeitsblatt vollständig integriert: fünf anspruchsvolle Aufgabenbereiche plus vorbereitende Hierarchietabelle, 32 neue Teilaufgaben. Gesamtbestand: 56 Aufgaben / 198 Teile.
+- Originalquellcode, beide eingebetteten Bilder und Arbeitsblatt erhalten; zusätzliche lesbare Listendarstellungen und skalierbare SVG-Diagramme mit Zoom.
+- Eigene Produktionsgrammatiken mit benannten Nichtterminalen, Startsymbolwahl, Diagrammvorschau und Wortprobe; Ableitungen mit der tatsächlich eingegebenen Grammatik.
+- Struktureller Gleichwertigkeitsbeweis unabhängig von Umbenennung und Regelreihenfolge; exakter Automatenvergleich im unterstützten Bereich; andere rekursive Vergleiche mit Gegenbeispielen oder ausdrücklich offenem Ergebnis und Selbstkontrolle.
+- Aussichtslosen Ableitungszweig mittels kontextfreier Wortprüfung aus der letzten Satzform prüfen; Grammatiktyp und Sprachklasse getrennt auswerten.
+- Schrittweise Hilfen und neue Formate in bestehende Speicherung, Export/Import, Fortschritt und Trainingssperre eingebunden. Die zwei Klausuren behalten ihre bisherigen Aufgaben und je 40 BE.
+- Auswertung, Originalnummern und Prüfgrenzen in `WIKISEITE3.md` dokumentiert; Raster aus allen Aufgaben neu erzeugt.
+- 81 Fachtests, 21 Labor-, 24 Trainings- und 17 Wikiseite-3-Browsergruppen bestanden; Desktop, iPad-Touchsimulation in beiden Orientierungen, Smartphone und Offline-Aufruf geprüft.
+- Keine Veröffentlichung und kein Git-Push der lokalen Arbeitsblatt-Erweiterung.
+
 ### 18. November 2026 · Ableitungspfeile
 
 - Grammatische Ableitungen verwenden durchgängig `->`: Aufgaben, Musterlösungen, Lernhinweise, Eingabefelder, automatisch zusammengesetzte Schritte und erzeugte Unterrichtsdokumente.

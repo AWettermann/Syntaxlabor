@@ -1,13 +1,14 @@
 {
   "version": "4.1.0",
   "unit": {
-    "passed": 65,
+    "passed": 102,
     "failed": 0,
-    "log": "core-results-v4.1.txt"
+    "log": "core-results-q31.txt"
   },
   "laboratory_browser": {
     "passed": 21,
     "failed": 0,
+    "complete": true,
     "log": "browser-results.json"
   },
   "academy_browser": {
@@ -32,6 +33,80 @@
     "legacy_answers": "normalized",
     "quoted_terminals": "preserved",
     "text_audit": "passed",
-    "checked_date": "2026-11-18"
-  }
+    "checked_date": "2026-11-19"
+  },
+  "wiki3_browser": {
+    "passed": 17,
+    "failed": 0,
+    "complete": true,
+    "log": "wiki3-browser-results.json"
+  },
+  "wiki3": {
+    "tasks": 6,
+    "main_areas": 5,
+    "preparation_tasks": 1,
+    "parts": 33,
+    "total_tasks": 74,
+    "total_parts": 283,
+    "source": "materials/wiki3/arbeitsblatt.docx",
+    "checked_date": "2026-11-19"
+  },
+  "checked_date": "2026-11-19",
+  "q31_browser": {
+    "passed": 21,
+    "failed": 0,
+    "complete": true,
+    "log": "q31-browser-results.json"
+  },
+  "q31": {
+    "modules": [
+      {
+        "id": "M1",
+        "title": "Formale Sprachen verstehen",
+        "main": 4,
+        "steps": 4,
+        "total": 4
+      },
+      {
+        "id": "M2",
+        "title": "Grammatiken und Darstellungsformen",
+        "main": 11,
+        "steps": 10,
+        "total": 41
+      },
+      {
+        "id": "M3",
+        "title": "Chomsky-Hierarchie und Grammatikanalyse",
+        "main": 11,
+        "steps": 11,
+        "total": 19
+      },
+      {
+        "id": "M4",
+        "title": "Komplexe Anwendungen mit EBNF und Syntaxdiagrammen",
+        "main": 4,
+        "steps": 4,
+        "total": 10
+      }
+    ],
+    "tasks": 74,
+    "parts": 283,
+    "missing_sources": [
+      "Wikiseite 1"
+    ],
+    "source_manifest": "../materials/q31/sources.json",
+    "report": "../Q31-ANPASSUNG.md"
+  },
+  "learning_flow": {
+    "foundation_order": [
+      "F1",
+      "F4",
+      "F2",
+      "F3"
+    ],
+    "hints_persisted": true,
+    "editing_status_requires_answer_change": true,
+    "legacy_answers_preserved": true
+  },
+  "test_target": "Local source; publication verified separately"
 }

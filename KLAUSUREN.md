@@ -8,7 +8,7 @@ Die verwendeten Buchstaben verweisen auf die Teilaufgaben im Aufgabenkatalog. Al
 
 Eigene Zeit­empfehlung: 100 Minuten. Alle drei Aufgabenblöcke bearbeiten.
 
-### A1 · Eine Kette aus a und ein Schlusszeichen
+### A1 · 1–2 · Bestandteile, Ableitungen und Sprache
 
 Gegeben ist S → aS | b.
 
@@ -114,7 +114,7 @@ Die automatische Prüfung vergibt für exakt äquivalente EBNF/Diagramme die ang
 
 ## Übungsklausur 1 · Logistik und Grammatik · Erwartungshorizont
 
-### A1 · Eine Kette aus a und ein Schlusszeichen
+### A1 · 1–2 · Bestandteile, Ableitungen und Sprache
 
 **a) 3 BE**
 

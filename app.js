@@ -59,7 +59,7 @@
     try {
       const parsed = C.parse(text); state.rules = parsed.rules; state.error = ''; state.selection = null;
       ensureNames(); render();
-      status(parsed.legacyCommas ? 'V2-Schreibweise erkannt. Beim Formatieren werden Folgen mit Leerzeichen geschrieben.' : 'EBNF und alle Diagramme sind synchron.');
+      status(parsed.legacyCommas ? 'EBNF mit Verkettungskommas erkannt. Beim Formatieren nutzt das Labor Leerzeichen und Semikolon; die Sprache bleibt gleich.' : 'EBNF und alle Diagramme sind synchron.');
     } catch (e) {
       state.error = e.message; renderFeedback(); historyButtons(); save(); scheduleAnalysis();
       status('Unvollständige oder ungültige EBNF. Die letzten gültigen Diagramme bleiben erhalten.', true);
@@ -104,7 +104,13 @@
       heading.append(select, remove);
       const diagram = document.createElement('div'); diagram.className = 'diagram';
       diagram.innerHTML = R.svg(rule.node, rule.name, {id: `r${index}`, selected: state.selection?.name === rule.name ? state.selection.path : null});
-      card.append(heading, diagram); $('diagram-list').append(card); diagram.scrollLeft = scrolls.get(rule.name) || 0;
+      card.append(heading, diagram);
+      if (workspaceContext.training && workspaceContext.foldRules?.includes(rule.name)) {
+        const fold = document.createElement('details'), summary = document.createElement('summary');
+        fold.className = 'helper-diagram'; summary.textContent = 'Hilfsdiagramm ' + rule.name + ' ansehen'; fold.open = state.active === rule.name;
+        fold.append(summary, card); $('diagram-list').append(fold);
+      } else $('diagram-list').append(card);
+      diagram.scrollLeft = scrolls.get(rule.name) || 0;
     });
     $('svgexport').disabled = $('pngexport').disabled = !state.rules.length;
   }

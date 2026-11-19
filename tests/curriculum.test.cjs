@@ -2,14 +2,14 @@ const {test} = require('node:test');
 const assert = require('node:assert/strict');
 const A = require('../curriculum-tasks.js'), Q = require('../assessment.js'), C = require('../core.js'), F = require('../formal.js');
 const task = id => A.tasks.find(t => t.id === id), part = (id, p) => task(id).parts.find(x => x.id === p);
-test('50 individuelle Aufgaben mit mindestens 8/12/12/12/6 Einträgen', () => {
-  assert.equal(A.tasks.length, 50); assert.equal(new Set(A.tasks.map(t => t.id)).size, 50);
-  assert.deepEqual(A.modules.map(m => A.tasks.filter(t => t.module === m.id).length), [8, 12, 12, 12, 6]);
+test('74 Aufgaben in vier Lernmodulen; bisherige IDs bleiben erhalten', () => {
+  assert.equal(A.tasks.length, 74); assert.equal(new Set(A.tasks.map(t => t.id)).size, 74);
+  assert.deepEqual(A.modules.map(m => A.tasks.filter(t => t.module === m.id).length), [4, 41, 19, 10]);
   assert.deepEqual(A.hierarchy.map(h => h.type), [3, 2, 1, 0]);
   for (const h of A.hierarchy) assert.equal(F.classify(F.parse(h.example)).type, h.type);
 });
 test('Alle Teilaufgaben besitzen BE, AFB, ein implementiertes Format und vollständige Lösungen', () => {
-  const kinds = new Set(['text', 'ebnf', 'draw', 'derive', 'tree', 'words', 'examples', 'sets', 'choice', 'classify', 'mapping', 'compare']);
+  const kinds = new Set(['text', 'ebnf', 'draw', 'derive', 'tree', 'words', 'examples', 'sets', 'choice', 'classify', 'mapping', 'compare', 'word', 'grammar', 'own-classify', 'own-derive', 'dead-derive', 'derivations', 'chunk-derive']);
   for (const t of A.tasks) {
     assert.ok(t.title && t.intro && t.hint); assert.equal(new Set(t.parts.map(p => p.id)).size, t.parts.length);
     for (const p of t.parts) {
@@ -91,7 +91,7 @@ test('Zeichnen braucht eine wirkliche grafische Bearbeitung', () => {
   assert.equal(Q.check(p, {workspace, edits: 1}, task('D4')).status, 'correct');
 });
 test('Komplexe rekursive Gleichwertigkeit bleibt offen', () => {
-  const p = part('C10', 'a'), result = Q.check(p, {workspace: {text: p.answer}}, task('C10'));
+  const p = part('C10', 'a'), result = Q.check(p, {workspace: {text: 'anders = ["(" anders ")"];'}}, task('C10'));
   assert.equal(result.status, 'open'); assert.equal(result.autoEarned, 0); assert.equal(result.pending, p.be);
 });
 test('Freitext wird nicht durch Schlüsselwörter automatisch benotet', () => {
@@ -148,7 +148,7 @@ test('Alle vorgegebenen Wortentscheidungen stimmen mit separat festgelegten Erwa
     C2b: [1,1,0,0], C3b: [0,1,1,0], C4b: [1,0,1,1], C5b: [1,1,0,0], C6b: [1,1,0,0], C7b: [1,1,1,0],
     C8b: [1,1,1,0,0], C10b: [1,1,1,0], C11b: [1,1,0,0],
     D1b: [1,0,1], D2b: [1,1,0,1], D7b: [1,1,0,1], D8b: [1,1,1,0], D10b: [1,1,0,1], D12c: [1,1,0,0],
-    E1c: [1,1,0,0], E2c: [1,1,0,0], E3c: [1,1,0,0], E4c: [1,1,0,0], E5c: [1,1,0,0], E6c: [1,1,0,0]
+    E1c: [1,1,0,0], E2c: [1,1,0,0], E3c: [1,1,0,0], E4c: [1,1,0,0], E5c: [1,1,0,0], E6c: [1,1,0,0], W1a: [1,0,1], F2a: [1,1,1,0,0,0,0], F3a: [1,1,0,0], G4c: [0], G7b: [1,1,1,1,0,0,0,0], G8d: [0,0,0], A1g: [1,1,1,0,0], H3b: [1,1,1,0,0], H4d: [1,0]
   };
   for (const t of A.tasks) for (const p of t.parts) if (p.kind === 'words') {
     const key = t.id + p.id; assert.ok(expected[key], key); const rules = C.parse(p.answer).rules, run = C.recognizer(rules, rules[0].name);

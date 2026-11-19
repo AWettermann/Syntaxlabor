@@ -1,0 +1,463 @@
+{
+  "version": "4.1",
+  "attempts": {
+    "A1": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "text": "S -> aS -> aaS -> aaaS -> aaab",
+          "edits": 0
+        },
+        "d": {
+          "edits": 0
+        },
+        "e": {
+          "edits": 0
+        },
+        "f": {
+          "edits": 0
+        },
+        "g": {
+          "edits": 0
+        },
+        "h": {
+          "edits": 0
+        },
+        "i": {
+          "edits": 0
+        },
+        "j": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "F1": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": true,
+      "hintCount": 3,
+      "checked": false,
+      "updated": 0
+    },
+    "F4": {
+      "answers": {
+        "a": {
+          "choices": {
+            "0": "Richtig"
+          },
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": true,
+      "hintCount": 1,
+      "checked": false,
+      "updated": 1795072975360
+    },
+    "F2": {
+      "answers": {
+        "a": {
+          "choices": {
+            "0": "Ja",
+            "1": "Ja",
+            "2": "Ja",
+            "3": "Nein",
+            "4": "Nein",
+            "5": "Nein",
+            "6": "Nein"
+          },
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": true,
+      "hintCount": 1,
+      "checked": false,
+      "updated": 1795072976479
+    },
+    "F3": {
+      "answers": {
+        "a": {
+          "choices": {
+            "0": "Ja",
+            "1": "Ja",
+            "2": "Nein",
+            "3": "Nein"
+          },
+          "edits": 0
+        },
+        "b": {
+          "text": "8/0 hat das richtige Format, aber keine definierte Divisionsbedeutung.",
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": true,
+      "updated": 1795072976194
+    },
+    "C2": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "G11": {
+      "answers": {
+        "a": {
+          "text": "<Zahl> ::= <Ziffer> | <Ziffer><Zahl>\n<Ziffer> ::= \"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\"",
+          "edits": 0
+        },
+        "b": {
+          "workspace": {
+            "text": "Zahl = Ziffer, {Ziffer}.\nZiffer = \"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\".",
+            "validText": "Zahl = Ziffer {Ziffer};\nZiffer = \"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\";",
+            "start": "Zahl"
+          },
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": true,
+      "updated": 1795072977251
+    },
+    "A2": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        },
+        "d": {
+          "edits": 0
+        },
+        "e": {
+          "text": "S -> b\nS -> aS -> ab\nS -> aS -> aaS -> aab",
+          "edits": 0
+        },
+        "f": {
+          "text": "S -> ε\nS -> aSb -> ab\nS -> aSb -> aaSbb -> aabb",
+          "edits": 0
+        },
+        "g": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": true,
+      "updated": 1795072977534
+    },
+    "G5": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        },
+        "d": {
+          "edits": 0
+        },
+        "e": {
+          "edits": 0
+        },
+        "f": {
+          "edits": 0
+        },
+        "g": {
+          "edits": 0
+        },
+        "h": {
+          "edits": 0
+        },
+        "i": {
+          "edits": 0
+        },
+        "j": {
+          "workspace": {
+            "text": "Sprache = {\"b\" | \"ab\" | \"aab\"} [\"a\" [\"a\"]] .",
+            "validText": "Sprache = {\"b\" | \"ab\" | \"aab\"} [\"a\" [\"a\"]];",
+            "start": "Sprache"
+          },
+          "edits": 0
+        },
+        "k": {
+          "edits": 0
+        },
+        "l": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": true,
+      "updated": 1795072978019
+    },
+    "G10A": {
+      "answers": {
+        "a": {
+          "text": "Q -> aR\nR -> aR | bR | b",
+          "start": "Q",
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "text": "Q -> aR -> ab\nQ -> aR -> abR -> abb",
+          "edits": 0
+        },
+        "d": {
+          "edits": 0
+        },
+        "e": {
+          "edits": 0
+        },
+        "f": {
+          "choice": "3",
+          "edits": 0
+        },
+        "g": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": true,
+      "updated": 1795072978174
+    },
+    "W0": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        },
+        "d": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": false,
+      "updated": 0
+    },
+    "B13": {
+      "answers": {
+        "a": {
+          "choices": {
+            "0": "1"
+          },
+          "edits": 0
+        },
+        "b": {
+          "text": "S -> aSBC -> aaBCBC -> aaBBCC -> aabBCC -> aabbCC -> aabbcC -> aabbcc",
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": true,
+      "updated": 1795072978476
+    },
+    "H1": {
+      "answers": {
+        "a": {
+          "workspace": {
+            "text": "Satz = Wortgruppe (\"essen\" | \"lieben\") (Wortgruppe | \"schnell\" | \"langsam\") \".\";\nWortgruppe = [Adjektiv] {\",\" Adjektiv} (\"Katzen\" | \"Mäuse\");\nAdjektiv = \"schwarze\" | \"weiße\" | \"dürre\" | \"fette\";",
+            "validText": "Satz = Wortgruppe (\"essen\" | \"lieben\") (Wortgruppe | \"schnell\" | \"langsam\") \".\";\nWortgruppe = [Adjektiv] {\",\" Adjektiv} (\"Katzen\" | \"Mäuse\");\nAdjektiv = \"schwarze\" | \"weiße\" | \"dürre\" | \"fette\";",
+            "start": "Satz"
+          },
+          "edits": 0
+        },
+        "b": {
+          "edits": 0
+        },
+        "c": {
+          "workspace": {
+            "text": "Wortgruppe = [Adjektiv {\",\" Adjektiv}] (\"Katzen\" | \"Mäuse\");\nAdjektiv = \"schwarze\" | \"weiße\" | \"dürre\" | \"fette\";",
+            "validText": "Wortgruppe = [Adjektiv {\",\" Adjektiv}] (\"Katzen\" | \"Mäuse\");\nAdjektiv = \"schwarze\" | \"weiße\" | \"dürre\" | \"fette\";",
+            "start": "Wortgruppe"
+          },
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": true,
+      "updated": 1795072979495
+    },
+    "H2": {
+      "answers": {
+        "a": {
+          "workspace": {
+            "text": "Term = Zahl {(\"*\" | \"/\") Zahl};\nZahl = \"z\";",
+            "validText": "Term = Zahl {(\"*\" | \"/\") Zahl};\nZahl = \"z\";",
+            "start": "Term"
+          },
+          "edits": 8
+        },
+        "b": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": true,
+      "updated": 1795072979907
+    },
+    "H3": {
+      "answers": {
+        "a": {
+          "workspace": {
+            "text": "Datum = Tag Trenner Monat Trenner Jahr;\nTag = \"0\" Nichtnull | (\"1\" | \"2\") Ziffer | \"3\" (\"0\" | \"1\");\nMonat = \"0\" Nichtnull | \"1\" (\"0\" | \"1\" | \"2\");\nJahr = \"0\" | Nichtnull {Ziffer};\nTrenner = \".\" | \"-\";\nNichtnull = \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\";\nZiffer = \"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\";",
+            "validText": "Datum = Tag Trenner Monat Trenner Jahr;\nTag = \"0\" Nichtnull | (\"1\" | \"2\") Ziffer | \"3\" (\"0\" | \"1\");\nMonat = \"0\" Nichtnull | \"1\" (\"0\" | \"1\" | \"2\");\nJahr = \"0\" | Nichtnull {Ziffer};\nTrenner = \".\" | \"-\";\nNichtnull = \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\";\nZiffer = \"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\";",
+            "start": "Datum"
+          },
+          "edits": 0
+        },
+        "b": {
+          "choices": {
+            "0": "Ja",
+            "1": "Ja",
+            "2": "Ja",
+            "3": "Nein",
+            "4": "Nein"
+          },
+          "edits": 0
+        },
+        "c": {
+          "edits": 0
+        },
+        "d": {
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": true,
+      "updated": 1795072980445
+    },
+    "H4": {
+      "answers": {
+        "a": {
+          "edits": 0
+        },
+        "b": {
+          "workspace": {
+            "text": "Adressliste = (Adresse | Gruppe) {\", \" (Adresse | Gruppe)};\nAdresse = EMail | \"<\" EMail \">\" | Anzeigename \" <\" EMail \">\";\nGruppe = Anzeigename \":\" [Adresse {\", \" Adresse}] \";\";\nAnzeigename = \"\\\"\" Text \"\\\"\" | Wort {\" \" Wort};\nText = Beliebig {Beliebig};\nBeliebig = Zulaessig | Spezial;\nSpezial = \"<\" | \">\" | \":\" | \";\" | \"@\" | \",\" | \".\" | \" \";\nEMail = Name \"@\" Domain;\nDomain = Wort \".\" Name;\nName = Wort {\".\" Wort};\nWort = Zulaessig {Zulaessig};\nZulaessig = \"A\" | \"B\" | \"C\" | \"D\" | \"E\" | \"F\" | \"G\" | \"H\" | \"I\" | \"J\" | \"K\" | \"L\" | \"M\" | \"N\" | \"O\" | \"P\" | \"Q\" | \"R\" | \"S\" | \"T\" | \"U\" | \"V\" | \"W\" | \"X\" | \"Y\" | \"Z\" | \"a\" | \"b\" | \"c\" | \"d\" | \"e\" | \"f\" | \"g\" | \"h\" | \"i\" | \"j\" | \"k\" | \"l\" | \"m\" | \"n\" | \"o\" | \"p\" | \"q\" | \"r\" | \"s\" | \"t\" | \"u\" | \"v\" | \"w\" | \"x\" | \"y\" | \"z\" | \"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\" | \"!\" | \"#\" | \"$\" | \"%\" | \"&\" | \"'\" | \"*\" | \"+\" | \"-\" | \"/\" | \"=\" | \"?\" | \"^\" | \"_\" | \"{\" | \"}\" | \"~\";",
+            "validText": "Adressliste = (Adresse | Gruppe) {\", \" (Adresse | Gruppe)};\nAdresse = EMail | \"<\" EMail \">\" | Anzeigename \" <\" EMail \">\";\nGruppe = Anzeigename \":\" [Adresse {\", \" Adresse}] \";\";\nAnzeigename = \"\\\"\" Text \"\\\"\" | Wort {\" \" Wort};\nText = Beliebig {Beliebig};\nBeliebig = Zulaessig | Spezial;\nSpezial = \"<\" | \">\" | \":\" | \";\" | \"@\" | \",\" | \".\" | \" \";\nEMail = Name \"@\" Domain;\nDomain = Wort \".\" Name;\nName = Wort {\".\" Wort};\nWort = Zulaessig {Zulaessig};\nZulaessig = \"A\" | \"B\" | \"C\" | \"D\" | \"E\" | \"F\" | \"G\" | \"H\" | \"I\" | \"J\" | \"K\" | \"L\" | \"M\" | \"N\" | \"O\" | \"P\" | \"Q\" | \"R\" | \"S\" | \"T\" | \"U\" | \"V\" | \"W\" | \"X\" | \"Y\" | \"Z\" | \"a\" | \"b\" | \"c\" | \"d\" | \"e\" | \"f\" | \"g\" | \"h\" | \"i\" | \"j\" | \"k\" | \"l\" | \"m\" | \"n\" | \"o\" | \"p\" | \"q\" | \"r\" | \"s\" | \"t\" | \"u\" | \"v\" | \"w\" | \"x\" | \"y\" | \"z\" | \"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\" | \"!\" | \"#\" | \"$\" | \"%\" | \"&\" | \"'\" | \"*\" | \"+\" | \"-\" | \"/\" | \"=\" | \"?\" | \"^\" | \"_\" | \"{\" | \"}\" | \"~\";",
+            "start": "Adressliste"
+          },
+          "edits": 0
+        },
+        "c": {
+          "workspace": {
+            "text": "EMail = Name;\nDomain = ε;\nName = ε;\nWort = Zulaessig {Zulaessig};\nZulaessig = \"A\" | \"B\" | \"C\" | \"D\" | \"E\" | \"F\" | \"G\" | \"H\" | \"I\" | \"J\" | \"K\" | \"L\" | \"M\" | \"N\" | \"O\" | \"P\" | \"Q\" | \"R\" | \"S\" | \"T\" | \"U\" | \"V\" | \"W\" | \"X\" | \"Y\" | \"Z\" | \"a\" | \"b\" | \"c\" | \"d\" | \"e\" | \"f\" | \"g\" | \"h\" | \"i\" | \"j\" | \"k\" | \"l\" | \"m\" | \"n\" | \"o\" | \"p\" | \"q\" | \"r\" | \"s\" | \"t\" | \"u\" | \"v\" | \"w\" | \"x\" | \"y\" | \"z\" | \"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\" | \"!\" | \"#\" | \"$\" | \"%\" | \"&\" | \"'\" | \"*\" | \"+\" | \"-\" | \"/\" | \"=\" | \"?\" | \"^\" | \"_\" | \"{\" | \"}\" | \"~\";",
+            "validText": "EMail = Name;\nDomain = ε;\nName = ε;\nWort = Zulaessig {Zulaessig};\nZulaessig = \"A\" | \"B\" | \"C\" | \"D\" | \"E\" | \"F\" | \"G\" | \"H\" | \"I\" | \"J\" | \"K\" | \"L\" | \"M\" | \"N\" | \"O\" | \"P\" | \"Q\" | \"R\" | \"S\" | \"T\" | \"U\" | \"V\" | \"W\" | \"X\" | \"Y\" | \"Z\" | \"a\" | \"b\" | \"c\" | \"d\" | \"e\" | \"f\" | \"g\" | \"h\" | \"i\" | \"j\" | \"k\" | \"l\" | \"m\" | \"n\" | \"o\" | \"p\" | \"q\" | \"r\" | \"s\" | \"t\" | \"u\" | \"v\" | \"w\" | \"x\" | \"y\" | \"z\" | \"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\" | \"!\" | \"#\" | \"$\" | \"%\" | \"&\" | \"'\" | \"*\" | \"+\" | \"-\" | \"/\" | \"=\" | \"?\" | \"^\" | \"_\" | \"{\" | \"}\" | \"~\";",
+            "start": "EMail"
+          },
+          "edits": 2
+        },
+        "d": {
+          "choices": {
+            "0": "Ja",
+            "1": "Nein"
+          },
+          "edits": 0
+        },
+        "e": {
+          "edits": 0
+        },
+        "f": {
+          "text": "<Adressliste> -> <Adresse> -> <Anzeigename>\" <\"<EMail>\">\" -> \"\\\"\"<Text>\"\\\" <\"<EMail>\">\" -> \"\\\"Betty H\\\" <\"<EMail>\">\" -> \"\\\"Betty H\\\" <\"<Name>\"@\"<Domain>\">\" -> \"\\\"Betty H\\\" <\"<Wort>\"@\"<Domain>\">\" -> \"\\\"Betty H\\\" <betty@\"<Domain>\">\" -> \"\\\"Betty H\\\" <betty@\"<Wort>\".\"<Name>\">\" -> \"\\\"Betty H\\\" <betty@home.\"<Name>\">\" -> \"\\\"Betty H\\\" <betty@home.\"<Wort>\".\"<Name>\">\" -> \"\\\"Betty H\\\" <betty@home.gmx.\"<Name>\">\" -> \"\\\"Betty H\\\" <betty@home.gmx.\"<Wort>\">\" -> \"\\\"Betty H\\\" <betty@home.gmx.de>\"",
+          "edits": 0
+        }
+      },
+      "submitted": false,
+      "assisted": false,
+      "hintCount": 0,
+      "checked": true,
+      "updated": 1795072982025
+    }
+  },
+  "exams": {},
+  "ratings": {
+    "0": 0,
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 0
+  },
+  "mode": "learn"
+}
